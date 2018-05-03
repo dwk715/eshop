@@ -3,6 +3,7 @@
 # @Time    : 2018/5/2 上午10:45
 # @Author  : Dlala
 # @File    : init_name_db.py
+# 更新间隔每周一次
 
 from pymongo import MongoClient
 from opencc import OpenCC
