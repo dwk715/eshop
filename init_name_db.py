@@ -48,6 +48,7 @@ def dataCleaning(id):
         cn_name = openCC.convert(str(tw_name))
         jp_name = soup.find_all('h2')[0].text
         eu_name = soup.find_all('h2')[1].text
+
         names = {
             'tw_name': tw_name,
             'cn_name': cn_name,

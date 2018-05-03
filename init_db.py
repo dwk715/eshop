@@ -58,7 +58,7 @@ name_collection = db['name']
 
 # 定义数据库格式
 game = {
-    # title --> string 名称
+    # title --> string 游戏名称
     "title": None,
     # slug --> str 名称代'-' 用于连接美服和欧服的游戏
     'slug': None,
@@ -263,13 +263,27 @@ def getGamesJP():
     games = []
     for i in range(FIRST_NSUID, FIRST_NSUID + 1500):
         r = requests.get(GUESS_GAMES_GP_URL + str(i))
+        r.encoding = 'utf-8'
         if r.status_code == 200:
             game = json.loads(re.search(JSON_REGEX, r.text).group(1))
+            print(game['formal_name'])
+            if '（' in game['formal_name']:
+                title = game['formal_name'].split('（')[0]
+            elif '™' in game['formal_name']:
+                title = game['formal_name'].replace('™', '')
+                title = title.replace('®', ' ') if '®' in title else title
+            elif 'アケアカNEOGEO' in game['formal_name']:
+                title = game['formal_name'].replace('アケアカNEOGEO ', '')
+            else:
+                title = game['formal_name']
+            print(title)
+
+
 
 
 
 if __name__ == '__main__':
-    getGamesEU()
-    getGamesAM()
-    getTitleByAcGamer()
-
+    # getGamesEU()
+    # getGamesAM()
+    # getTitleByAcGamer()
+    getGamesJP()
