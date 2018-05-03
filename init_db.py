@@ -3,6 +3,7 @@
 # @Time    : 2018/4/24 上午9:40
 # @Author  : Dlala
 # @File    : init_db.py
+# 更新game数据库
 
 from pymongo import MongoClient
 import requests
