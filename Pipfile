@@ -1,3 +1,13 @@
 [[source]]
-url = "https://pypi.python.org/simple"
 verify_ssl = true
+url = "https://pypi.python.org/simple"
+
+[packages]
+requests = "*"
+pymongo = "*"
+beautifulsoup4 = "*"
+opencc-python-reimplemented = "*"
+lxml = "*"
+gevent = "*"
+tqdm = "*"
+simplejson = "*"
