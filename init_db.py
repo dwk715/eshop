@@ -269,7 +269,7 @@ def getGamesJP():
 
 
 if __name__ == '__main__':
-    # getGamesEU()
-    # getGamesAM()
+    getGamesEU()
+    getGamesAM()
     getTitleByAcGamer()
 
