@@ -24,7 +24,7 @@ name_collection = db['name']
 def getNamesByAcGamer():
     # jobs = [gevent.spawn(dataCleaning, id) for id in range(85000, 99999)]
     # gevent.joinall(jobs)
-    for id in range(85000, 99999):
+    for id in tqdm(range(85000, 99999)):
         dataCleaning(id)
 
 
