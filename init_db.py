@@ -274,6 +274,8 @@ def getGamesJP():
                 title = title.replace('®', ' ') if '®' in title else title
             elif 'アケアカNEOGEO' in game['formal_name']:
                 title = game['formal_name'].replace('アケアカNEOGEO ', '')
+            elif '(' in game['formal_name']:
+                title = game['formal_name'].split('(')[0]
             else:
                 title = game['formal_name']
             print(title)
@@ -285,5 +287,5 @@ def getGamesJP():
 if __name__ == '__main__':
     # getGamesEU()
     # getGamesAM()
-    getTitleByAcGamer()
-    # getGamesJP()
+    # getTitleByAcGamer()
+    getGamesJP()
