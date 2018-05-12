@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 from opencc import OpenCC
 import simplejson as json
 import re
+import iso639
 
 GET_GAMES_US_URL = "http://www.nintendo.com/json/content/get/filter/game?system=switch"
 GET_GAMES_EU_URL = "http://search.nintendo-europe.com/en/select"
@@ -224,7 +225,10 @@ def getTitleByAcGamer():
     for i in urls:
         names = getNamesByAcGamerUrl(i)
         tw_name = names.get('tw_name')
-        name_collection.update({'tw_name': tw_name}, names, upsert=True)
+        if name_collection.find({'tw_name': tw_name}).count() == 1:
+            pass
+        else:
+            name_collection.insert(names)
 
 
 def getNamesByAcGamerUrl(url):
@@ -259,14 +263,15 @@ def getUrlsByAcGamer(params):
             urls.add(c.find('a', href=True)['href'])
     return urls
 
+def addJa
+
 def getGamesJP():
     games = []
-    for i in range(FIRST_NSUID, FIRST_NSUID + 1500):
+    for i in range(FIRST_NSUID, FIRST_NSUID + 1):
         r = requests.get(GUESS_GAMES_GP_URL + str(i))
         r.encoding = 'utf-8'
         if r.status_code == 200:
             game = json.loads(re.search(JSON_REGEX, r.text).group(1))
-            print(game['formal_name'])
             if '（' in game['formal_name']:
                 title = game['formal_name'].split('（')[0]
             elif '™' in game['formal_name']:
@@ -278,7 +283,14 @@ def getGamesJP():
                 title = game['formal_name'].split('(')[0]
             else:
                 title = game['formal_name']
-            print(title)
+            nsuid = game['id']
+            img = game['applications'][0]['image_url']
+            excerpt = game['description']
+            date_from = {'jp': game['release_date_on_eshop']}
+            on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'], "%Y-%m-%d") <= datetime.datetime.now()) else False
+            publisher = game['publisher']['name']
+            language_availability = {'jp': [ iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(i['iso_code']).lower()  else iso639.to_name(i['iso_code']).lower() for i in game['languages']]}
+
 
 
 

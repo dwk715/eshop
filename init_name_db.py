@@ -60,4 +60,6 @@ def dataCleaning(id):
     return None
 
 if __name__ == '__main__':
-    getNamesByAcGamer()
+    # getNamesByAcGamer()
+    pass
+
