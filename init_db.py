@@ -52,7 +52,7 @@ log_file = 'log/' + today + '.log'
 logging.basicConfig(filename=log_file, level=logging.ERROR, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # mongodb 设置
-mg_client = MongoClient('localhost', 27017)
+mg_client = MongoClient(host='localhost', port=27017, username='dwk715', password='lunxian715', authSource='eshop_price')
 db = mg_client['eshop_price']
 game_collection = db['game']
 name_collection = db['name']
@@ -151,7 +151,7 @@ def getAMGameOffeset(times):
 def getGamesAM():
     params = {
         'offset': 0,
-        'limit': 9999
+        'limit': 200
     }
     try:
         res = requests.get(GET_GAMES_US_URL, params=params)
@@ -263,7 +263,7 @@ def getUrlsByAcGamer(params):
             urls.add(c.find('a', href=True)['href'])
     return urls
 
-def addJa
+# def addJa
 
 def getGamesJP():
     games = []
@@ -298,6 +298,6 @@ def getGamesJP():
 
 if __name__ == '__main__':
     # getGamesEU()
-    # getGamesAM()
+    getGamesAM()
     # getTitleByAcGamer()
-    getGamesJP()
+    # getGamesJP()
