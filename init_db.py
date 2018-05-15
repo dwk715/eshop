@@ -52,35 +52,74 @@ log_file = 'log/' + today + '.log'
 logging.basicConfig(filename=log_file, level=logging.ERROR, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # mongodb 设置
-mg_client = MongoClient(host='localhost', port=27017, username='dwk715', password='lunxian715', authSource='eshop_price')
+mg_client = MongoClient(host='localhost', port=27017, username='dwk715', password='lunxian715',
+                        authSource='eshop_price')
 db = mg_client['eshop_price']
 game_collection = db['game']
 name_collection = db['name']
 
 # 定义数据库格式
 game = {
-    # title --> string 游戏名称
-    "title": None,
-    # slug --> str 名称代'-' 用于连接美服和欧服的游戏
-    'slug': None,
-    # nsuid --> list[] 游戏ID,不同服务器同一游戏不同nsuid,根据nsuid查询价格
-    "nsuid": {},
-    # img --> str(url) 图片，欧服为正方形图片，美服为商品图片，可能是正方形，可能是长方形
-    "img": None,
-    # excerpt --> str 游戏描述
-    "excerpt": None,
-    # date_from --> {} 游戏发售日，游戏发售日各个服务器可能不相同
-    "date_from": {},
-    # on_sale --> bool 根据游戏发售日判断有无在售卖
-    "on_sale": False,
-    # publisher --> str 发行商，前端暂时不作展示
-    "publisher": None,
-    # categories --> [] 游戏分类,可用于前端分类使用
-    "categories": [],
-    # language_availability --> {} 支持的语言，美服无法获取数据，只取欧服和日服
-    "language_availability": {}
+
+    "title": {},  # title --> string 游戏名称
+
+    'slug': None,  # slug --> str 名称代'-' 用于连接美服和欧服的游戏
+
+    "nsuid": {},  # nsuid --> list[] 游戏ID,不同服务器同一游戏不同nsuid,根据nsuid查询价格
+
+    "img": None,  # img --> str(url) 图片，欧服为正方形图片，美服为商品图片，可能是正方形，可能是长方形
+
+    "excerpt": None,  # excerpt --> str 游戏描述
+
+    "date_from": {},  # date_from --> {} 游戏发售日，游戏发售日各个服务器可能不相同
+
+    "on_sale": False,  # on_sale --> bool 根据游戏发售日判断有无在售卖
+
+    "publisher": None,  # publisher --> str 发行商，前端暂时不作展示
+
+    "categories": [],  # categories --> [] 游戏分类,可用于前端分类使用
+
+    "region": [],  # region --> []归属地
+
+    "language_availability": {},  # language_availability --> {} 支持的语言，美服无法获取数据，只取欧服和日服
+
+    "google_titles": {}  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
 
 }
+
+
+def getNameByGoogle(query):
+    api_key = "AIzaSyBW2n_2ZD7q-anVs2UL_WA8xESG7uqokdw"
+    service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
+    if 'ACA NEOGEO' in query:
+        query = query.split('ACA NEOGEO ')[1]
+    if 'Arcade Archives ' in query:
+        query = query.split('Arcade Archives ')[1]
+    params = {
+        'query': query,
+        'limit': 10,
+        'indent': True,
+        'key': api_key,
+        'languages': ['en', 'ja', 'zh']
+    }
+    titles = {
+        'en': '',
+        'ja': '',
+        'zh': ''
+    }
+    response = requests.get(service_url, params=params)
+    if response.json().get('itemListElement'):
+        name_list = response.json()['itemListElement'][0]['result']['name']
+        for name in name_list:
+            if name['@language'] == 'en':
+                titles['en'] = name['@value']
+            elif name['@language'] == 'ja':
+                titles['ja'] = name['@value']
+            elif name['@language'] == 'zh':
+                titles['zh'] = name['@value']
+        return titles
+    else:
+        return {}
 
 
 def getGamesEU():
@@ -110,7 +149,7 @@ def getGamesEU():
         slug = ('-').join([x.lower() for x in game_info['url'].split('/')[-1].split('-')[:-1] if len(x) > 0])
         game_eu.update(
             {
-                "title": game_info['title'],
+                "title.eu": game_info['title'],
                 "slug": slug,
                 "nsuid": {'eu': game_info['nsuid_txt'][0]} if game_info.__contains__('nsuid_txt') else {},
                 "img": game_info['image_url_sq_s'],
@@ -119,8 +158,9 @@ def getGamesEU():
                 "on_sale": on_sale,
                 "categories": game_info['game_categories_txt'],
                 "language_availability": {'eu': game_info['language_availability'][0].split(',')},
-                "region": ['europe'],
-                "publisher": game_info['publisher'] if game_info.__contains__('publisher') else None
+                "region": ['eu'],
+                "publisher": game_info['publisher'] if game_info.__contains__('publisher') else None,
+                "google_titles": getNameByGoogle(game_info['title'])
             }
         )
         # 无记录，插入
@@ -178,7 +218,7 @@ def getGamesAM():
         date_from = datetime.datetime.strptime(game_info['release_date'], "%b %d, %Y").strftime("%Y-%m-%d")
         slug = game_info['slug'].replace('-switch', '')
         game_am = {
-            "title": game_info['title'],
+            "title.am": game_info['title'],
             "slug": slug,
             "nsuid": {'am': game_info['nsuid']} if game_info.__contains__('nsuid') else {},
             "img": game_info['front_box_art'],
@@ -188,27 +228,44 @@ def getGamesAM():
             "categories": [x.lower() for x in game_info['categories']['category']] if type(
                 game_info['categories']['category']) is list else game_info['categories']['category'],
             "language_availability": [],
-            "region": ['america'],
-            "publisher": None
+            "region": ['am'],
+            "publisher": None,
+            "google_titles": getNameByGoogle(game_info['title'])
         }
 
+        if game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            game_collection.update({'slug': slug},
+                                   {"$set": {"title.am": game_info['title'], "nsuid.am": nsuid,
+                                             "date_from.am": date_from},
+                                    "$push": {'region': 'am'}})
 
-        if game_collection.find({"$and": [{'slug': slug}, {'region': 'europe'}]}).count() == 1 :
-            game_collection.find_one_and_update({'slug': slug},
-                                                {"$set": {"title": game_info['title'], "nsuid.am": nsuid,
-                                                          "date_from.am": date_from},
-                                                 "$push": {'region': 'america'}})
-        # 捡漏
-        elif game_collection.find({'title': game_info['title']}).count() == 1:
-            game_collection.find_one_and_update({'title': game_info['title']},
-                                                {"$set":{"nsuid.am": nsuid,
-                                                          "date_from.am": date_from},
-                                                 "$push": {'region': 'america'}})
-        elif game_collection.find({'slug': slug}).count() == 0 or game_collection.find({'title': game_info['title']}).count() == 0:
-            game_collection.insert_one(game_am)
+        elif game_am["google_titles"].has_key('en') and game_collection.find({"$and": [{"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            game_collection.update({"google_titles.en": game_am["google_titles"]['en']},
+                                   {"$set": {"title.am": game_info['title'], "nsuid.am": nsuid,
+                                             "date_from.am": date_from},
+                                    "$push": {'region': 'am'}})
+
+
+        elif game_collection.find({"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            game_collection.update({'title': game_info['title']},
+                                    {"$set":{"title.am": game_info['title'], "nsuid.am": nsuid,
+                                            "date_from.am": date_from},
+                                    "$push": {'region': 'am'}})
+
+        elif game_collection.find({"$and":[{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
+            game_collection.update(game_am)
+
+        elif game_collection.find({"$and":[{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
+            game_collection.update({"$set": {"nsuid.am": nsuid}})
 
         else:
             game_collection.find_one_and_update({'slug': slug}, {'$set': game_am})
+        # elif game_collection.find({"$and":[, {"nsuid.am":{"$type":2}}]})
+        # elif game_collection.find({'slug': slug}).count() == 0 or game_collection.find({'title': game_info['title']}).count() == 0:
+        #     game_collection.insert_one(game_am)
+        #
+        # else:
+        #     game_collection.find_one_and_update({'slug': slug}, {'$set': game_am})
 
 
 def getTitleByAcGamer():
@@ -263,6 +320,7 @@ def getUrlsByAcGamer(params):
             urls.add(c.find('a', href=True)['href'])
     return urls
 
+
 # def addJa
 
 def getGamesJP():
@@ -287,17 +345,16 @@ def getGamesJP():
             img = game['applications'][0]['image_url']
             excerpt = game['description']
             date_from = {'jp': game['release_date_on_eshop']}
-            on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'], "%Y-%m-%d") <= datetime.datetime.now()) else False
+            on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'],
+                                                          "%Y-%m-%d") <= datetime.datetime.now()) else False
             publisher = game['publisher']['name']
-            language_availability = {'jp': [ iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(i['iso_code']).lower()  else iso639.to_name(i['iso_code']).lower() for i in game['languages']]}
-
-
-
-
+            language_availability = {'jp': [
+                iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
+                    i['iso_code']).lower() else iso639.to_name(i['iso_code']).lower() for i in game['languages']]}
 
 
 if __name__ == '__main__':
-    # getGamesEU()
+    getGamesEU()
     getGamesAM()
     # getTitleByAcGamer()
     # getGamesJP()
