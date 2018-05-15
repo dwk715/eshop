@@ -149,7 +149,7 @@ def getGamesEU():
         slug = ('-').join([x.lower() for x in game_info['url'].split('/')[-1].split('-')[:-1] if len(x) > 0])
         game_eu.update(
             {
-                "title.eu": game_info['title'],
+                "title":{'eu': game_info['title']},
                 "slug": slug,
                 "nsuid": {'eu': game_info['nsuid_txt'][0]} if game_info.__contains__('nsuid_txt') else {},
                 "img": game_info['image_url_sq_s'],
@@ -218,7 +218,7 @@ def getGamesAM():
         date_from = datetime.datetime.strptime(game_info['release_date'], "%b %d, %Y").strftime("%Y-%m-%d")
         slug = game_info['slug'].replace('-switch', '')
         game_am = {
-            "title.am": game_info['title'],
+            "title":{'am': game_info['title']},
             "slug": slug,
             "nsuid": {'am': game_info['nsuid']} if game_info.__contains__('nsuid') else {},
             "img": game_info['front_box_art'],
