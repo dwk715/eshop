@@ -33,8 +33,8 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="220" column="46" lean-forward="false" selection-start-line="220" selection-start-column="46" selection-end-line="220" selection-end-column="46" />
+            <state relative-caret-position="346">
+              <caret line="110" column="111" lean-forward="false" selection-start-line="110" selection-start-column="111" selection-end-line="110" selection-end-column="111" />
               <folding>
                 <element signature="e#132#163#0" expanded="true" />
               </folding>
@@ -479,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526368492305</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
+      <created>1526370270923</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1526370270923</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -922,8 +929,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="220" column="46" lean-forward="false" selection-start-line="220" selection-start-column="46" selection-end-line="220" selection-end-column="46" />
+        <state relative-caret-position="346">
+          <caret line="110" column="111" lean-forward="false" selection-start-line="110" selection-start-column="111" selection-end-line="110" selection-end-column="111" />
           <folding>
             <element signature="e#132#163#0" expanded="true" />
           </folding>
