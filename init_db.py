@@ -240,7 +240,7 @@ def getGamesAM():
                                              "date_from.am": date_from},
                                     "$push": {'region': 'am'}})
 
-        elif game_am["google_titles"].has_key('en') and game_collection.find({"$and": [{"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+        elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [{"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({"google_titles.en": game_am["google_titles"]['en']},
                                    {"$set": {"title.am": game_info['title'], "nsuid.am": nsuid,
                                              "date_from.am": date_from},
