@@ -117,6 +117,7 @@ def getNameByGoogle(query):
                 titles['ja'] = name['@value']
             elif name['@language'] == 'zh':
                 titles['zh'] = name['@value']
+        print(titles)
         return titles
     else:
         return {}
