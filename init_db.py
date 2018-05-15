@@ -108,7 +108,7 @@ def getNameByGoogle(query):
         'zh': ''
     }
     response = requests.get(service_url, params=params)
-    if response.json().get('itemListElement') and response.json()['itemListElement'][0]['result'].has_key('name'):
+    if response.json().get('itemListElement') and response.json()['itemListElement'][0]['result'].get('name'):
         name_list = response.json()['itemListElement'][0]['result']['name']
         for name in name_list:
             if name['@language'] == 'en':
