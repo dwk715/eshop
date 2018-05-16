@@ -243,14 +243,14 @@ def getGamesAM():
 
 
         if game_collection.find(
-                {"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+                {"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() > 0:
             game_collection.update({'title': game_info['title']},
                                    {"$set": {"title.am": game_info['title'],
                                              "nsuid.am": nsuid,
                                              "date_from.am": date_from,
                                              "region": ["eu", "am"]}})
 
-        elif game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+        elif game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() > 0:
             game_collection.update({'slug': slug},
                                    {"$set": {"title.am": game_info['title'],
                                              "nsuid.am": nsuid,
@@ -259,14 +259,14 @@ def getGamesAM():
 
 
         elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
-            {"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            {"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() > 0:
             game_collection.update({"google_titles.en": game_am["google_titles"]['en']},
                                    {"$set": {"title.am": game_info['title'],
                                              "nsuid.am": nsuid,
                                              "date_from.am": date_from,
                                              "region": ["eu", "am"]}})
 
-        else:
+        elif game_collection.find({"title.am": game_info['title']}).count() == 0:
             game_collection.insert(game_am)
 
 
