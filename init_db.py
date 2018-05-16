@@ -15,6 +15,7 @@ from opencc import OpenCC
 import simplejson as json
 import re
 import iso639
+from fuzzywuzzy import fuzz
 
 GET_GAMES_US_URL = "http://www.nintendo.com/json/content/get/filter/game?system=switch"
 GET_GAMES_EU_URL = "http://search.nintendo-europe.com/en/select"
@@ -88,7 +89,7 @@ game = {
 }
 
 
-def getNameByGoogle(query):
+def getNameByGoogle(query, region):
     api_key = "AIzaSyBW2n_2ZD7q-anVs2UL_WA8xESG7uqokdw"
     service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
     if 'ACA NEOGEO' in query:
@@ -118,6 +119,10 @@ def getNameByGoogle(query):
             elif name['@language'] == 'zh':
                 titles['zh'] = name['@value']
 
+        if region == 'en' and fuzz.ratio(titles['en'], query) < 70:
+            return {}
+        if region == 'jp' and fuzz.ratio(titles['jp'], query) < 70:
+            return {}
         return titles
     else:
         return {}
@@ -161,7 +166,7 @@ def getGamesEU():
                 "language_availability": {'eu': game_info['language_availability'][0].split(',')},
                 "region": ['eu'],
                 "publisher": game_info['publisher'] if game_info.__contains__('publisher') else None,
-                "google_titles": getNameByGoogle(game_info['title'])
+                "google_titles": getNameByGoogle(game_info['title'], 'en')
             }
         )
         # 无记录，插入
@@ -233,7 +238,7 @@ def getGamesAM():
             "language_availability": [],
             "region": ['am'],
             "publisher": None,
-            "google_titles": getNameByGoogle(game_info['title'])
+            "google_titles": getNameByGoogle(game_info['title'], 'en')
         }
 
         if game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() == 1:
@@ -366,7 +371,7 @@ def getGamesJP():
                 "publisher": publisher,
                 "region": ['jp'],
                 "language_availability": language_availability,
-                "google_titles": getNameByGoogle(title)
+                "google_titles": getNameByGoogle(title, 'jp')
             }
 
 
