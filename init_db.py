@@ -255,8 +255,8 @@ def getGamesAM():
             game_collection.update({'title': game_info['title']},
                                     {"$set":{"title.am": game_info['title'],
                                              "nsuid.am": nsuid,
-                                             "date_from.am": date_from},
-                                             "region": ["eu", "am"]})
+                                             "date_from.am": date_from,
+                                             "region": ["eu", "am"]}})
 
         elif game_collection.find({"$and":[{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
             game_collection.update(game_am)
