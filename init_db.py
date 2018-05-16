@@ -224,7 +224,7 @@ def getGamesAM():
                                                       "%b %d, %Y") <= datetime.datetime.now()) else False
         nsuid = game_info['nsuid'] if game_info.__contains__('nsuid') else None
         date_from = datetime.datetime.strptime(game_info['release_date'], "%b %d, %Y").strftime("%Y-%m-%d")
-        slug = game_info['slug'].replace('-switch', '')
+        slug = game_info['slug'] if 'nintendo-switch' in game_info['slug'] else game_info['slug'].replace('-switch', '')
         game_am = {
             "title":{'am': game_info['title']},
             "slug": slug,
@@ -373,6 +373,9 @@ def getGamesJP():
                 "language_availability": language_availability,
                 "google_titles": getNameByGoogle(title, 'jp')
             }
+
+
+
 
 
 if __name__ == '__main__':
