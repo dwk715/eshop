@@ -155,7 +155,7 @@ def getGamesEU():
         slug = ('-').join([x.lower() for x in game_info['url'].split('/')[-1].split('-')[:-1] if len(x) > 0])
         game_eu.update(
             {
-                "title":{'eu': game_info['title']},
+                "title": {'eu': game_info['title']},
                 "slug": slug,
                 "nsuid": {'eu': game_info['nsuid_txt'][0]} if game_info.__contains__('nsuid_txt') else {},
                 "img": game_info['image_url_sq_s'],
@@ -226,7 +226,7 @@ def getGamesAM():
         date_from = datetime.datetime.strptime(game_info['release_date'], "%b %d, %Y").strftime("%Y-%m-%d")
         slug = game_info['slug'] if 'nintendo-switch' in game_info['slug'] else game_info['slug'].replace('-switch', '')
         game_am = {
-            "title":{'am': game_info['title']},
+            "title": {'am': game_info['title']},
             "slug": slug,
             "nsuid": {'am': game_info['nsuid']} if game_info.__contains__('nsuid') else {},
             "img": game_info['front_box_art'],
@@ -241,6 +241,15 @@ def getGamesAM():
             "google_titles": getNameByGoogle(game_info['title'], 'en')
         }
 
+
+        if game_collection.find(
+                {"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            game_collection.update({'title': game_info['title']},
+                                   {"$set": {"title.am": game_info['title'],
+                                             "nsuid.am": nsuid,
+                                             "date_from.am": date_from,
+                                             "region": ["eu", "am"]}})
+
         if game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({'slug': slug},
                                    {"$set": {"title.am": game_info['title'],
@@ -249,14 +258,8 @@ def getGamesAM():
                                              "region": ["eu", "am"]}})
 
 
-        elif game_collection.find({"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
-            game_collection.update({'title': game_info['title']},
-                                    {"$set":{"title.am": game_info['title'],
-                                             "nsuid.am": nsuid,
-                                             "date_from.am": date_from,
-                                             "region": ["eu", "am"]}})
-
-        elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [{"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+        if game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
+            {"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({"google_titles.en": game_am["google_titles"]['en']},
                                    {"$set": {"title.am": game_info['title'],
                                              "nsuid.am": nsuid,
@@ -264,15 +267,15 @@ def getGamesAM():
                                              "region": ["eu", "am"]}})
 
 
-        elif game_collection.find({"$and":[{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
+        if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
             game_collection.update(game_am)
 
-        elif game_collection.find({"$and":[{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
-            game_collection.update({"$set": {"nsuid.am": nsuid}})
+        if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
+            game_collection.update({"$set": {"nsuid.am": nsuid,
+                                             "on_sale": on_sale}})
 
         else:
             game_collection.insert(game_am)
-
 
 
 def getTitleByAcGamer():
@@ -373,9 +376,6 @@ def getGamesJP():
                 "language_availability": language_availability,
                 "google_titles": getNameByGoogle(title, 'jp')
             }
-
-
-
 
 
 if __name__ == '__main__':
