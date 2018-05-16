@@ -249,7 +249,6 @@ def getGamesAM():
                                              "nsuid.am": nsuid,
                                              "date_from.am": date_from,
                                              "region": ["eu", "am"]}})
-            continue
 
         elif game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({'slug': slug},
@@ -257,7 +256,6 @@ def getGamesAM():
                                              "nsuid.am": nsuid,
                                              "date_from.am": date_from,
                                              "region": ["eu", "am"]}})
-            continue
 
 
         elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
@@ -267,17 +265,14 @@ def getGamesAM():
                                              "nsuid.am": nsuid,
                                              "date_from.am": date_from,
                                              "region": ["eu", "am"]}})
-            continue
 
 
         elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
             game_collection.update(game_am)
-            continue
 
         elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
             game_collection.update({"$set": {"nsuid.am": nsuid,
                                              "on_sale": on_sale}})
-            continue
         else:
             game_collection.insert(game_am)
 
