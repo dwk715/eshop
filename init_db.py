@@ -262,7 +262,7 @@ def getGamesAM():
             game_collection.update({"$set": {"nsuid.am": nsuid}})
 
         else:
-            game_collection.find_one_and_update({'slug': slug}, {'$set': game_am})
+            game_collection.update({"title.am": game_info['title']}, {'$set': game_am}, upsert=True)
         # elif game_collection.find({"$and":[, {"nsuid.am":{"$type":2}}]})
         # elif game_collection.find({'slug': slug}).count() == 0 or game_collection.find({'title': game_info['title']}).count() == 0:
         #     game_collection.insert_one(game_am)
