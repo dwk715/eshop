@@ -243,7 +243,7 @@ def getGamesAM():
 
 
         if game_collection.find(
-                {"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() > 0:
+                {"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({'title': game_info['title']},
                                    {"$set": {"title.am": game_info['title'],
                                              "nsuid.am": nsuid,
@@ -251,7 +251,7 @@ def getGamesAM():
                                              "region": ["eu", "am"]}})
             continue
 
-        if game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() > 0:
+        elif game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({'slug': slug},
                                    {"$set": {"title.am": game_info['title'],
                                              "nsuid.am": nsuid,
@@ -260,8 +260,8 @@ def getGamesAM():
             continue
 
 
-        if game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
-            {"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() > 0:
+        elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
+            {"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({"google_titles.en": game_am["google_titles"]['en']},
                                    {"$set": {"title.am": game_info['title'],
                                              "nsuid.am": nsuid,
@@ -270,19 +270,16 @@ def getGamesAM():
             continue
 
 
-
-
-
-        if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
+        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
             game_collection.update(game_am)
             continue
 
-        if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
+        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
             game_collection.update({"$set": {"nsuid.am": nsuid,
                                              "on_sale": on_sale}})
             continue
-
-        game_collection.insert(game_am)
+        else:
+            game_collection.insert(game_am)
 
 
 
