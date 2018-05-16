@@ -211,6 +211,8 @@ def getGamesAM():
     for i in range(offset_times):
         result = result + getAMGameOffeset(i)
 
+    print(len(result))
+
     for game_info in result:
         game_am = game.copy()
         on_sale = True if (datetime.datetime.strptime(game_info['release_date'],
