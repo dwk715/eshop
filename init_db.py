@@ -238,22 +238,25 @@ def getGamesAM():
 
         if game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({'slug': slug},
-                                   {"$set": {"title.am": game_info['title'], "nsuid.am": nsuid,
-                                             "date_from.am": date_from},
-                                    "$push": {'region': 'am'}})
+                                   {"$set": {"title.am": game_info['title'],
+                                             "nsuid.am": nsuid,
+                                             "date_from.am": date_from,
+                                             "region": ["eu", "am"]}})
 
         elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [{"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({"google_titles.en": game_am["google_titles"]['en']},
-                                   {"$set": {"title.am": game_info['title'], "nsuid.am": nsuid,
-                                             "date_from.am": date_from},
-                                    "$push": {'region': 'am'}})
+                                   {"$set": {"title.am": game_info['title'],
+                                             "nsuid.am": nsuid,
+                                             "date_from.am": date_from,
+                                             "region": ["eu", "am"]}})
 
 
         elif game_collection.find({"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({'title': game_info['title']},
-                                    {"$set":{"title.am": game_info['title'], "nsuid.am": nsuid,
-                                            "date_from.am": date_from},
-                                    "$push": {'region': 'am'}})
+                                    {"$set":{"title.am": game_info['title'],
+                                             "nsuid.am": nsuid,
+                                             "date_from.am": date_from},
+                                             "region": ["eu", "am"]})
 
         elif game_collection.find({"$and":[{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
             game_collection.update(game_am)
@@ -262,13 +265,8 @@ def getGamesAM():
             game_collection.update({"$set": {"nsuid.am": nsuid}})
 
         else:
-            game_collection.update({"title.am": game_info['title']}, {'$set': game_am}, upsert=True)
-        # elif game_collection.find({"$and":[, {"nsuid.am":{"$type":2}}]})
-        # elif game_collection.find({'slug': slug}).count() == 0 or game_collection.find({'title': game_info['title']}).count() == 0:
-        #     game_collection.insert_one(game_am)
-        #
-        # else:
-        #     game_collection.find_one_and_update({'slug': slug}, {'$set': game_am})
+            game_collection.insert(game_am)
+
 
 
 def getTitleByAcGamer():
@@ -354,6 +352,21 @@ def getGamesJP():
             language_availability = {'jp': [
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
                     i['iso_code']).lower() else iso639.to_name(i['iso_code']).lower() for i in game['languages']]}
+
+            game_jp = game.copy()
+
+            game_jp = {
+                "title": title,
+                "nsuid": nsuid,
+                "img": img,
+                "excerpt": excerpt,
+                "date_from": date_from,
+                "on_sale": on_sale,
+                "publisher": publisher,
+                "region": ['jp'],
+                "language_availability": language_availability,
+                "google_titles": getNameByGoogle(title)
+            }
 
 
 if __name__ == '__main__':
