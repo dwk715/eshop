@@ -257,7 +257,6 @@ def getGamesAM():
                                              "date_from.am": date_from,
                                              "region": ["eu", "am"]}})
 
-
         elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
             {"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({"google_titles.en": game_am["google_titles"]['en']},
@@ -266,15 +265,17 @@ def getGamesAM():
                                              "date_from.am": date_from,
                                              "region": ["eu", "am"]}})
 
+        elif game_collection.find({'title.am': game_info['title']).count() == 0:
+            game_collection.insert(game_am)
 
-        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
+        if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
             game_collection.update(game_am)
 
-        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
+        if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
             game_collection.update({"$set": {"nsuid.am": nsuid,
                                              "on_sale": on_sale}})
-        else:
-            game_collection.insert(game_am)
+
+        
 
 
 
