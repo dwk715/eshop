@@ -265,7 +265,7 @@ def getGamesAM():
                                              "date_from.am": date_from,
                                              "region": ["eu", "am"]}})
 
-        elif game_collection.find({'title.am': game_info['title']).count() == 0:
+        elif game_collection.find({'title.am': game_info['title']}).count() == 0:
             game_collection.insert(game_am)
 
         if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
