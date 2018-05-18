@@ -10,7 +10,7 @@ import urllib.parse
 import requests
 
 api_key = "AIzaSyBW2n_2ZD7q-anVs2UL_WA8xESG7uqokdw"
-query = 'Taylor Swift'
+query = "THE KING OF FIGHTERS 2000"
 service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
 params = {
     'query': query,

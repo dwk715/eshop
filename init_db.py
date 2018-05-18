@@ -119,7 +119,7 @@ def getNameByGoogle(query, region):
             elif name['@language'] == 'zh':
                 titles['zh'] = name['@value']
 
-        if region == 'en' and fuzz.ratio(titles['en'], query) < 70:
+        if region == 'en' and fuzz.ratio(titles['en'].lower(), query.lower()) < 70:
             return {}
         if region == 'jp' and fuzz.ratio(titles['jp'], query) < 70:
             return {}
@@ -272,7 +272,7 @@ def getGamesAM():
         elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
             game_collection.update({"$set": {"nsuid.am": nsuid,
                                             "on_sale": on_sale}})
-        
+
         else:
             game_collection.insert(game_am)
 
