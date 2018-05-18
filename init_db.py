@@ -127,6 +127,8 @@ def getNameByGoogle(query, region):
     else:
         return {}
 
+def getNameByFuzz():
+
 
 def getGamesEU():
     params = {

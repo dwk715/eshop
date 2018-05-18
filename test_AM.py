@@ -162,29 +162,38 @@ def testGameAM(game_info):
         game_collection.insert(game_am)
 
 def main():
+    # name_list_EU = []
+    # print(len(list(game_collection.find({}))))
+    # for game_info in list(game_collection.find({})):
+    #     if game_info['title'].__contains__('eu'):
+    #         print(game_info['title']['eu'] )
+    #     # name_list_EU.append(game_info['title']['EU'])
+
     game_info = {
-        "categories": {
-        "category": [
-        "Party",
-        "Multiplayer",
-        "Action"]},
-        "slug": "1-2-switch",
-        "buyitnow": "true",
-        "release_date": "Mar 3, 2017",
-        "digitaldownload": "false",
-        "free_to_start": "false",
-        "title": "1-2-switch",
-        "system": "Nintendo Switch",
-        "id": "QY7EtPDIW1WGVWSEkQ7ZVLvCFvonU-Wl",
-        "ca_price": "64.99",
-        "number_of_players": "2 players simultaneous",
-        "nsuid": "70010000000141",
-        "video_link": "h1OTBqODE64B-g16PJeQj6tifbVKl_v8",
-        "eshop_price": "49.99",
-        "front_box_art": "http://media.nintendo.com/nintendo/bin/oiM2QlLg9frNJhSWvFGmi5NAvEAGlYVx/_3d_ldcR3G0YQl590uHXZ89Jmouu5aS9.png",
-        "game_code": "HACPAACCA",
-        "buyonline": "true"
-        }
+"categories": {
+"category": [
+"Role-Playing",
+"Strategy",
+"Adventure",
+"Simulation"
+]
+},
+"slug": "yodanji-switch",
+"buyitnow": "false",
+"release_date": "Dec 7, 2017",
+"digitaldownload": "false",
+"free_to_start": "false",
+"title": "Y&#333;danji",
+"system": "Nintendo Switch",
+"id": "d-2NA4uGiqo7W9BLk-OsYYoTqw6gmWUq",
+"ca_price": "6.99",
+"number_of_players": "1 player",
+"nsuid": "70010000001564",
+"eshop_price": "4.99",
+"front_box_art": "https://media.nintendo.com/nintendo/bin/bEvVz5xeRLFGym1BvP5AM9-1G5xlVYdc/EMIbpArVpRPi3sHCfEqsvjoz7lj1Hs7h.png",
+"game_code": "HACNAGS7A",
+"buyonline": "true"
+}
     testGameAM(game_info)
 
 if __name__ == '__main__':
