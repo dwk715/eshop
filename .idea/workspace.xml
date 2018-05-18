@@ -4,7 +4,7 @@
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/init_db.py" afterPath="$PROJECT_DIR$/init_db.py" />
-      <change beforePath="$PROJECT_DIR$/test_api.py" afterPath="$PROJECT_DIR$/test_api.py" />
+      <change beforePath="$PROJECT_DIR$/test_AM.py" afterPath="$PROJECT_DIR$/test_AM.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="init_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="101" column="23" lean-forward="true" selection-start-line="101" selection-start-column="23" selection-end-line="101" selection-end-column="23" />
+            <state relative-caret-position="566">
+              <caret line="250" column="69" lean-forward="true" selection-start-line="250" selection-start-column="69" selection-end-line="250" selection-end-column="69" />
               <folding>
                 <element signature="e#132#163#0" expanded="true" />
               </folding>
@@ -55,10 +55,22 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="test_AM.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test_AM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="init_name_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init_name_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
+            <state relative-caret-position="749">
               <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding>
                 <element signature="e#136#167#0" expanded="true" />
@@ -129,6 +141,7 @@
         <option value="$PROJECT_DIR$/test_api.py" />
         <option value="$PROJECT_DIR$/init_db.py" />
         <option value="$PROJECT_DIR$/init_db.py" />
+        <option value="$PROJECT_DIR$/test_AM.py" />
       </list>
     </option>
   </component>
@@ -628,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526515196847</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="优化google games 英文下由于大小写造成的问题">
+      <created>1526604512214</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1526604512214</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -675,7 +695,8 @@
     <MESSAGE value="服务器添加name" />
     <MESSAGE value="完善JP game" />
     <MESSAGE value="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM" />
+    <MESSAGE value="优化google games 英文下由于大小写造成的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化google games 英文下由于大小写造成的问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1048,9 +1069,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/init_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="250" column="69" lean-forward="true" selection-start-line="250" selection-start-column="69" selection-end-line="250" selection-end-column="69" />
+          <folding>
+            <element signature="e#132#163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
+        <state relative-caret-position="749">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
             <element signature="e#136#167#0" expanded="true" />
@@ -1069,12 +1100,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_db.py">
+    <entry file="file://$PROJECT_DIR$/test_AM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="101" column="23" lean-forward="true" selection-start-line="101" selection-start-column="23" selection-end-line="101" selection-end-column="23" />
+        <state relative-caret-position="426">
+          <caret line="124" column="0" lean-forward="true" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
           <folding>
-            <element signature="e#132#163#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
