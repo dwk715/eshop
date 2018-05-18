@@ -125,7 +125,7 @@ def testGameAM(game_info):
 
 
     if game_collection.find(
-            {"$and": [{'title.eu': {"$regex":game_info['title'], "$options":"$i"}}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            {"$and": [{'title.eu': {'$regex':game_info['title'],'$options':'i'}}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             print('title')
             game_collection.update({'title': game_info['title']},
                                 {"$set": {"title.am": game_info['title'],
