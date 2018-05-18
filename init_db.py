@@ -267,7 +267,7 @@ def getGamesAM():
 
         # 更新
         elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}).count() == 1:
-            game_collection.update(game_am)
+            game_collection.update({'title.am': game_info['title']}, game_am)
         #更新 
         elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}).count() == 1:
             game_collection.update({'title.am': game_info['title']}, {"$set": {"nsuid.am": nsuid,
