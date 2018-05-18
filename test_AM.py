@@ -24,7 +24,7 @@ NSUID_REGEX_JP = r'\d{14}'
 JSON_REGEX = r'NXSTORE\.titleDetail\.jsonData = ([^;]+);'
 
 # mongodb 设置
-mg_client = MongoClient(host='localhost', port=27017, username='dwk715', password='lunxian715',
+mg_client = MongoClient(host='172.105.216.212', port=27017, username='dwk715', password='lunxian715',
                         authSource='eshop_price')
 db = mg_client['eshop_price']
 game_collection = db['game']
@@ -125,7 +125,7 @@ def testGameAM(game_info):
 
 
     if game_collection.find(
-            {"$and": [{'title.eu': {'$regex':game_info['title'],'$options':'i'}}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            {"$and": [{'title.eu': game_info['title']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             print('title')
             game_collection.update({'title': game_info['title']},
                                 {"$set": {"title.am": game_info['title'],
@@ -150,18 +150,16 @@ def testGameAM(game_info):
                                         "date_from.am": date_from,
                                         "region": ["eu", "am"]}})
 
-    elif game_collection.find({'title.am': game_info['title']}).count() == 0:
+    # 更新
+    elif game_collection.find({'title.am': {'$regex':game_info['title'],'$options':'i'}}).count() == 1:
+        print('update')
+        game_collection.update({'title.am': {'$regex':game_info['title'],'$options':'i'}},{"$set": {"nsuid.am": nsuid,
+                                            "on_sale": on_sale}})
+        #更新 
+
+    else:
         print('insert')
         game_collection.insert(game_am)
-
-    if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
-        print('am_update')
-        game_collection.update(game_am)
-
-    if game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
-        print('eu_am_update')
-        game_collection.update({"$set": {"nsuid.am": nsuid,
-                                        "on_sale": on_sale}})
 
 def main():
     game_info = {
@@ -175,7 +173,7 @@ def main():
         "release_date": "Mar 3, 2017",
         "digitaldownload": "false",
         "free_to_start": "false",
-        "title": "1-2-Switch",
+        "title": "1-2-switch",
         "system": "Nintendo Switch",
         "id": "QY7EtPDIW1WGVWSEkQ7ZVLvCFvonU-Wl",
         "ca_price": "64.99",

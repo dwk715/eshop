@@ -266,11 +266,11 @@ def getGamesAM():
                                             "region": ["eu", "am"]}})
 
         # 更新
-        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}) == 1:
+        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}).count() == 1:
             game_collection.update(game_am)
         #更新 
-        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}) == 1:
-            game_collection.update({"$set": {"nsuid.am": nsuid,
+        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}).count() == 1:
+            game_collection.update({'title.am': game_info['title']}, {"$set": {"nsuid.am": nsuid,
                                             "on_sale": on_sale}})
 
         else:
