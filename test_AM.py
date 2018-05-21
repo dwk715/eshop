@@ -99,6 +99,21 @@ def getNameByGoogle(query, region):
     else:
         return {}
 
+def getTitleByEuSearch(slug):
+    params = {
+        'fl': "title",
+        'fq': 'system_type:nintendoswitch* AND product_code_txt:*',
+        'q': slug,
+        'rows': 9999,
+        'sort': 'sorting_title asc',
+        'start': 0,
+        'wt': 'json',
+    }
+    res = requests.get(GET_GAMES_EU_URL, params=params)
+    if res.json()['response']['numFound'] == 1:
+        return res.json()['response']['docs']['title']
+    else:
+        return None
 
 def testGameAM(game_info):
     game_am = game.copy()
@@ -194,7 +209,8 @@ def main():
 "game_code": "HACNAGS7A",
 "buyonline": "true"
 }
-    testGameAM(game_info)
+    # testGameAM(game_info)
+    getNameByEuSearch('yodanji')
 
 if __name__ == '__main__':
     main()

@@ -127,7 +127,22 @@ def getNameByGoogle(query, region):
     else:
         return {}
 
-def getNameByFuzz():
+
+def getTitleByEuSearch(slug):
+    params = {
+        'fl': "title",
+        'fq': 'system_type:nintendoswitch* AND product_code_txt:*',
+        'q': slug,
+        'rows': 9999,
+        'sort': 'sorting_title asc',
+        'start': 0,
+        'wt': 'json',
+    }
+    res = requests.get(GET_GAMES_EU_URL, params=params)
+    if res.json()['response']['numFound'] == 1:
+        return res.json()['response']['docs']['title']
+    else:
+        return None
 
 
 def getGamesEU():
@@ -153,7 +168,7 @@ def getGamesEU():
     for game_info in result:
         game_eu = game.copy()
         on_sale = True if (datetime.datetime.strptime(game_info['date_from'].split('T')[0],
-                                                        "%Y-%m-%d") <= datetime.datetime.now()) else False
+                                                      "%Y-%m-%d") <= datetime.datetime.now()) else False
         slug = ('-').join([x.lower() for x in game_info['url'].split('/')[-1].split('-')[:-1] if len(x) > 0])
         game_eu.update(
             {
@@ -223,7 +238,7 @@ def getGamesAM():
     for game_info in result:
         game_am = game.copy()
         on_sale = True if (datetime.datetime.strptime(game_info['release_date'],
-                                                        "%b %d, %Y") <= datetime.datetime.now()) else False
+                                                      "%b %d, %Y") <= datetime.datetime.now()) else False
         nsuid = game_info['nsuid'] if game_info.__contains__('nsuid') else None
         date_from = datetime.datetime.strptime(game_info['release_date'], "%b %d, %Y").strftime("%Y-%m-%d")
         slug = game_info['slug'] if 'nintendo-switch' in game_info['slug'] else game_info['slug'].replace('-switch', '')
@@ -243,43 +258,54 @@ def getGamesAM():
             "google_titles": getNameByGoogle(game_info['title'], 'en')
         }
 
-
         if game_collection.find(
-                {"$and": [{'title.eu': {'$regex':game_info['title'],'$options':'i'}}, {'region': {"$nin": ["am"]}}]}).count() == 1:
-            game_collection.update({'title.eu': game_info['title']},
-                                    {"$set": {"title.am": game_info['title'],
-                                            "nsuid.am": nsuid,
-                                            "date_from.am": date_from,
-                                            "region": ["eu", "am"]}})
+                {"$and": [{'title.eu': {'$regex': game_info['title'], '$options': 'i'}},
+                          {'region': {"$nin": ["am"]}}]}).count() == 1:
+            game_collection.update({'title.eu': {'$regex': game_info['title'], '$options': 'i'}},
+                                   {"$set": {"title.am": game_info['title'],
+                                             "nsuid.am": nsuid,
+                                             "date_from.am": date_from,
+                                             "region": ["eu", "am"]}})
 
         elif game_collection.find({"$and": [{'slug': slug}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({'slug': slug},
-                                    {"$set": {"title.am": game_info['title'],
-                                            "nsuid.am": nsuid,
-                                            "date_from.am": date_from,
-                                            "region": ["eu", "am"]}})
+                                   {"$set": {"title.am": game_info['title'],
+                                             "nsuid.am": nsuid,
+                                             "date_from.am": date_from,
+                                             "region": ["eu", "am"]}})
 
         elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
             {"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
             game_collection.update({"google_titles.en": game_am["google_titles"]['en']},
-                                    {"$set": {"title.am": game_info['title'],
-                                            "nsuid.am": nsuid,
-                                            "date_from.am": date_from,
-                                            "region": ["eu", "am"]}})
+                                   {"$set": {"title.am": game_info['title'],
+                                             "nsuid.am": nsuid,
+                                             "date_from.am": date_from,
+                                             "region": ["eu", "am"]}})
+
+        elif game_collection.find(
+                {"$and": [{'title.eu': getTitleByEuSearch(slug)}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            game_collection.update({'title.eu': getTitleByEuSearch(slug)},
+                                   {"$set": {"title.am": game_info['title'],
+                                             "nsuid.am": nsuid,
+                                             "date_from.am": date_from,
+                                             "region": ["eu", "am"]}})
 
         # 更新
-        elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}).count() == 1:
+        elif game_collection.find(
+                {"$and": [{'title.am': game_info['title']}, {'region': {"$nin": ["eu"]}}]}).count() == 1:
             game_collection.update({'title.am': game_info['title']}, game_am)
-        #更新 
+        # 更新
         elif game_collection.find({"$and": [{'title.am': game_info['title']}, {'region': ['eu', 'am']}]}).count() == 1:
             game_collection.update({'title.am': game_info['title']}, {"$set": {"nsuid.am": nsuid,
-                                            "on_sale": on_sale}})
+                                                                               "on_sale": on_sale}})
+        # 更新
+        elif game_collection.find(
+                {"$and": [{'title.eu': getTitleByEuSearch(slug)}, {'region': ['eu', 'am']}]}).count() == 1:
+            game_collection.update({'title.eu': getTitleByEuSearch(slug)}, {"$set": {"nsuid.am": nsuid,
+                                                                                     "on_sale": on_sale}})
 
         else:
             game_collection.insert(game_am)
-
-        
-
 
 
 def getTitleByAcGamer():
@@ -322,13 +348,13 @@ def getNamesByAcGamerUrl(url):
 def getUrlsByAcGamer(params):
     urls = set()
     soup = BeautifulSoup(requests.get(GET_AC_GAMER_URL, params=params).text,
-                        features='lxml')
+                         features='lxml')
     pages = int(
         math.ceil(float(soup.find('a', {'class': 'next'})['href'].split('=')[-1]) / 15)) + 1
     for i in range(1, pages):
         params.update({'page': i})
         soup_available_now = BeautifulSoup(requests.get(GET_AC_GAMER_URL, params=params).text,
-                                            features='lxml')
+                                           features='lxml')
         child = soup_available_now.find_all('h1', {'class': 'ACG-maintitle'})
         for c in child:
             urls.add(c.find('a', href=True)['href'])
@@ -360,7 +386,7 @@ def getGamesJP():
             excerpt = game['description']
             date_from = {'jp': game['release_date_on_eshop']}
             on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'],
-                                                            "%Y-%m-%d") <= datetime.datetime.now()) else False
+                                                          "%Y-%m-%d") <= datetime.datetime.now()) else False
             publisher = game['publisher']['name']
             language_availability = {'jp': [
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
