@@ -111,7 +111,7 @@ def getTitleByEuSearch(slug):
     }
     res = requests.get(GET_GAMES_EU_URL, params=params)
     if res.json()['response']['numFound'] == 1:
-        return res.json()['response']['docs']['title']
+        print(res.json()['response']['docs'][0]['title'])
     else:
         return None
 
@@ -177,40 +177,41 @@ def testGameAM(game_info):
         game_collection.insert(game_am)
 
 def main():
-    # name_list_EU = []
-    # print(len(list(game_collection.find({}))))
-    # for game_info in list(game_collection.find({})):
-    #     if game_info['title'].__contains__('eu'):
-    #         print(game_info['title']['eu'] )
-    #     # name_list_EU.append(game_info['title']['EU'])
-
-    game_info = {
-"categories": {
-"category": [
-"Role-Playing",
-"Strategy",
-"Adventure",
-"Simulation"
-]
-},
-"slug": "yodanji-switch",
-"buyitnow": "false",
-"release_date": "Dec 7, 2017",
-"digitaldownload": "false",
-"free_to_start": "false",
-"title": "Y&#333;danji",
-"system": "Nintendo Switch",
-"id": "d-2NA4uGiqo7W9BLk-OsYYoTqw6gmWUq",
-"ca_price": "6.99",
-"number_of_players": "1 player",
-"nsuid": "70010000001564",
-"eshop_price": "4.99",
-"front_box_art": "https://media.nintendo.com/nintendo/bin/bEvVz5xeRLFGym1BvP5AM9-1G5xlVYdc/EMIbpArVpRPi3sHCfEqsvjoz7lj1Hs7h.png",
-"game_code": "HACNAGS7A",
-"buyonline": "true"
-}
+    getTitleByEuSearch('yodanji')
+#     # name_list_EU = []
+#     # print(len(list(game_collection.find({}))))
+#     # for game_info in list(game_collection.find({})):
+#     #     if game_info['title'].__contains__('eu'):
+#     #         print(game_info['title']['eu'] )
+#     #     # name_list_EU.append(game_info['title']['EU'])
+#
+#     game_info = {
+# "categories": {
+# "category": [
+# "Role-Playing",
+# "Strategy",
+# "Adventure",
+# "Simulation"
+# ]
+# },
+# "slug": "yodanji-switch",
+# "buyitnow": "false",
+# "release_date": "Dec 7, 2017",
+# "digitaldownload": "false",
+# "free_to_start": "false",
+# "title": "Y&#333;danji",
+# "system": "Nintendo Switch",
+# "id": "d-2NA4uGiqo7W9BLk-OsYYoTqw6gmWUq",
+# "ca_price": "6.99",
+# "number_of_players": "1 player",
+# "nsuid": "70010000001564",
+# "eshop_price": "4.99",
+# "front_box_art": "https://media.nintendo.com/nintendo/bin/bEvVz5xeRLFGym1BvP5AM9-1G5xlVYdc/EMIbpArVpRPi3sHCfEqsvjoz7lj1Hs7h.png",
+# "game_code": "HACNAGS7A",
+# "buyonline": "true"
+# }
     # testGameAM(game_info)
-    getNameByEuSearch('yodanji')
+    # getNameByEuSearch('yodanji')
 
 if __name__ == '__main__':
     main()

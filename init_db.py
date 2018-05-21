@@ -140,7 +140,7 @@ def getTitleByEuSearch(slug):
     }
     res = requests.get(GET_GAMES_EU_URL, params=params)
     if res.json()['response']['numFound'] == 1:
-        return res.json()['response']['docs']['title']
+        return res.json()['response']['docs'][0]['title']
     else:
         return None
 
@@ -372,6 +372,8 @@ def getGamesJP():
                 title = title.replace('®', ' ') if '®' in title else title
             elif 'アケアカNEOGEO' in game['formal_name']:
                 title = game['formal_name'].replace('アケアカNEOGEO ', '')
+            elif 'アーケードアーカイブス ' in game['formal_name']:
+                title = game['formal_name'].replace('アーケードアーカイブス ', '')
             elif '(' in game['formal_name']:
                 title = game['formal_name'].split('(')[0]
             else:
@@ -401,6 +403,8 @@ def getGamesJP():
                 "language_availability": language_availability,
                 "google_titles": getNameByGoogle(title, 'jp')
             }
+
+
 
 
 if __name__ == '__main__':
