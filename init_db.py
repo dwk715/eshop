@@ -53,7 +53,7 @@ log_file = 'log/' + today + '.log'
 logging.basicConfig(filename=log_file, level=logging.ERROR, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # mongodb 设置
-mg_client = MongoClient(host='localhost', port=27017, username='dwk715', password='lunxian715',
+mg_client = MongoClient(host='172.105.216.212', port=27017, username='dwk715', password='lunxian715',
                         authSource='eshop_price')
 db = mg_client['eshop_price']
 game_collection = db['game']
@@ -356,11 +356,18 @@ def getUrlsByAcGamer(params):
     return urls
 
 
-# def addJa
+def addNamesToDB():
+    print(len(list(game_collection.find())))
+    for names in list(name_collection.find()):
+        if names['eu_name'] != "":
+            game_collection.update({"title.eu":{"$regex": names['eu_name'], "$options": "i"}},
+                                   {"$set":{"ac_names": names}})
+
+
 
 def getGamesJP():
     games = []
-    for i in range(FIRST_NSUID, FIRST_NSUID + 1500):
+    for i in range(FIRST_NSUID, FIRST_NSUID + 5):
         r = requests.get(GUESS_GAMES_GP_URL + str(i))
         r.encoding = 'utf-8'
         if r.status_code == 200:
@@ -385,9 +392,9 @@ def getGamesJP():
             on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'],
                                                           "%Y-%m-%d") <= datetime.datetime.now()) else False
             publisher = game['publisher']['name']
-            language_availability = {'jp': [
+            language_availability = [
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
-                    i['iso_code']).lower() else iso639.to_name(i['iso_code']).lower() for i in game['languages']]}
+                    i['iso_code']).lower() else iso639.to_name(i['iso_code']).lower() for i in game['languages']]
 
             game_jp = game.copy()
 
@@ -400,18 +407,28 @@ def getGamesJP():
                 "on_sale": on_sale,
                 "publisher": publisher,
                 "region": ['jp'],
-                "language_availability": language_availability,
+                "language_availability": {'jp': language_availability},
                 "google_titles": getNameByGoogle(title, 'jp')
             }
+            print(game_jp)
+            print('\n')
+            if game_jp['google_titles'] != {} and game_collection.find({"$and":[{"google_titles.en": game_jp["google_titles"]['en']}, {"region": {"$nin": ["jp"]}}]}).count() == 1:
+                game_collection.update({"google_titles.en": game_jp["google_titles"]['en']},
+                                       {"$set": {"title.jp": game_jp["title"],
+                                                 "nsuid.jp": str(nsuid),
+                                                 "date_from.jp": game['release_date_on_eshop'],
+                                                 "language_availability.jp": language_availability},
+                                        "$push": {"region": "jp"}})
 
-            if game_jp['google_titles'] != None and game_collection.find({"$and":[{"google_titles": game_jp["google_titles"]}, {"region": {"$nin": ["jp"]}}]}).count() == 1:
-                print(game_jp)
 
 
 
 
 if __name__ == '__main__':
-    # getGamesEU()
-    # getGamesAM()
-    # getTitleByAcGamer()
-    getGamesJP()
+    getGamesEU()
+    getGamesAM()
+    addNamesToDB()
+    getTitleByAcGamer()
+    # TODO 修改服务器db IP
+    # getGamesJP()
+
