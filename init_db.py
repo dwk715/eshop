@@ -183,7 +183,7 @@ def getGamesEU():
                 "language_availability": {'eu': game_info['language_availability'][0].split(',')},
                 "region": ['eu'],
                 "publisher": game_info['publisher'] if game_info.__contains__('publisher') else None,
-                "google_titles": getNameByGoogle(game_info['title'], 'en')
+                "google_titles": getNameByGoogle(slug, 'en')
             }
         )
         # 无记录，插入
@@ -255,7 +255,7 @@ def getGamesAM():
             "language_availability": [],
             "region": ['am'],
             "publisher": None,
-            "google_titles": getNameByGoogle(game_info['title'], 'en')
+            "google_titles": getNameByGoogle(slug, 'en')
         }
 
         if game_collection.find(
