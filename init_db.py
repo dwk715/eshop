@@ -427,8 +427,8 @@ def getGamesJP():
 if __name__ == '__main__':
     getGamesEU()
     getGamesAM()
-    addNamesToDB()
     getTitleByAcGamer()
+    # addNamesToDB()
     # TODO 修改服务器db IP
     # getGamesJP()
 
