@@ -121,7 +121,7 @@ def getNameByGoogle(query, region):
 
         if region == 'en' and fuzz.ratio(titles['en'].lower(), query.lower()) < 70:
             return {}
-        if region == 'jp' and fuzz.ratio(titles['jp'], query) < 70:
+        if region == 'jp' and fuzz.ratio(titles['ja'], query) < 70:
             return {}
         return titles
     else:
@@ -360,7 +360,7 @@ def getUrlsByAcGamer(params):
 
 def getGamesJP():
     games = []
-    for i in range(FIRST_NSUID, FIRST_NSUID + 1):
+    for i in range(FIRST_NSUID, FIRST_NSUID + 1500):
         r = requests.get(GUESS_GAMES_GP_URL + str(i))
         r.encoding = 'utf-8'
         if r.status_code == 200:
@@ -404,11 +404,14 @@ def getGamesJP():
                 "google_titles": getNameByGoogle(title, 'jp')
             }
 
+            if game_jp['google_titles'] != None and game_collection.find({"$and":[{"google_titles": game_jp["google_titles"]}, {"region": {"$nin": ["jp"]}}]}).count() == 1:
+                print(game_jp)
+
 
 
 
 if __name__ == '__main__':
-    getGamesEU()
-    getGamesAM()
+    # getGamesEU()
+    # getGamesAM()
     # getTitleByAcGamer()
-    # getGamesJP()
+    getGamesJP()
