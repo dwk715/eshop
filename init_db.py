@@ -54,7 +54,7 @@ log_file = 'log/' + today + '.log'
 logging.basicConfig(filename=log_file, level=logging.ERROR, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # mongodb 设置
-mg_client = MongoClient(host='172.105.216.212', port=27017, username='dwk715', password='lunxian715',
+mg_client = MongoClient(host='localhost', port=27017, username='dwk715', password='lunxian715',
                         authSource='eshop_price')
 db = mg_client['eshop_price']
 game_collection = db['game']
@@ -90,7 +90,7 @@ game = {
 }
 
 
-def getNameByGoogle(query, region):
+def getTitleByGoogle(query, region):
     api_key = "AIzaSyBW2n_2ZD7q-anVs2UL_WA8xESG7uqokdw"
     service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
     if 'ACA NEOGEO' in query:
@@ -194,7 +194,7 @@ def getGamesEU():
                 "language_availability": {'eu': game_info['language_availability'][0].split(',')},
                 "region": ['eu'],
                 "publisher": game_info['publisher'] if game_info.__contains__('publisher') else None,
-                "google_titles": getNameByGoogle(slug, 'en')
+                "google_titles": getTitleByGoogle(slug, 'en')
             }
         )
         # 无记录，插入
@@ -267,7 +267,7 @@ def getGamesAM():
             "language_availability": [],
             "region": ['am'],
             "publisher": None,
-            "google_titles": getNameByGoogle(title, 'en')
+            "google_titles": getTitleByGoogle(title, 'en')
         }
         # 根据title 查找
         if game_collection.find(
@@ -288,12 +288,13 @@ def getGamesAM():
                                                           "region": ["eu", "am"]}})
 
         # 模糊查找
-        elif getTitleByFuzzSearch(title) and game_collection.find({"$and": [{'title.eu': getTitleByFuzzSearch(title)}, {'region': {"$nin": ["am"]}}]}).count() == 1:
-                game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(title)},
-                                                    {"$set": {"title.am": title,
-                                                              "nsuid.am": nsuid,
-                                                              "date_from.am": date_from,
-                                                              "region": ["eu", "am"]}})
+        elif getTitleByFuzzSearch(title) and game_collection.find(
+                {"$and": [{'title.eu': getTitleByFuzzSearch(title)}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+            game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(title)},
+                                                {"$set": {"title.am": title,
+                                                          "nsuid.am": nsuid,
+                                                          "date_from.am": date_from,
+                                                          "region": ["eu", "am"]}})
 
         # 根据google API 查找
         elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
@@ -380,12 +381,32 @@ def getUrlsByAcGamer(params):
     return urls
 
 
+def getNameByFuzzSearch(title):
+    fuzz_ratios = {}
+    for game_info in list(game_collection.find()):
+        if game_info['title'].__contains__('eu'):
+            fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['eu'])
+        else:
+            fuzz_ratios[game_info['title']['am']] = fuzz.ratio(title, game_info['title']['am'])
+    result = max(fuzz_ratios.items(), key=lambda x: x[1])
+    if result[1] > 70:
+        return result[0]
+    return False
+
+
 def addNamesToDB():
-    print(len(list(game_collection.find())))
+    # print(len(list(game_collection.find())))
     for names in list(name_collection.find()):
         if names['eu_name'] != "":
-            if game_collection.find({'title': names['eu_name']}):
-                pass
+            if game_collection.find({'title': names['eu_name']}).count() == 1:
+                game_collection.find_one_and_update({'title.eu': names['eu_name']}, {"$set": {"ac_games": names}})
+            elif game_collection.find({'title.am': names['eu_name']}) == 1:
+                game_collection.find_one_and_update({'title.am': names['eu_name']}, {"$set": {"ac_games": names}})
+            elif getNameByFuzzSearch(names['eu_name']):
+                game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(names['eu_name'])},
+                                                    {"$set": {"ac_games": names}})
+                game_collection.find_one_and_update({'title.am': getTitleByFuzzSearch(names['eu_name'])},
+                                                    {"$set": {"ac_games": names}})
 
 
 def getGamesJP():
@@ -431,7 +452,7 @@ def getGamesJP():
                 "publisher": publisher,
                 "region": ['jp'],
                 "language_availability": {'jp': language_availability},
-                "google_titles": getNameByGoogle(title, 'jp')
+                "google_titles": getTitleByGoogle(title, 'jp')
             }
             print(game_jp)
             print('\n')
@@ -447,9 +468,9 @@ def getGamesJP():
 
 if __name__ == '__main__':
     # getGamesEU()
-    getGamesAM()
-    getTitleByAcGamer()
-    # addNamesToDB()
+    # getGamesAM()
+    # getTitleByAcGamer()
+    addNamesToDB()
     # TODO 修改服务器db IP
     # getGamesJP()
     # getTitleByFuzzSearch('Banner Saga 1')
