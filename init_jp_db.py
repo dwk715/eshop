@@ -151,7 +151,7 @@ def getGamesJP():
                 "language_availability": {'jp': language_availability},
                 "google_titles": getTitleByGoogle(title, 'jp')
             }
-            game_jp_collection.find_one_and_update({'title':title}, game_jp, upsert=True)
+            game_jp_collection.find_one_and_update({'title':title}, {"$set": game_jp}, upsert=True)
 
 if __name__ == '__main__':
     getGamesJP()
