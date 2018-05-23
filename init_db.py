@@ -396,19 +396,25 @@ def getNameByFuzzSearch(title):
 
 def addAcNamesToDB():
     # print(len(list(game_collection.find())))
+    a = 0
+    b = c = a
     for names in list(name_collection.find()):
         if names['eu_name'] != "":
             if game_collection.find({'title.eu': {"$regex": names['eu_name'], "$options":'i'}}).count() == 1:
                 game_collection.find_one_and_update({'title': {"$regex": names['eu_name'], "$options":'i'}}, {"$set": {"ac_names": names}})
-
+                a+=1
             elif game_collection.find({'title.am': {"$regex": names['eu_name'], "$options":'i'}}) == 1:
                 game_collection.find_one_and_update({'title.am': {"$regex": names['eu_name'], "$options":'i'}}, {"$set": {"ac_names": names}})
-
+                b+=1
             elif getNameByFuzzSearch(names['eu_name']):
                 game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(names['eu_name'])},
                                                     {"$set": {"ac_names": names}})
                 game_collection.find_one_and_update({'title.am': getTitleByFuzzSearch(names['eu_name'])},
                                                     {"$set": {"ac_names": names}})
+                c+=1
+    print(a)
+    print(b)
+    print(c)
 
 
 
