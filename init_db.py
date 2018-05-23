@@ -387,6 +387,7 @@ def addNamesToDB():
     for names in list(name_collection.find()):
         if names['eu_name'] != "":
             if game_collection.find({'title': names['eu_name']}):
+                pass
 
 
 def getGamesJP():
