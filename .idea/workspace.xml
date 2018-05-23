@@ -33,8 +33,8 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="558">
+              <caret line="466" column="32" lean-forward="true" selection-start-line="466" selection-start-column="32" selection-end-line="466" selection-end-column="32" />
               <folding>
                 <element signature="e#132#163#0" expanded="true" />
               </folding>
@@ -112,7 +112,6 @@
       <find>UK</find>
       <find>US</find>
       <find>type</find>
-      <find>print</find>
       <find>collection</find>
       <find>lower</find>
       <find>region</find>
@@ -120,6 +119,7 @@
       <find>__</find>
       <find>_</find>
       <find>&quot;$nin&quot;</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>game_collection</replace>
@@ -406,13 +406,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00004" summary="更新Pipfile">
-      <created>1525325921444</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1525325921444</updated>
     </task>
     <task id="LOCAL-00005" summary="移除db">
       <created>1525326629322</created>
@@ -750,7 +743,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527058707203</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="添加acNames">
+      <created>1527073670550</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1527073670550</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView">
@@ -811,7 +811,8 @@
     <MESSAGE value="添加日服搜索" />
     <MESSAGE value="fix bugs" />
     <MESSAGE value="添加模糊查找" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加模糊查找" />
+    <MESSAGE value="添加acNames" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加acNames" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1218,8 +1219,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state relative-caret-position="558">
+          <caret line="466" column="32" lean-forward="true" selection-start-line="466" selection-start-column="32" selection-end-line="466" selection-end-column="32" />
           <folding>
             <element signature="e#132#163#0" expanded="true" />
           </folding>
