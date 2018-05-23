@@ -401,7 +401,7 @@ def addAcNamesToDB():
     for names in list(name_collection.find()):
         if names['eu_name'] != "":
             if game_collection.find({'title.eu': {"$regex": names['eu_name'], "$options":'i'}}).count() == 1:
-                game_collection.find_one_and_update({'title': {"$regex": names['eu_name'], "$options":'i'}}, {"$set": {"ac_names": names}})
+                game_collection.find_one_and_update({'title.eu': {"$regex": names['eu_name'], "$options":'i'}}, {"$set": {"ac_names": names}})
                 a+=1
             elif game_collection.find({'title.am': {"$regex": names['eu_name'], "$options":'i'}}) == 1:
                 game_collection.find_one_and_update({'title.am': {"$regex": names['eu_name'], "$options":'i'}}, {"$set": {"ac_names": names}})
