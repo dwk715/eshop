@@ -470,9 +470,9 @@ def getGamesJP():
 
 
 if __name__ == '__main__':
-    getGamesEU()
-    getGamesAM()
-    getTitleByAcGamer()
+    # getGamesEU()
+    # getGamesAM()
+    # getTitleByAcGamer()
     addAcNamesToDB()
     # TODO 修改服务器db IP
     # getGamesJP()
