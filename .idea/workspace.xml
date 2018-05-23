@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" afterPath="$PROJECT_DIR$/Pipfile" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" afterPath="$PROJECT_DIR$/Pipfile.lock" />
       <change beforePath="$PROJECT_DIR$/init_db.py" afterPath="$PROJECT_DIR$/init_db.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +35,8 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="779">
-              <caret line="456" column="0" lean-forward="true" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
+            <state relative-caret-position="-1924">
+              <caret line="297" column="79" lean-forward="false" selection-start-line="297" selection-start-column="79" selection-end-line="297" selection-end-column="79" />
               <folding>
                 <element signature="e#132#163#0" expanded="true" />
               </folding>
@@ -741,7 +743,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526980330442</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="添加模糊查找">
+      <created>1527054934681</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1527054934681</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TodoView">
@@ -801,7 +810,8 @@
     <MESSAGE value="添加根据美服slug在欧服搜索唯一title" />
     <MESSAGE value="添加日服搜索" />
     <MESSAGE value="fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
+    <MESSAGE value="添加模糊查找" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加模糊查找" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1208,8 +1218,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="456" column="0" lean-forward="true" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
+        <state relative-caret-position="-1924">
+          <caret line="297" column="79" lean-forward="false" selection-start-line="297" selection-start-column="79" selection-end-line="297" selection-end-column="79" />
           <folding>
             <element signature="e#132#163#0" expanded="true" />
           </folding>

@@ -288,13 +288,14 @@ def getGamesAM():
                                                           "region": ["eu", "am"]}})
 
         # 模糊查找
-        elif getTitleByFuzzSearch(title) and game_collection.find().count(
-                {"$and": [{'title.eu': getTitleByFuzzSearch(title)}, {'region': {"$nin": ["am"]}}]}) == 1:
-            game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(title)}, {"$set": {"title.am": title,
-                                                                                                     "nsuid.am": nsuid,
-                                                                                                     "date_from.am": date_from,
-                                                                                                     "region": ["eu",
-                                                                                                                "am"]}})
+        elif getTitleByFuzzSearch(title):
+            if game_collection.find().count(
+                    {"$and": [{'title.eu': getTitleByFuzzSearch(title)}, {'region': {"$nin": ["am"]}}]}) == 1:
+                game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(title)},
+                                                    {"$set": {"title.am": title,
+                                                              "nsuid.am": nsuid,
+                                                              "date_from.am": date_from,
+                                                              "region": ["eu", "am"]}})
 
         # 根据google API 查找
         elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
@@ -385,8 +386,7 @@ def addNamesToDB():
     print(len(list(game_collection.find())))
     for names in list(name_collection.find()):
         if names['eu_name'] != "":
-            game_collection.find_one_and_update({"title.eu": {"$regex": names['eu_name'], "$options": "i"}},
-                                                {"$set": {"ac_names": names}})
+            if game_collection.find({'title': names['eu_name']}):
 
 
 def getGamesJP():
