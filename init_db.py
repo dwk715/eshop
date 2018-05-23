@@ -288,9 +288,7 @@ def getGamesAM():
                                                           "region": ["eu", "am"]}})
 
         # 模糊查找
-        elif getTitleByFuzzSearch(title):
-            if game_collection.find().count(
-                    {"$and": [{'title.eu': getTitleByFuzzSearch(title)}, {'region': {"$nin": ["am"]}}]}) == 1:
+        elif getTitleByFuzzSearch(title) and game_collection.find({"$and": [{'title.eu': getTitleByFuzzSearch(title)}, {'region': {"$nin": ["am"]}}]}).count() == 1:
                 game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(title)},
                                                     {"$set": {"title.am": title,
                                                               "nsuid.am": nsuid,
@@ -448,7 +446,7 @@ def getGamesJP():
 
 
 if __name__ == '__main__':
-    getGamesEU()
+    # getGamesEU()
     getGamesAM()
     getTitleByAcGamer()
     # addNamesToDB()
