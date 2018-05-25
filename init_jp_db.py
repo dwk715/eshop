@@ -108,7 +108,7 @@ def getTitleByGoogle(query, region):
 
 def getGamesJP():
     games = []
-    for i in range(FIRST_NSUID, FIRST_NSUID + 1500):
+    for i in range(FIRST_NSUID, FIRST_NSUID + 9999):
         r = requests.get(GUESS_GAMES_GP_URL + str(i))
         r.encoding = 'utf-8'
         if r.status_code == 200:
