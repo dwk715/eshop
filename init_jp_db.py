@@ -127,7 +127,10 @@ def getGamesJP():
             else:
                 title = game['formal_name']
             nsuid = game['id']
-            img = game['applications'][0]['image_url']
+            try:
+                img = game['applications'][0]['image_url']
+            except:
+                print(r.url)
             excerpt = game['description']
             date_from = {'jp': game['release_date_on_eshop']}
             on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'],
