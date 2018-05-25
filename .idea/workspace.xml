@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/init_jp_db.py" afterPath="$PROJECT_DIR$/init_jp_db.py" />
+      <change beforePath="$PROJECT_DIR$/init_db.py" afterPath="$PROJECT_DIR$/init_db.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="init_db.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="275" column="12" lean-forward="true" selection-start-line="275" selection-start-column="12" selection-end-line="275" selection-end-column="12" />
+            <state relative-caret-position="677">
+              <caret line="480" column="4" lean-forward="true" selection-start-line="480" selection-start-column="4" selection-end-line="480" selection-end-column="4" />
               <folding>
                 <element signature="e#132#163#0" expanded="true" />
               </folding>
@@ -42,10 +42,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init_jp_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
+            <state relative-caret-position="319">
               <caret line="132" column="27" lean-forward="false" selection-start-line="132" selection-start-column="27" selection-end-line="132" selection-end-column="27" />
               <folding>
                 <element signature="e#124#155#0" expanded="true" />
@@ -115,9 +115,9 @@
         <option value="$PROJECT_DIR$/init_name_db.py" />
         <option value="$PROJECT_DIR$/test_api.py" />
         <option value="$PROJECT_DIR$/test_AM.py" />
-        <option value="$PROJECT_DIR$/init_db.py" />
-        <option value="$PROJECT_DIR$/init_db.py" />
         <option value="$PROJECT_DIR$/init_jp_db.py" />
+        <option value="$PROJECT_DIR$/init_db.py" />
+        <option value="$PROJECT_DIR$/init_db.py" />
       </list>
     </option>
   </component>
@@ -378,13 +378,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00016" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
-      <created>1526370616774</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1526370616774</updated>
     </task>
     <task id="LOCAL-00017" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
       <created>1526370662793</created>
@@ -722,7 +715,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527209658414</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="单独添加日服数据库">
+      <created>1527209789279</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1527209789280</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1192,22 +1192,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_db.py">
+    <entry file="file://$PROJECT_DIR$/init_jp_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="275" column="12" lean-forward="true" selection-start-line="275" selection-start-column="12" selection-end-line="275" selection-end-column="12" />
+        <state relative-caret-position="319">
+          <caret line="132" column="27" lean-forward="false" selection-start-line="132" selection-start-column="27" selection-end-line="132" selection-end-column="27" />
           <folding>
-            <element signature="e#132#163#0" expanded="true" />
+            <element signature="e#124#155#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_jp_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="132" column="27" lean-forward="false" selection-start-line="132" selection-start-column="27" selection-end-line="132" selection-end-column="27" />
+        <state relative-caret-position="677">
+          <caret line="480" column="4" lean-forward="true" selection-start-line="480" selection-start-column="4" selection-end-line="480" selection-end-column="4" />
           <folding>
-            <element signature="e#124#155#0" expanded="true" />
+            <element signature="e#132#163#0" expanded="true" />
           </folding>
         </state>
       </provider>

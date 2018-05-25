@@ -149,7 +149,10 @@ def getTitleByEuSearch(slug):
 def getTitleByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_collection.find({'region': 'eu'})):
-        fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['eu'])
+        try:
+            fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['eu'])
+        except Exception as error:
+            print(error)
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 60:
         return result[0]
@@ -474,7 +477,7 @@ def getGamesJP():
 
 
 if __name__ == '__main__':
-    getGamesEU()
+    # getGamesEU()
     getGamesAM()
     # getTitleByAcGamer()
     addAcNamesToDB()
