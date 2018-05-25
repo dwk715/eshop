@@ -45,8 +45,8 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-935">
-              <caret line="242" column="9" lean-forward="false" selection-start-line="242" selection-start-column="9" selection-end-line="242" selection-end-column="9" />
+            <state relative-caret-position="711">
+              <caret line="340" column="0" lean-forward="true" selection-start-line="340" selection-start-column="0" selection-end-line="340" selection-end-column="0" />
               <folding>
                 <element signature="e#133#164#0" expanded="true" />
               </folding>
@@ -391,13 +391,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
     </task>
-    <task id="LOCAL-00021" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
-      <created>1526430854258</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1526430854258</updated>
-    </task>
     <task id="LOCAL-00022" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
       <created>1526431355336</created>
       <option name="number" value="00022" />
@@ -734,7 +727,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527219101244</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="fix bugs">
+      <created>1527233387327</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1527233387328</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1226,8 +1226,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-935">
-          <caret line="242" column="9" lean-forward="false" selection-start-line="242" selection-start-column="9" selection-end-line="242" selection-end-column="9" />
+        <state relative-caret-position="711">
+          <caret line="340" column="0" lean-forward="true" selection-start-line="340" selection-start-column="0" selection-end-line="340" selection-end-column="0" />
           <folding>
             <element signature="e#133#164#0" expanded="true" />
           </folding>
