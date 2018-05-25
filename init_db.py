@@ -152,7 +152,7 @@ def getTitleByFuzzSearch(title):
         try:
             fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['eu'])
         except Exception as error:
-            print(error)
+            print(game_info['title']['eu'])
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 60:
         return result[0]
