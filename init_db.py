@@ -270,7 +270,7 @@ def getGamesEU():
         # 根据title查找
         if game_collection.find({"title.am": {"$regex": title, "$options": "i"}}).count() == 1:
             print(1)
-            game_collection.find_one_and_update({'title.eu': {'$regex': title, '$options': 'i'}},
+            game_collection.find_one_and_update({'title.am': {'$regex': title, '$options': 'i'}},
                                                 {"$set": {"title.eu": title,
                                                           "nsuid.eu": nsuid,
                                                           "date_from.eu": date_from,
@@ -340,5 +340,5 @@ def getGamesEU():
     print(d)
 
 if __name__ == '__main__':
-    # getGamesAM()
+    getGamesAM()
     getGamesEU()
