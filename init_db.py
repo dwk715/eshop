@@ -148,13 +148,10 @@ def getTitleByEuSearch(slug):
 
 def getTitleByFuzzSearch(title):
     fuzz_ratios = {}
-    for game_info in list(game_collection.find({'region': 'eu'})):
-        try:
+    for game_info in list(game_collection.find({'title.eu': {"$exists": True}})):
             fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['eu'])
-        except Exception as error:
-            print(game_info['title']['eu'])
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
-    if result[1] > 60:
+    if result[1] > 70:
         return result[0]
     return False
 
@@ -480,7 +477,7 @@ if __name__ == '__main__':
     # getGamesEU()
     getGamesAM()
     # getTitleByAcGamer()
-    addAcNamesToDB()
-    # TODO 修改服务器db IP
+    # addAcNamesToDB()
+
     # getGamesJP()
     # getTitleByFuzzSearch('Banner Saga 1')
