@@ -270,9 +270,7 @@ def getGamesAM():
             "google_titles": getTitleByGoogle(title, 'en')
         }
         # 根据title 查找
-        if game_collection.find(
-                {"$and": [{'title.eu': {'$regex': title, '$options': 'i'}},
-                          {'region': {"$nin": ["am"]}}]}).count() == 1:
+        if game_collection.find({'title.eu': {'$regex': title, '$options': 'i'}}).count() == 1:
             game_collection.find_one_and_update({'title.eu': {'$regex': title, '$options': 'i'}},
                                                 {"$set": {"title.am": title,
                                                           "nsuid.am": nsuid,
@@ -280,7 +278,7 @@ def getGamesAM():
                                                           "region": ["eu", "am"]}})
 
         # 根据slug 查找
-        elif game_collection.find({"$and": [{'slug': {'$regex': slug}}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+        elif game_collection.find({'slug': {'$regex': slug}}).count() == 1:
             game_collection.find_one_and_update({'slug': {'$regex': slug}},
                                                 {"$set": {"title.am": title,
                                                           "nsuid.am": nsuid,
@@ -289,7 +287,7 @@ def getGamesAM():
 
         # 模糊查找
         elif getTitleByFuzzSearch(title) and game_collection.find(
-                {"$and": [{'title.eu': getTitleByFuzzSearch(title)}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+                {'title.eu': getTitleByFuzzSearch(title)}).count() == 1:
             game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(title)},
                                                 {"$set": {"title.am": title,
                                                           "nsuid.am": nsuid,
@@ -297,8 +295,8 @@ def getGamesAM():
                                                           "region": ["eu", "am"]}})
 
         # 根据google API 查找
-        elif game_am["google_titles"].__contains__('en') and game_collection.find({"$and": [
-            {"google_titles.en": game_am["google_titles"]['en']}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+        elif game_am["google_titles"].__contains__('en') and game_collection.find(
+                {"google_titles.en": game_am["google_titles"]['en']}).count() == 1:
             game_collection.find_one_and_update({"google_titles.en": game_am["google_titles"]['en']},
                                                 {"$set": {"title.am": title,
                                                           "nsuid.am": nsuid,
@@ -306,8 +304,7 @@ def getGamesAM():
                                                           "region": ["eu", "am"]}})
 
         # 根据欧服API查找
-        elif game_collection.find(
-                {"$and": [{'title.eu': getTitleByEuSearch(title)}, {'region': {"$nin": ["am"]}}]}).count() == 1:
+        elif game_collection.find({'title.eu': getTitleByEuSearch(title)}).count() == 1:
             game_collection.find_one_and_update({'title.eu': getTitleByEuSearch(slug)},
                                                 {"$set": {"title.am": title,
                                                           "nsuid.am": nsuid,
@@ -400,22 +397,23 @@ def addAcNamesToDB():
     b = c = a
     for names in list(name_collection.find()):
         if names['eu_name'] != "":
-            if game_collection.find({'title.eu': {"$regex": names['eu_name'], "$options":'i'}}).count() == 1:
-                game_collection.find_one_and_update({'title.eu': {"$regex": names['eu_name'], "$options":'i'}}, {"$set": {"ac_names": names}})
-                a+=1
-            elif game_collection.find({'title.am': {"$regex": names['eu_name'], "$options":'i'}}) == 1:
-                game_collection.find_one_and_update({'title.am': {"$regex": names['eu_name'], "$options":'i'}}, {"$set": {"ac_names": names}})
-                b+=1
+            if game_collection.find({'title.eu': {"$regex": names['eu_name'], "$options": 'i'}}).count() == 1:
+                game_collection.find_one_and_update({'title.eu': {"$regex": names['eu_name'], "$options": 'i'}},
+                                                    {"$set": {"ac_names": names}})
+                a += 1
+            elif game_collection.find({'title.am': {"$regex": names['eu_name'], "$options": 'i'}}) == 1:
+                game_collection.find_one_and_update({'title.am': {"$regex": names['eu_name'], "$options": 'i'}},
+                                                    {"$set": {"ac_names": names}})
+                b += 1
             elif getNameByFuzzSearch(names['eu_name']):
                 game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(names['eu_name'])},
                                                     {"$set": {"ac_names": names}})
                 game_collection.find_one_and_update({'title.am': getTitleByFuzzSearch(names['eu_name'])},
                                                     {"$set": {"ac_names": names}})
-                c+=1
+                c += 1
     print(a)
     print(b)
     print(c)
-
 
 
 def getGamesJP():
