@@ -237,7 +237,10 @@ def getGamesEU():
     except Exception as error:
         logging.error("Europe error: {}".format(error))
         return None
-
+    a = 0
+    b = 0
+    c = 0
+    d = 0
     for game_info in result:
         game_eu = game.copy()
         title = game_info['title']
@@ -263,8 +266,10 @@ def getGamesEU():
                 "google_titles": getTitleByGoogle(slug, 'en')
             }
         )
+
         # 根据title查找
         if game_collection.find({"title.am": {"$regex": title, "$options": "i"}}).count() == 1:
+            print(1)
             game_collection.find_one_and_update({'title.eu': {'$regex': title, '$options': 'i'}},
                                                 {"$set": {"title.eu": title,
                                                           "nsuid.eu": nsuid,
@@ -273,8 +278,10 @@ def getGamesEU():
                                                           "language_availability": {
                                                               'eu': game_info['language_availability'][0].split(',')},
                                                           "region": ["eu", "am"]}})
+            a += 1
         # slug 查找
         elif game_collection.find({"$and": [{"slug": {"$regex": slug}}, {"region": "am"}]}).count() == 1:
+            print(2)
             game_collection.find_one_and_update({"slug": {"$regex": slug}},
                                                 {"$set": {"title.eu": title,
                                                           "nsuid.eu": nsuid,
@@ -283,10 +290,12 @@ def getGamesEU():
                                                           "language_availability": {
                                                               'eu': game_info['language_availability'][0].split(',')},
                                                           "region": ["eu", "am"]}})
+            b += 1
 
         # 模糊查找
         elif getTitleByFuzzSearch(title) and game_collection.find(
                 {'title.am': getTitleByFuzzSearch(title)}).count() == 1:
+            print(3)
             game_collection.find_one_and_update({'title.am': getTitleByFuzzSearch(title)},
                                                 {"$set": {"title.eu": title,
                                                           "nsuid.eu": nsuid,
@@ -295,10 +304,12 @@ def getGamesEU():
                                                           "language_availability": {
                                                               'eu': game_info['language_availability'][0].split(',')},
                                                           "region": ["eu", "am"]}})
+            c += 1
 
         # google API查找
         elif game_eu["google_titles"].__contains__('en') and game_collection.find(
                 {"$and": [{"google_titles.en": game_eu["google_titles"]['en']}, {"region": "am"}]}).count() == 1:
+            print(4)
             game_collection.find_one_and_update(
                 {"$and": [{"google_titles.en": game_eu["google_titles"]['en']}, {"region": "am"}]},
                 {"$set": {"title.eu": title,
@@ -309,6 +320,7 @@ def getGamesEU():
                               'eu': game_info['language_availability'][0].split(',')},
                           "region": ["eu", "am"]}}
                 )
+            d += 1
 
         # 更新
         elif game_collection.find(
@@ -322,6 +334,11 @@ def getGamesEU():
         else:
             game_collection.insert(game_eu)
 
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+
 if __name__ == '__main__':
     getGamesAM()
-    getGamesEU()
+    # getGamesEU()
