@@ -4,7 +4,6 @@
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/init_db.py" afterPath="$PROJECT_DIR$/init_db.py" />
-      <change beforePath="$PROJECT_DIR$/init_db.py_bak" afterPath="$PROJECT_DIR$/init_db.py_bak" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,12 +45,10 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="831">
-              <caret line="429" column="24" lean-forward="false" selection-start-line="429" selection-start-column="24" selection-end-line="429" selection-end-column="24" />
+            <state relative-caret-position="762">
+              <caret line="430" column="4" lean-forward="true" selection-start-line="430" selection-start-column="4" selection-end-line="430" selection-end-column="4" />
               <folding>
                 <element signature="e#133#164#0" expanded="true" />
-                <element signature="e#14105#14593#0" expanded="false" />
-                <element signature="e#14630#15262#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -395,13 +392,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
     </task>
-    <task id="LOCAL-00024" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
-      <created>1526433539063</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1526433539063</updated>
-    </task>
     <task id="LOCAL-00025" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
       <created>1526434904470</created>
       <option name="number" value="00025" />
@@ -738,7 +728,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527237537183</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="完善nameDB和gameDB的链接">
+      <created>1527470313785</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1527470313786</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TodoView">
@@ -801,10 +798,13 @@
     <MESSAGE value="添加acNames" />
     <MESSAGE value="单独添加日服数据库" />
     <MESSAGE value="fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
+    <MESSAGE value="完善nameDB和gameDB的链接" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善nameDB和gameDB的链接" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -1230,12 +1230,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="831">
-          <caret line="429" column="24" lean-forward="false" selection-start-line="429" selection-start-column="24" selection-end-line="429" selection-end-column="24" />
+        <state relative-caret-position="762">
+          <caret line="430" column="4" lean-forward="true" selection-start-line="430" selection-start-column="4" selection-end-line="430" selection-end-column="4" />
           <folding>
             <element signature="e#133#164#0" expanded="true" />
-            <element signature="e#14105#14593#0" expanded="false" />
-            <element signature="e#14630#15262#0" expanded="false" />
           </folding>
         </state>
       </provider>

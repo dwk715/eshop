@@ -384,6 +384,7 @@ def getUrlsByAcGamer(params):
             urls.add(c.find('a', href=True)['href'])
     return urls
 
+
 def getNameByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_collection.find()):
@@ -426,5 +427,5 @@ def addAcNamesToGameDB():
 if __name__ == '__main__':
     # getGamesAM()
     # getGamesEU()
-    getTitlesByAcGamer()
+    # getTitlesByAcGamer()
     addAcNamesToGameDB()
