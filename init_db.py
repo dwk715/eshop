@@ -389,9 +389,9 @@ def getNameByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_collection.find()):
         if game_info['title'].__contains__('am'):
-            fuzz_ratios[game_info['title']['am']] = fuzz.ratio(title, game_info['title']['eu'])
+            fuzz_ratios[game_info['title']['am']] = fuzz.ratio(title, game_info['title']['am'])
         else:
-            fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['am'])
+            fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['eu'])
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 70:
         return result[0]

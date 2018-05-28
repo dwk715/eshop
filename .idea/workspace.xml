@@ -45,8 +45,8 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="762">
-              <caret line="430" column="4" lean-forward="true" selection-start-line="430" selection-start-column="4" selection-end-line="430" selection-end-column="4" />
+            <state relative-caret-position="340">
+              <caret line="403" column="13" lean-forward="true" selection-start-line="403" selection-start-column="13" selection-end-line="403" selection-end-column="13" />
               <folding>
                 <element signature="e#133#164#0" expanded="true" />
               </folding>
@@ -392,13 +392,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
     </task>
-    <task id="LOCAL-00025" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
-      <created>1526434904470</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1526434904470</updated>
-    </task>
     <task id="LOCAL-00026" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
       <created>1526444239971</created>
       <option name="number" value="00026" />
@@ -735,7 +728,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527470313786</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="完善nameDB和gameDB的链接">
+      <created>1527470897080</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1527470897081</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1230,8 +1230,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="762">
-          <caret line="430" column="4" lean-forward="true" selection-start-line="430" selection-start-column="4" selection-end-line="430" selection-end-column="4" />
+        <state relative-caret-position="340">
+          <caret line="403" column="13" lean-forward="true" selection-start-line="403" selection-start-column="13" selection-end-line="403" selection-end-column="13" />
           <folding>
             <element signature="e#133#164#0" expanded="true" />
           </folding>
