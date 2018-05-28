@@ -133,8 +133,11 @@ def getGamesJP():
                 print(r.url)
             excerpt = game['description']
             date_from = {'jp': game['release_date_on_eshop']}
-            on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'],
+            try:
+                on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'],
                                                           "%Y-%m-%d") <= datetime.datetime.now()) else False
+            except ValueError:
+                on_sale = False
             publisher = game['publisher']['name']
             language_availability = [
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
