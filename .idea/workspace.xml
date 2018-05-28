@@ -45,8 +45,8 @@
       <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_jp_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="683">
-              <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+            <state relative-caret-position="456">
+              <caret line="146" column="31" lean-forward="false" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
               <folding>
                 <element signature="e#124#155#0" expanded="true" />
               </folding>
@@ -380,13 +380,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00029" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
-      <created>1526474234488</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1526474234488</updated>
     </task>
     <task id="LOCAL-00030" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
       <created>1526478163572</created>
@@ -724,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527484070021</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="完善JpDB">
+      <created>1527495015491</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1527495015493</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TodoView">
@@ -788,7 +788,8 @@
     <MESSAGE value="单独添加日服数据库" />
     <MESSAGE value="fix bugs" />
     <MESSAGE value="完善nameDB和gameDB的链接" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善nameDB和gameDB的链接" />
+    <MESSAGE value="完善JpDB" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善JpDB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1219,8 +1220,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_jp_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+        <state relative-caret-position="456">
+          <caret line="146" column="31" lean-forward="false" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
           <folding>
             <element signature="e#124#155#0" expanded="true" />
           </folding>

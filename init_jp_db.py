@@ -38,7 +38,7 @@ db = mg_client['eshop_price']
 game_jp_collection = db['jp_game']
 
 # 定义数据库格式
-game = {
+game_data = {
 
     "title": {},  # title --> string 游戏名称
 
@@ -112,6 +112,7 @@ def getGamesJP():
         r = requests.get(GUESS_GAMES_GP_URL + str(i))
         r.encoding = 'utf-8'
         if r.status_code == 200:
+
             game = json.loads(re.search(JSON_REGEX, r.text).group(1))
             if '（' in game['formal_name']:
                 title = game['formal_name'].split('（')[0]
@@ -143,7 +144,7 @@ def getGamesJP():
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
                     i['iso_code']).lower() else iso639.to_name(i['iso_code']).lower() for i in game['languages']]
 
-            game_jp = game.copy()
+            game_jp = game_data.copy()
 
             game_jp = {
                 "title": html.unescape(title),
