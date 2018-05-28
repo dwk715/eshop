@@ -130,7 +130,7 @@ def getGamesJP():
             try:
                 img = game['applications'][0]['image_url']
             except:
-                print(r.url)
+                img = BeautifulSoup(r.text, features='lxml').find('meta', {'property':"twitter:image:src"}).attrs['content']
             excerpt = game['description']
             date_from = {'jp': game['release_date_on_eshop']}
             try:
