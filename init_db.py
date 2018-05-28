@@ -237,10 +237,7 @@ def getGamesEU():
     except Exception as error:
         logging.error("Europe error: {}".format(error))
         return None
-    a = 0
-    b = 0
-    c = 0
-    d = 0
+
     for game_info in result:
         game_eu = game.copy()
         title = game_info['title']
@@ -278,7 +275,7 @@ def getGamesEU():
                                                           "language_availability": {
                                                               'eu': game_info['language_availability'][0].split(',')},
                                                           "region": ["eu", "am"]}})
-            a += 1
+
         # slug 查找
         elif game_collection.find({"$and": [{"slug": {"$regex": slug}}, {"region": "am"}]}).count() == 1:
             print(2)
@@ -290,7 +287,7 @@ def getGamesEU():
                                                           "language_availability": {
                                                               'eu': game_info['language_availability'][0].split(',')},
                                                           "region": ["eu", "am"]}})
-            b += 1
+
 
         # 模糊查找
         elif getTitleByFuzzSearch(title) and game_collection.find(
@@ -304,7 +301,7 @@ def getGamesEU():
                                                           "language_availability": {
                                                               'eu': game_info['language_availability'][0].split(',')},
                                                           "region": ["eu", "am"]}})
-            c += 1
+
 
         # google API查找
         elif game_eu["google_titles"].__contains__('en') and game_collection.find(
@@ -320,7 +317,7 @@ def getGamesEU():
                               'eu': game_info['language_availability'][0].split(',')},
                           "region": ["eu", "am"]}}
                 )
-            d += 1
+
 
         # 更新
         elif game_collection.find(
@@ -334,11 +331,100 @@ def getGamesEU():
         else:
             game_collection.insert(game_eu)
 
+
+def getTitlesByAcGamer():
+    params_available_now = {
+        't': '1'
+    }
+    params_coming_soon = {
+        't': '2'
+    }
+    urls_available_now = getUrlsByAcGamer(params_available_now)
+    urls_coming_soon = getUrlsByAcGamer(params_coming_soon)
+    urls = urls_available_now | urls_coming_soon
+
+    for i in urls:
+        names = geTitleByAcGamerUrl(i)
+        tw_name = names.get('tw_name')
+        if name_collection.find({'tw_name': tw_name}).count() == 1:
+            pass
+        else:
+            name_collection.insert(names)
+
+
+def geTitleByAcGamerUrl(url):
+    openCC = OpenCC('tw2s')
+    url = 'https:' + url
+    r = requests.get(url)
+    r.encoding = 'utf-8'
+    tw_name = BeautifulSoup(r.text, features='lxml').find('h1').text
+    cn_name = openCC.convert(tw_name)
+    jp_name = BeautifulSoup(r.text, features='lxml').find_all('h2')[0].text
+    eu_name = BeautifulSoup(r.text, features='lxml').find_all('h2')[1].text
+    return {
+        'cn_name': cn_name,
+        'tw_name': tw_name,
+        'jp_name': jp_name,
+        'eu_name': eu_name
+    }
+
+
+def getUrlsByAcGamer(params):
+    urls = set()
+    soup = BeautifulSoup(requests.get(GET_AC_GAMER_URL, params=params).text,
+                         features='lxml')
+    pages = int(
+        math.ceil(float(soup.find('a', {'class': 'next'})['href'].split('=')[-1]) / 15)) + 1
+    for i in range(1, pages):
+        params.update({'page': i})
+        soup_available_now = BeautifulSoup(requests.get(GET_AC_GAMER_URL, params=params).text,
+                                           features='lxml')
+        child = soup_available_now.find_all('h1', {'class': 'ACG-maintitle'})
+        for c in child:
+            urls.add(c.find('a', href=True)['href'])
+    return urls
+
+def getNameByFuzzSearch(title):
+    fuzz_ratios = {}
+    for game_info in list(game_collection.find()):
+        if game_info['title'].__contains__('am'):
+            fuzz_ratios[game_info['title']['am']] = fuzz.ratio(title, game_info['title']['eu'])
+        else:
+            fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['am'])
+    result = max(fuzz_ratios.items(), key=lambda x: x[1])
+    if result[1] > 70:
+        return result[0]
+    return False
+
+
+def addAcNamesToGameDB():
+
+    a = 0
+    b = c = a
+    for names in list(name_collection.find()):
+        if names['eu_name'] != "":
+            if game_collection.find({'title.eu': {"$regex": names['eu_name'], "$options": 'i'}}).count() == 1:
+                game_collection.find_one_and_update({'title.eu': {"$regex": names['eu_name'], "$options": 'i'}},
+                                                    {"$set": {"ac_names": names}})
+                a += 1
+            elif game_collection.find({'title.am': {"$regex": names['eu_name'], "$options": 'i'}}) == 1:
+                game_collection.find_one_and_update({'title.am': {"$regex": names['eu_name'], "$options": 'i'}},
+                                                    {"$set": {"ac_names": names}})
+                b += 1
+            elif getNameByFuzzSearch(names['eu_name']):
+                game_collection.find_one_and_update({'title.eu': getTitleByFuzzSearch(names['eu_name'])},
+                                                    {"$set": {"ac_names": names}})
+                game_collection.find_one_and_update({'title.am': getTitleByFuzzSearch(names['eu_name'])},
+                                                    {"$set": {"ac_names": names}})
+                c += 1
     print(a)
     print(b)
     print(c)
-    print(d)
+
+
 
 if __name__ == '__main__':
-    getGamesAM()
-    getGamesEU()
+    # getGamesAM()
+    # getGamesEU()
+    getTitlesByAcGamer()
+    addAcNamesToGameDB()

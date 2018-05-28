@@ -325,7 +325,7 @@ def getGamesAM():
             game_collection.insert(game_am)
 
 
-def getTitleByAcGamer():
+def getTitlesByAcGamer():
     params_available_now = {
         't': '1'
     }
@@ -337,7 +337,7 @@ def getTitleByAcGamer():
     urls = urls_available_now | urls_coming_soon
 
     for i in urls:
-        names = getNamesByAcGamerUrl(i)
+        names = geTitleByAcGamerUrl(i)
         tw_name = names.get('tw_name')
         if name_collection.find({'tw_name': tw_name}).count() == 1:
             pass
@@ -345,7 +345,7 @@ def getTitleByAcGamer():
             name_collection.insert(names)
 
 
-def getNamesByAcGamerUrl(url):
+def geTitleByAcGamerUrl(url):
     openCC = OpenCC('tw2s')
     url = 'https:' + url
     r = requests.get(url)

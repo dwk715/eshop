@@ -4,6 +4,7 @@
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/init_db.py" afterPath="$PROJECT_DIR$/init_db.py" />
+      <change beforePath="$PROJECT_DIR$/init_db.py_bak" afterPath="$PROJECT_DIR$/init_db.py_bak" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,10 +46,12 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="314" column="44" lean-forward="true" selection-start-line="314" selection-start-column="44" selection-end-line="314" selection-end-column="44" />
+            <state relative-caret-position="831">
+              <caret line="429" column="24" lean-forward="false" selection-start-line="429" selection-start-column="24" selection-end-line="429" selection-end-column="24" />
               <folding>
                 <element signature="e#133#164#0" expanded="true" />
+                <element signature="e#14105#14593#0" expanded="false" />
+                <element signature="e#14630#15262#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -103,6 +106,7 @@
       <find>_</find>
       <find>&quot;$nin&quot;</find>
       <find>print</find>
+      <find>getNameByFuzzSearch</find>
     </findStrings>
     <replaceStrings>
       <replace>game_collection</replace>
@@ -390,13 +394,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00023" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
-      <created>1526433533770</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1526433533770</updated>
     </task>
     <task id="LOCAL-00024" summary="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM">
       <created>1526433539063</created>
@@ -734,7 +731,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527234436236</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="fix bugs">
+      <created>1527237537183</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1527237537183</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TodoView">
@@ -747,7 +751,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="39" y="22" width="1881" height="1058" extended-state="6" />
+    <frame x="41" y="22" width="1879" height="1058" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -819,7 +823,7 @@
         <state relative-caret-position="986">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -854,7 +858,7 @@
         <state relative-caret-position="986">
           <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -879,7 +883,7 @@
         <state relative-caret-position="476">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -914,7 +918,7 @@
         <state relative-caret-position="476">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -959,7 +963,7 @@
         <state relative-caret-position="374">
           <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -1001,7 +1005,7 @@
         <state relative-caret-position="272">
           <caret line="22" column="3" lean-forward="false" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -1022,7 +1026,7 @@
         <state relative-caret-position="272">
           <caret line="22" column="3" lean-forward="false" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -1050,7 +1054,7 @@
         <state relative-caret-position="272">
           <caret line="22" column="3" lean-forward="false" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -1175,7 +1179,7 @@
         <state relative-caret-position="1088">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
-            <element signature="e#136#167#0" expanded="true" />
+            <element signature="e#136#167#0" expanded="false" />
             <marker date="1526021525407" expanded="true" signature="520:623" ph="..." />
           </folding>
         </state>
@@ -1226,10 +1230,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="314" column="44" lean-forward="true" selection-start-line="314" selection-start-column="44" selection-end-line="314" selection-end-column="44" />
+        <state relative-caret-position="831">
+          <caret line="429" column="24" lean-forward="false" selection-start-line="429" selection-start-column="24" selection-end-line="429" selection-end-column="24" />
           <folding>
             <element signature="e#133#164#0" expanded="true" />
+            <element signature="e#14105#14593#0" expanded="false" />
+            <element signature="e#14630#15262#0" expanded="false" />
           </folding>
         </state>
       </provider>
