@@ -434,7 +434,7 @@ def linkJPGameAndGame():
             a += 1
         # 直接欧服名称对应
         elif game_collection.find({'title.eu': {"$regex": game_jp["title"], "$options": "i"}}).count() == 1:
-            game_collection.find_one_and_update({'title.eu': {"$regex": game_jp["title"], "$options": "i"}}, {
+            game_collection.find_one_and_update({'title.en': {"$regex": game_jp["title"], "$options": "i"}}, {
                 "$set": {"title.jp": game_jp['title'],
                          "language_availability.jp": game_jp['language_availability']['jp'],
                          "nsuid.jp": game_jp['nsuid'],
