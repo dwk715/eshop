@@ -64,6 +64,7 @@ mg_client = MongoClient(host='172.105.216.212',
 db = mg_client['eshop_price']
 game_collection = db['game']
 name_collection = db['name']
+game_jp_collection = db['jp_game']
 
 # 数据库格式
 game = {
@@ -316,7 +317,7 @@ def getGamesEU():
                           "language_availability": {
                               'eu': game_info['language_availability'][0].split(',')},
                           "region": ["eu", "am"]}}
-                )
+            )
 
 
         # 更新
@@ -399,7 +400,6 @@ def getNameByFuzzSearch(title):
 
 
 def addAcNamesToGameDB():
-
     a = 0
     b = c = a
     for names in list(name_collection.find()):
@@ -418,12 +418,48 @@ def addAcNamesToGameDB():
                 game_collection.find_one_and_update({'title.am': getTitleByFuzzSearch(names['eu_name'])},
                                                     {"$set": {"ac_names": names}})
                 c += 1
+
+
+def linkJPGameAndGame():
+    a = 0
+    b = c = d = a
+    for game_jp in game_jp_collection.find():
+        #  直接美服名称对应
+        if game_collection.find({'title.am': {"$regex": game_jp["title"], "$options": "i"}}).count() == 1:
+            game_collection.find_one_and_update({'title.am': {"$regex": game_jp["title"], "$options": "i"}}, {
+                "$set": {"title.jp": game_jp['title'],
+                         "language_availability.jp": game_jp['language_availability']['jp'],
+                         "nsuid.jp": game_jp['nsuid'],
+                         "on_sale.jp": game_jp["on_sale"]}})
+            a += 1
+        # 直接欧服名称对应
+        elif game_collection.find({'title.eu': {"$regex": game_jp["title"], "$options": "i"}}).count() == 1:
+            game_collection.find_one_and_update({'title.eu': {"$regex": game_jp["title"], "$options": "i"}}, {
+                "$set": {"title.jp": game_jp['title'],
+                         "language_availability.jp": game_jp['language_availability']['jp'],
+                         "nsuid.jp": game_jp['nsuid'],
+                         "on_sale.jp": game_jp["on_sale"]}})
+            d += 1
+        # ACname对应
+        elif game_collection.find({"ac_names._id": game_jp['ac_names']['_id']}).count() == 1:
+            game_collection.find_one_and_update({"ac_names._id": game_jp['ac_names']['_id']}, {
+                "$set": {"title.jp": game_jp['title'],
+                         "language_availability.jp": game_jp['language_availability']['jp'],
+                         "nsuid.jp": game_jp['nsuid'],
+                         "on_sale.jp": game_jp["on_sale"]}})
+            c += 1
+        # google_titles对应
+        elif game_collection.find({"google_titles.eu": game_jp["google_titles"]['en']}).count() == 1:
+            game_collection.find_one_and_update({"google_titles.eu": game_jp["google_titles"]['en']}, {
+                "$set": {"title.jp": game_jp['title'],
+                         "language_availability.jp": game_jp['language_availability']['jp'],
+                         "nsuid.jp": game_jp['nsuid'],
+                         "on_sale.jp": game_jp["on_sale"]}})
+            d += 1
     print(a)
     print(b)
     print(c)
-
-def linkJPGameAndGame():
-    pass
+    print(d)
 
 
 
@@ -431,4 +467,5 @@ if __name__ == '__main__':
     # getGamesAM()
     # getGamesEU()
     # getTitlesByAcGamer()
-    addAcNamesToGameDB()
+    # addAcNamesToGameDB()
+    linkJPGameAndGame()
