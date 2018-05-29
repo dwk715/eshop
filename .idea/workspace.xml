@@ -33,8 +33,8 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="451" column="76" lean-forward="false" selection-start-line="451" selection-start-column="76" selection-end-line="451" selection-end-column="76" />
+            <state relative-caret-position="48">
+              <caret line="428" column="110" lean-forward="true" selection-start-line="428" selection-start-column="110" selection-end-line="428" selection-end-column="110" />
               <folding>
                 <element signature="e#133#164#0" expanded="true" />
               </folding>
@@ -381,13 +381,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
     </task>
-    <task id="LOCAL-00039" summary="优化google games 英文下由于大小写造成的问题">
-      <created>1526634888120</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1526634888120</updated>
-    </task>
     <task id="LOCAL-00040" summary="优化google games 英文下由于大小写造成的问题">
       <created>1526867587960</created>
       <option name="number" value="00040" />
@@ -724,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527575680489</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="fix bugs">
+      <created>1527575724241</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1527575724241</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1220,8 +1220,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="451" column="76" lean-forward="false" selection-start-line="451" selection-start-column="76" selection-end-line="451" selection-end-column="76" />
+        <state relative-caret-position="48">
+          <caret line="428" column="110" lean-forward="true" selection-start-line="428" selection-start-column="110" selection-end-line="428" selection-end-column="110" />
           <folding>
             <element signature="e#133#164#0" expanded="true" />
           </folding>

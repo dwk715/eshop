@@ -207,7 +207,7 @@ def getGamesAM():
             "on_sale": {'am': on_sale},
             "categories": [x.lower() for x in game_info['categories']['category']] if type(
                 game_info['categories']['category']) is list else game_info['categories']['category'],
-            "language_availability": [],
+            "language_availability": {},
             "region": ['am'],
             "publisher": None,
             "google_titles": getTitleByGoogle(title, 'en')
@@ -464,8 +464,8 @@ def linkJPGameAndGame():
 
 
 if __name__ == '__main__':
-    # getGamesAM()
-    # getGamesEU()
-    # getTitlesByAcGamer()
-    # addAcNamesToGameDB()
+    getGamesAM()
+    getGamesEU()
+    getTitlesByAcGamer()
+    addAcNamesToGameDB()
     linkJPGameAndGame()
