@@ -36,6 +36,7 @@ mg_client = MongoClient(host='172.105.216.212', port=27017, username='dwk715', p
                         authSource='eshop_price')
 db = mg_client['eshop_price']
 game_jp_collection = db['jp_game']
+name_collection = db['name']
 
 # 定义数据库格式
 game_data = {
@@ -131,12 +132,13 @@ def getGamesJP():
             try:
                 img = game['applications'][0]['image_url']
             except:
-                img = BeautifulSoup(r.text, features='lxml').find('meta', {'property':"twitter:image:src"}).attrs['content']
+                img = BeautifulSoup(r.text, features='lxml').find('meta', {'property': "twitter:image:src"}).attrs[
+                    'content']
             excerpt = game['description']
             date_from = {'jp': game['release_date_on_eshop']}
             try:
                 on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'],
-                                                          "%Y-%m-%d") <= datetime.datetime.now()) else False
+                                                              "%Y-%m-%d") <= datetime.datetime.now()) else False
             except ValueError:
                 on_sale = False
             publisher = game['publisher']['name']
@@ -158,8 +160,47 @@ def getGamesJP():
                 "language_availability": {'jp': language_availability},
                 "google_titles": getTitleByGoogle(title, 'jp')
             }
-            game_jp_collection.find_one_and_update({'title':title}, {"$set": game_jp}, upsert=True)
+            game_jp_collection.find_one_and_update({'title': title}, {"$set": game_jp}, upsert=True)
+
+
+def getNameByFuzzSearch(title):
+    fuzz_ratios = {}
+    for game_info in list(game_jp_collection.find()):
+        fuzz_ratios[game_info['title']] = fuzz.ratio(title, game_info['title'])
+    result = max(fuzz_ratios.items(), key=lambda x: x[1])
+    if result[1] > 70:
+        return result[0]
+    return False
+
+
+def addAcNamesToJpNameDB():
+    a = 0
+    b = c = d =  a
+    for names in list(name_collection.find()):
+        if names['jp_name'] != "":
+            if game_jp_collection.find({'title': {"$regex": names['jp_name'], "$options": "i"}}).count() == 1:
+                game_jp_collection.find_one_and_update({'title': {"$regex": names['jp_name'], "$options": "i"}},
+                                                       {"$set": {"ac_names": names}})
+                a += 1
+            elif getNameByFuzzSearch(names['jp_name']):
+                game_jp_collection.find_one_and_update({'title': getNameByFuzzSearch(names["jp_name"])},
+                                                       {"$set": {"ac_names": names}})
+                b += 1
+        elif names['eu_name'] != "":
+            if game_jp_collection.find({'title': {"$regex": names['eu_name'], "$options": "i"}}).count() == 1:
+                game_jp_collection.find_one_and_update({'title': {"$regex": names['eu_name'], "$options": "i"}},
+                                                       {"$set": {"ac_names": names}})
+                c += 1
+            elif getNameByFuzzSearch(names['eu_name']):
+                game_jp_collection.find_one_and_update({'title': getNameByFuzzSearch(names["eu_name"])},
+                                                       {"$set": {"ac_names": names}})
+                d += 1
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+
 
 if __name__ == '__main__':
-    getGamesJP()
-
+    # getGamesJP()
+    addAcNamesToJpNameDB()

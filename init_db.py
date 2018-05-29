@@ -422,6 +422,9 @@ def addAcNamesToGameDB():
     print(b)
     print(c)
 
+def linkJPGameAndGame():
+    pass
+
 
 
 if __name__ == '__main__':
