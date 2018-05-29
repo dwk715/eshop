@@ -449,7 +449,7 @@ def linkJPGameAndGame():
                          "on_sale.jp": game_jp["on_sale"]}})
             c += 1
         # google_titles对应
-        elif game_collection.find({"google_titles.en": game_jp["google_titles"]['en']}).count() == 1:
+        elif game_collection.find({"google_titles": game_jp["google_titles"]}).count() == 1:
             game_collection.find_one_and_update({"google_titles": game_jp["google_titles"]}, {
                 "$set": {"title.jp": game_jp['title'],
                          "language_availability.jp": game_jp['language_availability']['jp'],
