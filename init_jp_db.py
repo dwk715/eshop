@@ -117,18 +117,26 @@ def getGamesJP():
             game = json.loads(re.search(JSON_REGEX, r.text).group(1))
             if '（' in game['formal_name']:
                 title = game['formal_name'].split('（')[0]
+                print(game['formal_name'])
+
             elif '™' in game['formal_name']:
                 title = game['formal_name'].replace('™', '')
                 title = title.replace('®', ' ') if '®' in title else title
+
             elif 'アケアカNEOGEO' in game['formal_name']:
                 title = game['formal_name'].replace('アケアカNEOGEO ', '')
+
             elif 'アーケードアーカイブス ' in game['formal_name']:
                 title = game['formal_name'].replace('アーケードアーカイブス ', '')
+
             elif '(' in game['formal_name']:
                 title = game['formal_name'].split('(')[0]
+                print(game['formal_name'])
+
             else:
                 title = game['formal_name']
-            nsuid = game['id']
+
+            nsuid = str(game['id'])
             try:
                 img = game['applications'][0]['image_url']
             except:
@@ -202,5 +210,5 @@ def addAcNamesToJPNameDB():
 
 
 if __name__ == '__main__':
-    # getGamesJP()
+    getGamesJP()
     addAcNamesToJPNameDB()

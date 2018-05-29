@@ -432,14 +432,6 @@ def linkJPGameAndGame():
                          "nsuid.jp": game_jp['nsuid'],
                          "on_sale.jp": game_jp["on_sale"]}})
             a += 1
-        # 直接欧服名称对应
-        elif game_collection.find({'title.eu': {"$regex": game_jp["title"], "$options": "i"}}).count() == 1:
-            game_collection.find_one_and_update({'title.en': {"$regex": game_jp["title"], "$options": "i"}}, {
-                "$set": {"title.jp": game_jp['title'],
-                         "language_availability.jp": game_jp['language_availability']['jp'],
-                         "nsuid.jp": game_jp['nsuid'],
-                         "on_sale.jp": game_jp["on_sale"]}})
-            d += 1
         # ACname对应
         elif game_jp.__contains__('ac_names') and game_collection.find({"ac_names._id": game_jp['ac_names']['_id']}).count() == 1:
             game_collection.find_one_and_update({"ac_names._id": game_jp['ac_names']['_id']}, {
@@ -447,7 +439,7 @@ def linkJPGameAndGame():
                          "language_availability.jp": game_jp['language_availability']['jp'],
                          "nsuid.jp": game_jp['nsuid'],
                          "on_sale.jp": game_jp["on_sale"]}})
-            c += 1
+            b += 1
         # google_titles对应
         elif game_collection.find({"google_titles": game_jp["google_titles"]}).count() == 1:
             game_collection.find_one_and_update({"google_titles": game_jp["google_titles"]}, {
@@ -455,17 +447,22 @@ def linkJPGameAndGame():
                          "language_availability.jp": game_jp['language_availability']['jp'],
                          "nsuid.jp": game_jp['nsuid'],
                          "on_sale.jp": game_jp["on_sale"]}})
-            d += 1
+            c += 1
+
     print(a)
     print(b)
     print(c)
     print(d)
 
-
+def testNsuid():
+    for game in game_collection.find({"region": ["am", "eu"]}):
+        if game["nsuid"]['am'] - game["nsuid"]['am'] == 1:
+            print(game["title"])
+            print()
 
 if __name__ == '__main__':
-    # getGamesAM()
-    # getGamesEU()
-    # getTitlesByAcGamer()
-    # addAcNamesToGameDB()
+    getGamesAM()
+    getGamesEU()
+    getTitlesByAcGamer()
+    addAcNamesToGameDB()
     linkJPGameAndGame()
