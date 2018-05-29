@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/init_db.py" afterPath="$PROJECT_DIR$/init_db.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +33,8 @@
       <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="436" column="58" lean-forward="false" selection-start-line="436" selection-start-column="58" selection-end-line="436" selection-end-column="58" />
+            <state relative-caret-position="446">
+              <caret line="451" column="52" lean-forward="false" selection-start-line="451" selection-start-column="52" selection-end-line="451" selection-end-column="52" />
               <folding>
                 <element signature="e#133#164#0" expanded="true" />
               </folding>
@@ -380,13 +381,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
     </task>
-    <task id="LOCAL-00035" summary="优化google games 英文下由于大小写造成的问题">
-      <created>1526604512214</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1526604512214</updated>
-    </task>
     <task id="LOCAL-00036" summary="优化google games 英文下由于大小写造成的问题">
       <created>1526604990093</created>
       <option name="number" value="00036" />
@@ -723,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527575350202</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="fix bugs">
+      <created>1527575361179</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1527575361179</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TodoView">
@@ -785,10 +786,10 @@
     <MESSAGE value="添加模糊查找" />
     <MESSAGE value="添加acNames" />
     <MESSAGE value="单独添加日服数据库" />
-    <MESSAGE value="fix bugs" />
     <MESSAGE value="完善nameDB和gameDB的链接" />
     <MESSAGE value="完善JpDB" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善JpDB" />
+    <MESSAGE value="fix bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1219,8 +1220,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="436" column="58" lean-forward="false" selection-start-line="436" selection-start-column="58" selection-end-line="436" selection-end-column="58" />
+        <state relative-caret-position="446">
+          <caret line="451" column="52" lean-forward="false" selection-start-line="451" selection-start-column="52" selection-end-line="451" selection-end-column="52" />
           <folding>
             <element signature="e#133#164#0" expanded="true" />
           </folding>
