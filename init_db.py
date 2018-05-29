@@ -441,7 +441,7 @@ def linkJPGameAndGame():
                          "on_sale.jp": game_jp["on_sale"]}})
             d += 1
         # ACname对应
-        elif game_collection.find({"ac_names._id": game_jp['ac_names']['_id']}).count() == 1:
+        elif game_jp.__contains__('ac_names') and game_collection.find({"ac_names._id": game_jp['ac_names']['_id']}).count() == 1:
             game_collection.find_one_and_update({"ac_names._id": game_jp['ac_names']['_id']}, {
                 "$set": {"title.jp": game_jp['title'],
                          "language_availability.jp": game_jp['language_availability']['jp'],
@@ -464,8 +464,8 @@ def linkJPGameAndGame():
 
 
 if __name__ == '__main__':
-    getGamesAM()
-    getGamesEU()
-    getTitlesByAcGamer()
-    addAcNamesToGameDB()
+    # getGamesAM()
+    # getGamesEU()
+    # getTitlesByAcGamer()
+    # addAcNamesToGameDB()
     linkJPGameAndGame()
