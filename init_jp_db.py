@@ -173,7 +173,7 @@ def getNameByFuzzSearch(title):
     return False
 
 
-def addAcNamesToJpNameDB():
+def addAcNamesToJPNameDB():
     a = 0
     b = c = d =  a
     for names in list(name_collection.find()):
