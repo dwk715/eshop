@@ -456,13 +456,14 @@ def linkJPGameAndGame():
 
 def testNsuid():
     for game in game_collection.find({"region": ["am", "eu"]}):
-        if game["nsuid"]['am'] - game["nsuid"]['am'] == 1:
+        if int(game["nsuid"]['am']) - int(game["nsuid"]['am']) == 1:
             print(game["title"])
-            print()
+            print(game_jp_collection.find({"nsuid": (int(game["nsuid"]["am"]) + 1)}))
 
 if __name__ == '__main__':
     # getGamesAM()
     # getGamesEU()
-    getTitlesByAcGamer()
-    addAcNamesToGameDB()
-    linkJPGameAndGame()
+    # getTitlesByAcGamer()
+    # addAcNamesToGameDB()
+    # linkJPGameAndGame()
+    testNsuid()
