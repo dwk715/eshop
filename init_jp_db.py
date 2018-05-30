@@ -51,7 +51,7 @@ game_data = {
 
     "excerpt": None,  # excerpt --> str 游戏描述
 
-    "date_from": {},  # date_from --> {} 游戏发售日，游戏发售日各个服务器可能不相同
+    "date_from": str,  # date_from --> {} 游戏发售日，游戏发售日各个服务器可能不相同
 
     "on_sale": False,  # on_sale --> bool 根据游戏发售日判断有无在售卖
 
@@ -125,12 +125,13 @@ def getGamesJP():
                 img = BeautifulSoup(r.text, features='lxml').find('meta', {'property': "twitter:image:src"}).attrs[
                     'content']
             excerpt = game['description']
-            date_from = {'jp': game['release_date_on_eshop']}
+            date_from = game['release_date_on_eshop']
             try:
                 on_sale = True if (datetime.datetime.strptime(game['release_date_on_eshop'],
                                                               "%Y-%m-%d") <= datetime.datetime.now()) else False
             except ValueError:
                 on_sale = False
+
             publisher = game['publisher']['name']
             language_availability = [
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
@@ -147,7 +148,7 @@ def getGamesJP():
                 "on_sale": on_sale,
                 "publisher": publisher,
                 "region": ['jp'],
-                "language_availability": {'jp': language_availability},
+                "language_availability": language_availability,
                 "google_titles": getTitleByGoogle(title, 'jp')
             }
             game_jp_collection.find_one_and_update({'title': title}, {"$set": game_jp}, upsert=True)

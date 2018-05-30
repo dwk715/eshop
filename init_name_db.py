@@ -16,9 +16,16 @@ monkey.patch_all();
 
 GET_AC_GAMER_URL = "https://acg.gamer.com.tw/acgDetail.php?"
 
-mg_client = MongoClient('localhost', 27017)
+# mongodb 设置
+mg_client = MongoClient(host='172.105.216.212',
+                        port=27017,
+                        username='dwk715',
+                        password='lunxian715',
+                        authSource='eshop_price')
 db = mg_client['eshop_price']
+game_collection = db['game']
 name_collection = db['name']
+game_jp_collection = db['jp_game']
 
 
 def getNamesByAcGamer():
@@ -59,7 +66,19 @@ def dataCleaning(id):
 
     return None
 
+def testNsuid():
+    for game in game_collection.find({"$and": [{"region": ["eu", "am"]}, {"title.jp": {"$exists": False}}]}):
+        # print(game)
+        try:
+            if int(game["nsuid"]['am']) - int(game["nsuid"]['eu']) == 1 and game_jp_collection.find(
+                    {"nsuid": str(int(game["nsuid"]["am"]) + 1)}).count() == 1:
+                print(game["title"])
+                print(game_jp_collection.find_one({"nsuid": str(int(game["nsuid"]["am"]) + 1)})['title'])
+                print('\n')
+        except:
+            continue
+
 if __name__ == '__main__':
     # getNamesByAcGamer()
-    pass
+    testNsuid()
 

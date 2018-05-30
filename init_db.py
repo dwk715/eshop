@@ -433,7 +433,7 @@ def linkJPGameAndGame():
         if game_collection.find({'title.am': {"$regex": game_jp["title"], "$options": "i"}}).count() == 1:
             game_collection.find_one_and_update({'title.am': {"$regex": game_jp["title"], "$options": "i"}}, {
                 "$set": {"title.jp": game_jp['title'],
-                         "language_availability.jp": game_jp['language_availability']['jp'],
+                         "language_availability.jp": game_jp['language_availability'],
                          "nsuid.jp": game_jp['nsuid'],
                          "on_sale.jp": game_jp["on_sale"]}})
             a += 1
@@ -442,7 +442,7 @@ def linkJPGameAndGame():
                 {"ac_names._id": game_jp['ac_names']['_id']}).count() == 1:
             game_collection.find_one_and_update({"ac_names._id": game_jp['ac_names']['_id']}, {
                 "$set": {"title.jp": game_jp['title'],
-                         "language_availability.jp": game_jp['language_availability']['jp'],
+                         "language_availability.jp": game_jp['language_availability'],
                          "nsuid.jp": game_jp['nsuid'],
                          "on_sale.jp": game_jp["on_sale"]}})
             b += 1
@@ -450,7 +450,7 @@ def linkJPGameAndGame():
         elif game_collection.find({"google_titles": game_jp["google_titles"]}).count() == 1:
             game_collection.find_one_and_update({"google_titles": game_jp["google_titles"]}, {
                 "$set": {"title.jp": game_jp['title'],
-                         "language_availability.jp": game_jp['language_availability']['jp'],
+                         "language_availability.jp": game_jp['language_availability'],
                          "nsuid.jp": game_jp['nsuid'],
                          "on_sale.jp": game_jp["on_sale"]}})
             c += 1
