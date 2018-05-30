@@ -194,7 +194,7 @@ def addAcNamesToJPNameDB():
                 game_jp_collection.find_one_and_update({'title': getNameByFuzzSearch(names["jp_name"])},
                                                        {"$set": {"ac_names": names}})
                 b += 1
-        elif names['eu_name'] != "":
+        if names['eu_name'] != "":
             if game_jp_collection.find({'title': {"$regex": names['eu_name'], "$options": "i"}}).count() == 1:
                 game_jp_collection.find_one_and_update({'title': {"$regex": names['eu_name'], "$options": "i"}},
                                                        {"$set": {"ac_names": names}})
