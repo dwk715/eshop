@@ -455,7 +455,7 @@ def linkJPGameAndGame():
     print(d)
 
 def testNsuid():
-    for game in game_collection.find({"region": ["am", "eu"]}):
+    for game in game_collection.find({"region": ["eu", "am"]}):
         print(game)
         if int(game["nsuid"]['am']) - int(game["nsuid"]['am']) == 1:
             print(game["title"])
