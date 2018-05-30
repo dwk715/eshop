@@ -115,26 +115,8 @@ def getGamesJP():
         if r.status_code == 200:
 
             game = json.loads(re.search(JSON_REGEX, r.text).group(1))
-            if '（' in game['formal_name']:
-                title = game['formal_name'].split('（')[0]
-                print(game['formal_name'])
 
-            elif '™' in game['formal_name']:
-                title = game['formal_name'].replace('™', '')
-                title = title.replace('®', ' ') if '®' in title else title
-
-            elif 'アケアカNEOGEO' in game['formal_name']:
-                title = game['formal_name'].replace('アケアカNEOGEO ', '')
-
-            elif 'アーケードアーカイブス ' in game['formal_name']:
-                title = game['formal_name'].replace('アーケードアーカイブス ', '')
-
-            elif '(' in game['formal_name']:
-                title = game['formal_name'].split('(')[0]
-                print(game['formal_name'])
-
-            else:
-                title = game['formal_name']
+            title = game['formal_name']
 
             nsuid = str(game['id'])
             try:
@@ -174,7 +156,7 @@ def getGamesJP():
 def getNameByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_jp_collection.find()):
-        fuzz_ratios[game_info['title']] = fuzz.ratio(title, game_info['title'])
+        fuzz_ratios[game_info['title']] = fuzz._token_sort(title, game_info['title'], partial=True, full_process=True)
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 70:
         return result[0]
@@ -183,7 +165,7 @@ def getNameByFuzzSearch(title):
 
 def addAcNamesToJPNameDB():
     a = 0
-    b = c = d =  a
+    b = c = d = a
     for names in list(name_collection.find()):
         if names['jp_name'] != "":
             if game_jp_collection.find({'title': {"$regex": names['jp_name'], "$options": "i"}}).count() == 1:

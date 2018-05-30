@@ -16,6 +16,7 @@ import simplejson as json
 import re
 import iso639
 from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 import html
 
 # URL
@@ -127,9 +128,10 @@ def getTitleByGoogle(query, region):
             elif name['@language'] == 'zh':
                 titles['zh'] = name['@value']
 
-        if region == 'en' and fuzz.ratio(titles['en'].lower(), query.lower()) < 70:
+        if region == 'en' and fuzz._token_sort(titles['en'].lower(), query.lower(), partial=True,
+                                               full_process=True) < 70:
             return {}
-        if region == 'jp' and fuzz.ratio(titles['ja'], query) < 70:
+        if region == 'jp' and fuzz._token_sort(titles['ja'], query, partial=True, full_process=True) < 70:
             return {}
         return titles
     else:
@@ -140,7 +142,8 @@ def getTitleByGoogle(query, region):
 def getTitleByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_collection.find({'title.am': {"$exists": True}})):
-        fuzz_ratios[game_info['title']['am']] = fuzz.ratio(title, game_info['title']['am'])
+        fuzz_ratios[game_info['title']['am']] = fuzz._token_sort(title, game_info['title']['am'], partial=True,
+                                                                 full_process=True)
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 70:
         return result[0]
@@ -390,9 +393,11 @@ def getNameByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_collection.find()):
         if game_info['title'].__contains__('am'):
-            fuzz_ratios[game_info['title']['am']] = fuzz.ratio(title, game_info['title']['am'])
+            fuzz_ratios[game_info['title']['am']] = fuzz._token_sort(title, game_info['title']['am'], partial=True,
+                                                                     full_process=True)
         else:
-            fuzz_ratios[game_info['title']['eu']] = fuzz.ratio(title, game_info['title']['eu'])
+            fuzz_ratios[game_info['title']['eu']] = fuzz._token_sort(title, game_info['title']['eu'], partial=True,
+                                                                     full_process=True)
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 70:
         return result[0]
@@ -433,7 +438,8 @@ def linkJPGameAndGame():
                          "on_sale.jp": game_jp["on_sale"]}})
             a += 1
         # ACname对应
-        elif game_jp.__contains__('ac_names') and game_collection.find({"ac_names._id": game_jp['ac_names']['_id']}).count() == 1:
+        elif game_jp.__contains__('ac_names') and game_collection.find(
+                {"ac_names._id": game_jp['ac_names']['_id']}).count() == 1:
             game_collection.find_one_and_update({"ac_names._id": game_jp['ac_names']['_id']}, {
                 "$set": {"title.jp": game_jp['title'],
                          "language_availability.jp": game_jp['language_availability']['jp'],
@@ -454,12 +460,19 @@ def linkJPGameAndGame():
     print(c)
     print(d)
 
+
 def testNsuid():
-    for game in game_collection.find({"region": ["eu", "am"]}):
-        print(game)
-        if int(game["nsuid"]['am']) - int(game["nsuid"]['am']) == 1:
-            print(game["title"])
-            print(game_jp_collection.find({"nsuid": (int(game["nsuid"]["am"]) + 1)}))
+    for game in game_collection.find({"$and": [{"region": ["eu", "am"]}, {"title.jp": {"$exists": False}}]}):
+        # print(game)
+        try:
+            if int(game["nsuid"]['am']) - int(game["nsuid"]['eu']) == 1 and game_jp_collection.find(
+                    {"nsuid": str(int(game["nsuid"]["am"]) + 1)}).count() == 1:
+                print(game["title"])
+                print(game_jp_collection.find_one({"nsuid": str(int(game["nsuid"]["am"]) + 1)})['title'])
+                print('\n')
+        except:
+            continue
+
 
 if __name__ == '__main__':
     # getGamesAM()
