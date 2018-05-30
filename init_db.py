@@ -475,9 +475,9 @@ def testNsuid():
 
 
 if __name__ == '__main__':
-    getGamesAM()
-    getGamesEU()
-    getTitlesByAcGamer()
+    # getGamesAM()
+    # getGamesEU()
+    # getTitlesByAcGamer()
     addAcNamesToGameDB()
-    # linkJPGameAndGame()
+    linkJPGameAndGame()
     # testNsuid()

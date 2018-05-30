@@ -4,8 +4,6 @@
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/init_db.py" afterPath="$PROJECT_DIR$/init_db.py" />
-      <change beforePath="$PROJECT_DIR$/init_jp_db.py" afterPath="$PROJECT_DIR$/init_jp_db.py" />
-      <change beforePath="$PROJECT_DIR$/init_name_db.py" afterPath="$PROJECT_DIR$/init_name_db.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="init_db.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="init_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="435" column="85" lean-forward="false" selection-start-line="435" selection-start-column="85" selection-end-line="435" selection-end-column="85" />
+            <state relative-caret-position="762">
+              <caret line="482" column="4" lean-forward="false" selection-start-line="482" selection-start-column="4" selection-end-line="482" selection-end-column="4" />
               <folding>
                 <element signature="e#133#164#0" expanded="true" />
               </folding>
@@ -44,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init_jp_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="126" column="41" lean-forward="true" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
+            <state relative-caret-position="606">
+              <caret line="186" column="32" lean-forward="false" selection-start-line="186" selection-start-column="32" selection-end-line="186" selection-end-column="32" />
               <folding>
                 <element signature="e#124#155#0" expanded="true" />
               </folding>
@@ -123,9 +121,9 @@
         <option value="$PROJECT_DIR$/test_AM.py" />
         <option value="$PROJECT_DIR$/init_db.py_bak" />
         <option value="$PROJECT_DIR$/init_name_db.py" />
-        <option value="$PROJECT_DIR$/init_db.py" />
-        <option value="$PROJECT_DIR$/init_db.py" />
         <option value="$PROJECT_DIR$/init_jp_db.py" />
+        <option value="$PROJECT_DIR$/init_db.py" />
+        <option value="$PROJECT_DIR$/init_db.py" />
       </list>
     </option>
   </component>
@@ -386,13 +384,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00051" summary="添加模糊查找">
-      <created>1527056780762</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1527056780763</updated>
     </task>
     <task id="LOCAL-00052" summary="添加模糊查找">
       <created>1527058707203</created>
@@ -730,7 +721,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527659687113</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="优化 JP games DB">
+      <created>1527665304443</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1527665304443</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TodoView">
@@ -820,7 +818,8 @@
     <MESSAGE value="添加测试" />
     <MESSAGE value="添加 nsuid 测试" />
     <MESSAGE value="优化fuzz 查找" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化fuzz 查找" />
+    <MESSAGE value="优化 JP games DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化 JP games DB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1230,22 +1229,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_db.py">
+    <entry file="file://$PROJECT_DIR$/init_jp_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="435" column="85" lean-forward="false" selection-start-line="435" selection-start-column="85" selection-end-line="435" selection-end-column="85" />
+        <state relative-caret-position="606">
+          <caret line="186" column="32" lean-forward="false" selection-start-line="186" selection-start-column="32" selection-end-line="186" selection-end-column="32" />
           <folding>
-            <element signature="e#133#164#0" expanded="true" />
+            <element signature="e#124#155#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_jp_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="126" column="41" lean-forward="true" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
+        <state relative-caret-position="762">
+          <caret line="482" column="4" lean-forward="false" selection-start-line="482" selection-start-column="4" selection-end-line="482" selection-end-column="4" />
           <folding>
-            <element signature="e#124#155#0" expanded="true" />
+            <element signature="e#133#164#0" expanded="true" />
           </folding>
         </state>
       </provider>
