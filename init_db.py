@@ -456,6 +456,7 @@ def linkJPGameAndGame():
 
 def testNsuid():
     for game in game_collection.find({"region": ["am", "eu"]}):
+        print(game)
         if int(game["nsuid"]['am']) - int(game["nsuid"]['am']) == 1:
             print(game["title"])
             print(game_jp_collection.find({"nsuid": (int(game["nsuid"]["am"]) + 1)}))
