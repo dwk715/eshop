@@ -18,6 +18,7 @@ import iso639
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import html
+from init_jp_db import getGamesJP, addAcNamesToJPNameDB
 
 # URL
 GET_GAMES_US_URL = "http://www.nintendo.com/json/content/get/filter/game?system=switch"
@@ -475,9 +476,11 @@ def testNsuid():
 
 
 if __name__ == '__main__':
-    # getGamesAM()
-    # getGamesEU()
-    # getTitlesByAcGamer()
+    getGamesAM()
+    getGamesEU()
+    getTitlesByAcGamer()
     addAcNamesToGameDB()
+    getGamesJP()
+    addAcNamesToJPNameDB()
     linkJPGameAndGame()
     # testNsuid()

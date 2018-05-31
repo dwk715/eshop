@@ -74,7 +74,14 @@ def testNsuid():
                     {"nsuid": str(int(game["nsuid"]["am"]) + 1)}).count() == 1:
                 print(game["title"])
                 print(game_jp_collection.find_one({"nsuid": str(int(game["nsuid"]["am"]) + 1)})['title'])
-                print('\n')
+                print('插入吗？y or n \n')
+                choice = input()
+                if choice == 'y':
+                    game_all = game['title'].copy()
+                    game_all['jp'] = game_jp_collection.find_one({"nsuid": str(int(game["nsuid"]["am"]) + 1)})['title']
+                    name_collection.insert(game_all)
+                else:
+                    continue
         except:
             continue
 
