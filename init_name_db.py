@@ -84,8 +84,15 @@ def testNsuid():
                     continue
         except:
             continue
+def changeNameBD():
+    for name in name_collection.find():
+        if name.__contains__('am'):
+            name_collection.find_one_and_update({'am': name['am']},
+                                                {"$set":{"eu_name": name['am'],
+                                                         "jp_name": name['jp']}})
 
 if __name__ == '__main__':
     # getNamesByAcGamer()
-    testNsuid()
+    # testNsuid()
+    changeNameBD()
 
