@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/test_price.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_price.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +53,8 @@
       <file leaf-file-name="test_price.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_price.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="187">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -174,10 +174,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -376,27 +376,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00058" summary="添加acNames">
-      <created>1527078935950</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1527078935950</updated>
-    </task>
-    <task id="LOCAL-00059" summary="添加acNames">
-      <created>1527081282818</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1527081282819</updated>
-    </task>
-    <task id="LOCAL-00060" summary="单独添加日服数据库">
-      <created>1527089292361</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1527089292361</updated>
     </task>
     <task id="LOCAL-00061" summary="单独添加日服数据库">
       <created>1527089586277</created>
@@ -720,7 +699,28 @@
       <option name="project" value="LOCAL" />
       <updated>1528213516722</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="fix bugs">
+      <created>1528213535233</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1528213535233</updated>
+    </task>
+    <task id="LOCAL-00108" summary="fix bugs">
+      <created>1528213594430</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1528213594430</updated>
+    </task>
+    <task id="LOCAL-00109" summary="fix bugs">
+      <created>1528213636456</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1528213636456</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TodoView">
@@ -734,13 +734,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="981" y="22" width="939" height="1058" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5040783" side_tool="true" weight="0.23085107" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005574" side_tool="true" visible="true" weight="0.23027718" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32978722" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49944258" weight="0.32942432" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3292683" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4959217" weight="0.23085107" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.23188406" />
@@ -991,8 +990,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_price.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
