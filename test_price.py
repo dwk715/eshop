@@ -8,3 +8,4 @@ import requests
 
 GET_PRICE_URL = "https://api.ec.nintendo.com/v1/price?lang=en"
 
+
