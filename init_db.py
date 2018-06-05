@@ -18,6 +18,8 @@ import iso639
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import html
+from init_am_db import getGamesAM
+from init_eu_db import getGamesEU
 from init_jp_db import getGamesJP, addAcNamesToJPNameDB
 
 # URL
@@ -66,6 +68,8 @@ mg_client = MongoClient(host='172.105.216.212',
 db = mg_client['eshop_price']
 game_collection = db['game']
 name_collection = db['name']
+game_am_collection = db['am_game']
+game_eu_collection = db['eu_game']
 game_jp_collection = db['jp_game']
 
 # 数据库格式
@@ -98,45 +102,7 @@ game = {
 }
 
 
-# 使用Google API获取游戏名称
-def getTitleByGoogle(query, region):
-    api_key = "AIzaSyBW2n_2ZD7q-anVs2UL_WA8xESG7uqokdw"
-    service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
-    if 'ACA NEOGEO' in query:
-        query = query.split('ACA NEOGEO ')[1]
-    if 'Arcade Archives ' in query:
-        query = query.split('Arcade Archives ')[1]
-    params = {
-        'query': query,
-        'limit': 10,
-        'indent': True,
-        'key': api_key,
-        'languages': ['en', 'ja', 'zh']
-    }
-    titles = {
-        'en': '',
-        'ja': '',
-        'zh': ''
-    }
-    response = requests.get(service_url, params=params)
-    if response.json().get('itemListElement') and response.json()['itemListElement'][0]['result'].get('name'):
-        name_list = response.json()['itemListElement'][0]['result']['name']
-        for name in name_list:
-            if name['@language'] == 'en':
-                titles['en'] = name['@value']
-            elif name['@language'] == 'ja':
-                titles['ja'] = name['@value']
-            elif name['@language'] == 'zh':
-                titles['zh'] = name['@value']
 
-        if region == 'en' and fuzz._token_sort(titles['en'].lower(), query.lower(), partial=False,
-                                               full_process=True) < 70:
-            return {}
-        if region == 'jp' and fuzz._token_sort(titles['ja'], query, partial=False, full_process=True) < 70:
-            return {}
-        return titles
-    else:
-        return {}
 
 
 # 模糊查找
@@ -151,124 +117,11 @@ def getTitleByFuzzSearch(title):
     return False
 
 
-# 美服DB写入
-def getAMGameOffeset(times):
-    params = {
-        'offset': 200 * times,
-        'limit': 200
-    }
-    try:
-        res = requests.get(GET_GAMES_US_URL, params=params)
 
-        result = res.json()['games']['game']
-        return result
-    except TimeoutError:
-        logging.error("get America games info timeout")
-        return []
-    except Exception as error:
-        logging.error("America error: {}".format(error))
 
-# 获取🇺🇸数据
-def getGamesAM():
-    params = {
-        'offset': 0,
-        'limit': 200
-    }
-    try:
-        res = requests.get(GET_GAMES_US_URL, params=params)
-        res.encoding = 'utf-8'
-        total = int(res.json()['filter']['total'])  # 美服游戏总数
-    except TimeoutError:
-        logging.error("get America games info timeout")
-        return None
-    except Exception as error:
-        logging.error("America error: {}".format(error))
-        return None
 
-    offset_times = int(math.ceil(total / 200))
-    result = []
-
-    for i in range(offset_times):
-        result = result + getAMGameOffeset(i)
-
-    print('AM games: ', len(result))
-
-    for game_info in result:
-        game_am = game.copy()
-        title = html.unescape(game_info['title'])
-        on_sale = True if (datetime.datetime.strptime(game_info['release_date'],
-                                                      "%b %d, %Y") <= datetime.datetime.now()) else False
-        nsuid = game_info['nsuid'] if game_info.__contains__('nsuid') else None
-        date_from = datetime.datetime.strptime(game_info['release_date'], "%b %d, %Y").strftime("%Y-%m-%d")
-        slug = game_info['slug'] if 'nintendo-switch' in game_info['slug'] else game_info['slug'].replace('-switch', '')
-        game_am = {
-            "title": {'am': title},
-            "slug": slug,
-            "nsuid": {'am': game_info['nsuid']} if game_info.__contains__('nsuid') else {},
-            "img": game_info['front_box_art'],
-            "excerpt": None,
-            "date_from": {'am': date_from},
-            "on_sale": {'am': on_sale},
-            "categories": [x.lower() for x in game_info['categories']['category']] if type(
-                game_info['categories']['category']) is list else game_info['categories']['category'],
-            "language_availability": {},
-            "region": ['am'],
-            "publisher": None,
-            "google_titles": getTitleByGoogle(title, 'en')
-        }
-        # 判断有无📝
-        if not list(game_collection.find({'title.am': title})):
-            game_collection.find_one_and_update({'title.am': title}, {
-                "$set": {"nsuid.am": nsuid, "date_from.am": date_from, "on_sale.am": on_sale}})
-        else:
-            game_collection.insert(game_am)
-
-# 获取🇪🇺数据
-def getGamesEU():
-    params = {
-        'fl': "title, nsuid_txt, product_code_txt, date_from, image_url_sq_s, publisher, excerpt, game_categories_txt, language_availability, url",
-        'fq': 'system_type:nintendoswitch* AND product_code_txt:*',
-        'q': '*',
-        'rows': 9999,
-        'sort': 'sorting_title asc',
-        'start': 0,
-        'wt': 'json',
-    }
-    try:
-        res = requests.get(GET_GAMES_EU_URL, params=params)
-        result = res.json()['response']['docs']
-    except TimeoutError:
-        logging.error("get Europe games info timeout")
-        return None
-    except Exception as error:
-        logging.error("Europe error: {}".format(error))
-        return None
-
-    for game_info in result:
-        game_eu = game.copy()
-        title = game_info['title']
-        date_from = game_info['date_from'].split('T')[0]
-        on_sale = True if (datetime.datetime.strptime(game_info['date_from'].split('T')[0],
-                                                      "%Y-%m-%d") <= datetime.datetime.now()) else False
-        slug = ('-').join([x.lower() for x in game_info['url'].split('/')[-1].split('-')[:-1] if len(x) > 0])
-        nsuid = game_info['nsuid_txt'][0] if game_info.__contains__('nsuid_txt') else None
-        publisher = game_info['publisher'] if game_info.__contains__('publisher') else None
-        game_eu.update(
-            {
-                "title": {'eu': title},
-                "slug": slug,
-                "nsuid": {'eu': nsuid},
-                "img": game_info['image_url_sq_s'],
-                "excerpt": game_info['excerpt'],
-                "date_from": {'eu': game_info['date_from'].split('T')[0]},
-                "on_sale": on_sale,
-                "categories": game_info['game_categories_txt'],
-                "language_availability": {'eu': game_info['language_availability'][0].split(',')},
-                "region": ['eu'],
-                "publisher": publisher,
-                "google_titles": getTitleByGoogle(slug, 'en')
-            }
-        )
+# 获取欧服数据
+def linkAMandEU():
 
         # 根据title查找
         if list(game_collection.find({"title.am": {"$regex": title, "$options": "i"}})):
