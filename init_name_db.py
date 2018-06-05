@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 import gevent
 from tqdm import tqdm
 from gevent import monkey, pool
+
 monkey.patch_all();
 
 GET_AC_GAMER_URL = "https://acg.gamer.com.tw/acgDetail.php?"
@@ -35,14 +36,13 @@ def getNamesByAcGamer():
         dataCleaning(id)
 
 
-
 def dataCleaning(id):
     openCC = OpenCC('tw2s')
     params = {
         's': id
     }
     try:
-        r = requests.get(GET_AC_GAMER_URL, timeout= 100 ,params=params)
+        r = requests.get(GET_AC_GAMER_URL, timeout=100, params=params)
     except TimeoutError:
         return None
     r.encoding = 'utf-8'
@@ -66,6 +66,7 @@ def dataCleaning(id):
 
     return None
 
+
 def testNsuid():
     for game in game_collection.find({"$and": [{"region": ["eu", "am"]}, {"title.jp": {"$exists": False}}]}):
         # print(game)
@@ -84,15 +85,27 @@ def testNsuid():
                     continue
         except:
             continue
+
+
 def changeNameBD():
     for name in name_collection.find():
         if name.__contains__('am'):
             name_collection.find_one_and_update({'am': name['am']},
-                                                {"$set":{"eu_name": name['am'],
-                                                         "jp_name": name['jp']}})
+                                                {"$set": {"eu_name": name['am'],
+                                                          "jp_name": name['jp']}})
+
+
+def restJPGame():
+    for game_jp in game_jp_collection.find():
+        if game_collection.find({"title.jp": game_jp['title']}).count() == 1:
+            continue
+            # print(game_jp['title'])
+        else:
+            print(game_jp['title'])
+
 
 if __name__ == '__main__':
     # getNamesByAcGamer()
     # testNsuid()
-    changeNameBD()
-
+    # changeNameBD()
+    restJPGame()

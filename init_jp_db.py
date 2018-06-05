@@ -71,10 +71,10 @@ game_data = {
 def getTitleByGoogle(query, region):
     api_key = "AIzaSyBW2n_2ZD7q-anVs2UL_WA8xESG7uqokdw"
     service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
-    if 'ACA NEOGEO' in query:
-        query = query.split('ACA NEOGEO ')[1]
-    if 'Arcade Archives ' in query:
-        query = query.split('Arcade Archives ')[1]
+    if 'アケアカNEOGEO' in query:
+        query = query.split('アケアカNEOGEO ')[1]
+    if 'アーケードアーカイブス' in query:
+        query = query.split('アーケードアーカイブス ')[1]
     params = {
         'query': query,
         'limit': 10,
@@ -157,7 +157,7 @@ def getGamesJP():
 def getNameByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_jp_collection.find()):
-        fuzz_ratios[game_info['title']] = fuzz._token_sort(title, game_info['title'], partial=True, full_process=True)
+        fuzz_ratios[game_info['title']] = fuzz._token_sort(title, game_info['title'], partial=False, full_process=True)
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 70:
         return result[0]

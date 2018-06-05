@@ -178,11 +178,12 @@ def testGameAM(game_info):
 
 
 def testDB():
-    games = list(game_collection.find({'region': ['eu', 'am']}))
-    for game in games:
-        if game['nsuid']['am'] != None and game['nsuid']['eu'] != None:
-            if int(game['nsuid']['am']) - int(game['nsuid']['eu']) == 1:
-                print(game['title']['eu'])
+    print(list(game_collection.find({'title':'lala'})))
+    # games = list(game_collection.find({'region': ['eu', 'am']}))
+    # for game in games:
+    #     if game['nsuid']['am'] != None and game['nsuid']['eu'] != None:
+    #         if int(game['nsuid']['am']) - int(game['nsuid']['eu']) == 1:
+    #             print(game['title']['eu'])
 
 
 def main():

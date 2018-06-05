@@ -129,10 +129,10 @@ def getTitleByGoogle(query, region):
             elif name['@language'] == 'zh':
                 titles['zh'] = name['@value']
 
-        if region == 'en' and fuzz._token_sort(titles['en'].lower(), query.lower(), partial=True,
+        if region == 'en' and fuzz._token_sort(titles['en'].lower(), query.lower(), partial=False,
                                                full_process=True) < 70:
             return {}
-        if region == 'jp' and fuzz._token_sort(titles['ja'], query, partial=True, full_process=True) < 70:
+        if region == 'jp' and fuzz._token_sort(titles['ja'], query, partial=False, full_process=True) < 70:
             return {}
         return titles
     else:
@@ -143,7 +143,7 @@ def getTitleByGoogle(query, region):
 def getTitleByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_collection.find({'title.am': {"$exists": True}})):
-        fuzz_ratios[game_info['title']['am']] = fuzz._token_sort(title, game_info['title']['am'], partial=True,
+        fuzz_ratios[game_info['title']['am']] = fuzz._token_sort(title, game_info['title']['am'], partial=False,
                                                                  full_process=True)
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 70:
@@ -168,7 +168,7 @@ def getAMGameOffeset(times):
     except Exception as error:
         logging.error("America error: {}".format(error))
 
-
+# 获取🇺🇸数据
 def getGamesAM():
     params = {
         'offset': 0,
@@ -216,13 +216,14 @@ def getGamesAM():
             "publisher": None,
             "google_titles": getTitleByGoogle(title, 'en')
         }
-        if game_collection.find({'title.am': title}).count() == 1:
+        # 判断有无📝
+        if not list(game_collection.find({'title.am': title})):
             game_collection.find_one_and_update({'title.am': title}, {
                 "$set": {"nsuid.am": nsuid, "date_from.am": date_from, "on_sale.am": on_sale}})
         else:
             game_collection.insert(game_am)
 
-
+# 获取🇪🇺数据
 def getGamesEU():
     params = {
         'fl': "title, nsuid_txt, product_code_txt, date_from, image_url_sq_s, publisher, excerpt, game_categories_txt, language_availability, url",
@@ -270,7 +271,7 @@ def getGamesEU():
         )
 
         # 根据title查找
-        if game_collection.find({"title.am": {"$regex": title, "$options": "i"}}).count() == 1:
+        if list(game_collection.find({"title.am": {"$regex": title, "$options": "i"}})):
             print(1)
             game_collection.find_one_and_update({'title.am': {'$regex': title, '$options': 'i'}},
                                                 {"$set": {"title.eu": title,
@@ -394,10 +395,10 @@ def getNameByFuzzSearch(title):
     fuzz_ratios = {}
     for game_info in list(game_collection.find()):
         if game_info['title'].__contains__('am'):
-            fuzz_ratios[game_info['title']['am']] = fuzz._token_sort(title, game_info['title']['am'], partial=True,
+            fuzz_ratios[game_info['title']['am']] = fuzz._token_sort(title, game_info['title']['am'], partial=False,
                                                                      full_process=True)
         else:
-            fuzz_ratios[game_info['title']['eu']] = fuzz._token_sort(title, game_info['title']['eu'], partial=True,
+            fuzz_ratios[game_info['title']['eu']] = fuzz._token_sort(title, game_info['title']['eu'], partial=False,
                                                                      full_process=True)
     result = max(fuzz_ratios.items(), key=lambda x: x[1])
     if result[1] > 70:
@@ -414,7 +415,7 @@ def addAcNamesToGameDB():
                 game_collection.find_one_and_update({'title.eu': {"$regex": names['eu_name'], "$options": 'i'}},
                                                     {"$set": {"ac_names": names}})
                 a += 1
-            elif game_collection.find({'title.am': {"$regex": names['eu_name'], "$options": 'i'}}) == 1:
+            elif game_collection.find({'title.am': {"$regex": names['eu_name'], "$options": 'i'}}).count() == 1:
                 game_collection.find_one_and_update({'title.am': {"$regex": names['eu_name'], "$options": 'i'}},
                                                     {"$set": {"ac_names": names}})
                 b += 1
@@ -461,18 +462,6 @@ def linkJPGameAndGame():
     print(c)
     print(d)
 
-
-def testNsuid():
-    for game in game_collection.find({"$and": [{"region": ["eu", "am"]}, {"title.jp": {"$exists": False}}]}):
-        # print(game)
-        try:
-            if int(game["nsuid"]['am']) - int(game["nsuid"]['eu']) == 1 and game_jp_collection.find(
-                    {"nsuid": str(int(game["nsuid"]["am"]) + 1)}).count() == 1:
-                print(game["title"])
-                print(game_jp_collection.find_one({"nsuid": str(int(game["nsuid"]["am"]) + 1)})['title'])
-                print('\n')
-        except:
-            continue
 
 
 if __name__ == '__main__':
