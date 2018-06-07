@@ -142,9 +142,9 @@ def getGamesJP():
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
                     i['iso_code']).lower() else iso639.to_name(i['iso_code']).lower() for i in game['languages']]
 
-            game_jp = game_data.copy()
+            game_jp = game_data
 
-            game_jp = {
+            game_jp.update( {
                 "title": title,
                 "nsuid": nsuid,
                 "img": img,
@@ -155,7 +155,7 @@ def getGamesJP():
                 "region": ['jp'],
                 "language_availability": language_availability,
                 "google_titles": getTitleByGoogle(title, 'jp')
-            }
+            })
             game_jp.update(getPrice(nsuid))
             game_jp_collection.find_one_and_update({'title': title}, {"$set": game_jp}, upsert=True)
 
@@ -179,7 +179,7 @@ def getPrice(nsuid):
 
     elif response['prices'][0].__contains__('regular_price'):
         regular_price = float(response['prices'][0]['regular_price']['raw_value'])
-        currency = response['prices'][0]['discount_price']['currency']
+        currency = response['prices'][0]['regular_price']['currency']
         return {
             {
                 "prices": {currency: regular_price}
