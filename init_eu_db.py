@@ -17,7 +17,7 @@ import iso639
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import html
-
+import copy
 
 # URL
 GET_GAMES_EU_URL = "http://search.nintendo-europe.com/en/select"
@@ -27,12 +27,7 @@ GET_PRICE_URL = "https://api.ec.nintendo.com/v1/price?lang=en"
 GAME_LIST_LIMIT = 200
 PRICE_LIST_LIMIT = 50
 
-
-
-
 REGION_EUROPE = "AT NL FR CZ DK DE ES FI GR HU IT NO PL PT RU ZA SE UK AU NZ".split(' ')
-
-
 
 # 日志设置
 today = datetime.datetime.now().strftime("%Y-%m-%d")  # 记录日志用
@@ -79,11 +74,12 @@ game = {
 
     "google_titles": {},  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
 
-    "eu_discount": None, # 欧服折扣
+    "eu_discount": None,  # 欧服折扣
 
-    "prices": {} # 欧区价格
+    "prices": {}  # 欧区价格
 
 }
+
 
 # 使用Google API获取游戏名称
 def getTitleByGoogle(query, region):
@@ -125,6 +121,7 @@ def getTitleByGoogle(query, region):
     else:
         return {}
 
+
 def getGamesEU():
     params = {
         'fl': "title, nsuid_txt, product_code_txt, date_from, image_url_sq_s, publisher, excerpt, game_categories_txt, language_availability, url",
@@ -146,7 +143,6 @@ def getGamesEU():
         return None
 
     for game_info in result:
-
         title = game_info['title']
         date_from = game_info['date_from'].split('T')[0]
         on_sale = True if (datetime.datetime.strptime(game_info['date_from'].split('T')[0],
@@ -154,7 +150,7 @@ def getGamesEU():
         slug = ('-').join([x.lower() for x in game_info['url'].split('/')[-1].split('-')[:-1] if len(x) > 0])
         nsuid = game_info['nsuid_txt'][0] if game_info.__contains__('nsuid_txt') else None
         publisher = game_info['publisher'] if game_info.__contains__('publisher') else None
-        game_eu = game
+        game_eu = copy.deepcopy(game)
         game_eu.update(
             {
                 "title": title,
@@ -172,16 +168,42 @@ def getGamesEU():
             }
         )
         # 判断有无记录
-        if game_eu_collection.find({'slug': slug}).count() != 0:
-            game_eu_collection.find_one_and_update({'slug': slug}, {
-                "$set": {"nsuid": nsuid, "date_from": date_from, "on_sale": on_sale}})
-        else:
-            game_eu_collection.insert(game_eu)
+        game_eu_collection.find_one_and_update({"slug": slug}, {"$set": game_eu}, upsert=True)
+
+    for country in REGION_EUROPE:
+        getPrice(country)
 
 
-
-
-
+def getPrice(country):
+    offset = 0
+    nsuids = []
+    for game_info in game_eu_collection.find({'nsuid': {"$type": 2}}):
+        nsuids.append(game_info['nsuid'])
+    while (offset < len(nsuids)):
+        params = {
+            'country': country,
+            'ids': nsuids[offset: offset + PRICE_LIST_LIMIT]
+        }
+        offset += PRICE_LIST_LIMIT
+        response = requests.get(url=GET_PRICE_URL, params=params).json()
+        for price in response['prices']:
+            if price.__contains__('discount_price'):
+                discount_price = float(price['discount_price']['raw_value'])
+                regular_price = float(price['regular_price']['raw_value'])
+                am_discount = '%.f%%' % (discount_price / regular_price * 100)
+                currency = price['discount_price']['currency']
+                game_eu_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
+                    "am_discount": am_discount,
+                    "prices": {currency: discount_price}
+                }})
+            elif price.__contains__('regular_price'):
+                regular_price = float(price['regular_price']['raw_value'])
+                currency = price['discount_price']['currency']
+                game_eu_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
+                    "prices": {currency: regular_price}
+                }})
+            else:
+                continue
 
 
 if __name__ == '__main__':

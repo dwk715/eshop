@@ -4,6 +4,7 @@
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/init_am_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_am_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_eu_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_eu_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/init_jp_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_jp_db.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,23 +34,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/init_eu_db.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="183" column="9" selection-start-line="180" selection-start-column="8" selection-end-line="183" selection-end-column="9" />
-                  <folding>
-                    <element signature="e#122#153#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/init_am_db.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="787">
-                  <caret line="237" column="4" selection-start-line="237" selection-start-column="4" selection-end-line="237" selection-end-column="4" />
+                <state relative-caret-position="403">
+                  <caret line="152" column="36" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="36" />
                   <folding>
                     <element signature="e#122#153#0" expanded="true" />
                   </folding>
@@ -61,11 +50,23 @@
       </split-first>
       <split-second>
         <leaf>
+          <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/init_am_db.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="482">
+                  <caret line="178" column="27" lean-forward="true" selection-start-line="178" selection-start-column="27" selection-end-line="178" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#122#153#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/init_jp_db.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="394">
-                  <caret line="70" column="11" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="11" />
+                <state relative-caret-position="278">
+                  <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
                   <folding>
                     <element signature="e#124#155#0" expanded="true" />
                   </folding>
@@ -137,9 +138,9 @@
         <option value="$PROJECT_DIR$/init_db.py" />
         <option value="$PROJECT_DIR$/init_db.py" />
         <option value="$PROJECT_DIR$/test_price.py" />
+        <option value="$PROJECT_DIR$/init_am_db.py" />
         <option value="$PROJECT_DIR$/init_eu_db.py" />
         <option value="$PROJECT_DIR$/init_jp_db.py" />
-        <option value="$PROJECT_DIR$/init_am_db.py" />
       </list>
     </option>
   </component>
@@ -381,20 +382,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00067" summary="fix bugs">
-      <created>1527211366406</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1527211366406</updated>
-    </task>
-    <task id="LOCAL-00068" summary="fix bugs">
-      <created>1527214248737</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1527214248738</updated>
     </task>
     <task id="LOCAL-00069" summary="fix bugs">
       <created>1527219101244</created>
@@ -725,7 +712,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528365973203</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="美服获取价格">
+      <created>1528370517810</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1528370517811</updated>
+    </task>
+    <task id="LOCAL-00117" summary="美服获取价格">
+      <created>1528371099441</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1528371099441</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TodoView">
@@ -748,7 +749,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49944258" weight="0.32942432" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3292683" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4959217" weight="0.23085107" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14492753" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14441417" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32960597" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -771,7 +772,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="init commit" />
     <MESSAGE value="添加 init_name_db 描述" />
     <MESSAGE value="添加 init_db 描述" />
     <MESSAGE value="更新Pipfile" />
@@ -796,7 +796,8 @@
     <MESSAGE value="优化 JP games DB" />
     <MESSAGE value="fix bugs" />
     <MESSAGE value="日服获取价格" />
-    <option name="LAST_COMMIT_MESSAGE" value="日服获取价格" />
+    <MESSAGE value="美服获取价格" />
+    <option name="LAST_COMMIT_MESSAGE" value="美服获取价格" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -980,8 +981,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_eu_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="183" column="9" selection-start-line="180" selection-start-column="8" selection-end-line="183" selection-end-column="9" />
+        <state relative-caret-position="403">
+          <caret line="152" column="36" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="36" />
+          <folding>
+            <element signature="e#122#153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init_am_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="178" column="27" lean-forward="true" selection-start-line="178" selection-start-column="27" selection-end-line="178" selection-end-column="27" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>
@@ -990,20 +1001,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_jp_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="70" column="11" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="11" />
+        <state relative-caret-position="278">
+          <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
           <folding>
             <element signature="e#124#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init_am_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="787">
-          <caret line="237" column="4" selection-start-line="237" selection-start-column="4" selection-end-line="237" selection-end-column="4" />
-          <folding>
-            <element signature="e#122#153#0" expanded="true" />
           </folding>
         </state>
       </provider>

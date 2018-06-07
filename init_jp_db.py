@@ -16,6 +16,7 @@ import re
 import iso639
 from fuzzywuzzy import fuzz
 import html
+import copy
 
 GUESS_GAMES_GP_URL = 'https://ec.nintendo.com/JP/ja/titles/'
 GET_PRICE_URL = "https://api.ec.nintendo.com/v1/price?lang=en"
@@ -40,7 +41,7 @@ game_jp_collection = db['jp_game']
 name_collection = db['name']
 
 # 定义数据库格式
-game_data = {
+game = {
 
     "title": {},  # title --> string 游戏名称
 
@@ -142,7 +143,7 @@ def getGamesJP():
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
                     i['iso_code']).lower() else iso639.to_name(i['iso_code']).lower() for i in game['languages']]
 
-            game_jp = game_data
+            game_jp = copy.deepcopy(game)
 
             game_jp.update({
                 "title": title,

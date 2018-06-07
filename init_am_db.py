@@ -17,6 +17,7 @@ import iso639
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import html
+import copy
 
 # URL
 GET_GAMES_AM_URL = "http://www.nintendo.com/json/content/get/filter/game?system=switch"
@@ -173,7 +174,7 @@ def getGamesAM():
         nsuid = game_info['nsuid'] if game_info.__contains__('nsuid') else None
         date_from = datetime.datetime.strptime(game_info['release_date'], "%b %d, %Y").strftime("%Y-%m-%d")
         slug = game_info['slug'] if 'nintendo-switch' in game_info['slug'] else game_info['slug'].replace('-switch', '')
-        game_am = game
+        game_am = copy.deepcopy(game)
         game_am.update({
             "title": title,
             "slug": slug,
