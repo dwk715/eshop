@@ -195,5 +195,9 @@ def getGamesAM():
         else:
             game_am_collection.insert(game_am)
 
+def getPrice():
+    nsuids = []
+    for game_info in game_am_collection.find({})
+
 if __name__ == '__main__':
     getGamesAM()

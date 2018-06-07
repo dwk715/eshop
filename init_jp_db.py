@@ -77,9 +77,9 @@ def getTitleByGoogle(query, region):
     api_key = "AIzaSyBW2n_2ZD7q-anVs2UL_WA8xESG7uqokdw"
     service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
     if 'アケアカNEOGEO' in query:
-        query = query.split('アケアカNEOGEO ')[1]
+        query = query.split('アケアカNEOGEO ')[0]
     if 'アーケードアーカイブス' in query:
-        query = query.split('アーケードアーカイブス ')[1]
+        query = query.split('アーケードアーカイブス ')[0]
     params = {
         'query': query,
         'limit': 10,
