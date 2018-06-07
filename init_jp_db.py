@@ -18,6 +18,7 @@ from fuzzywuzzy import fuzz
 import html
 
 GUESS_GAMES_GP_URL = 'https://ec.nintendo.com/JP/ja/titles/'
+GET_PRICE_URL = "https://api.ec.nintendo.com/v1/price?lang=en"
 
 NSUID_REGEX_JP = r'\d{14}'
 JSON_REGEX = r'NXSTORE\.titleDetail\.jsonData = ([^;]+);'
@@ -63,7 +64,11 @@ game_data = {
 
     "language_availability": {},  # language_availability --> {} 支持的语言，美服无法获取数据，只取欧服和日服
 
-    "google_titles": {}  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
+    "google_titles": {},  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
+
+    "jp_discount": None,  # 日服折扣
+
+    "prices": {}  # 日服价格
 
 }
 
@@ -116,7 +121,7 @@ def getGamesJP():
 
             game = json.loads(re.search(JSON_REGEX, r.text).group(1))
 
-            title = game['formal_name']
+            title = html.unescape(game['formal_name'])
 
             nsuid = str(game['id'])
             try:
@@ -140,7 +145,7 @@ def getGamesJP():
             game_jp = game_data.copy()
 
             game_jp = {
-                "title": html.unescape(title),
+                "title": title,
                 "nsuid": nsuid,
                 "img": img,
                 "excerpt": excerpt,
@@ -151,7 +156,37 @@ def getGamesJP():
                 "language_availability": language_availability,
                 "google_titles": getTitleByGoogle(title, 'jp')
             }
+            game_jp.update(getPrice(nsuid))
             game_jp_collection.find_one_and_update({'title': title}, {"$set": game_jp}, upsert=True)
+
+
+
+def getPrice(nsuid):
+    params = {
+        'country': "JP",
+        'ids': nsuid,
+    }
+    response = requests.get(url=GET_PRICE_URL, params=params).json()
+    if response['prices'][0].__contains__('discount_price'):
+        discount_price = float(response['prices'][0]['discount_price']['raw_value'])
+        regular_price = float(response['prices'][0]['regular_price']['raw_value'])
+        jp_discount = '%.f%%' % (discount_price / regular_price * 100)
+        currency = response['prices'][0]['discount_price']['currency']
+        return {
+            "jp_discount": jp_discount,
+            "prices": {currency: discount_price}
+        }
+
+    elif response['prices'][0].__contains__('regular_price'):
+        regular_price = float(response['prices'][0]['regular_price']['raw_value'])
+        currency = response['prices'][0]['discount_price']['currency']
+        return {
+            {
+                "prices": {currency: regular_price}
+            }
+        }
+    else:
+        print(nsuid)
 
 
 def getNameByFuzzSearch(title):
@@ -194,4 +229,4 @@ def addAcNamesToJPNameDB():
 
 if __name__ == '__main__':
     getGamesJP()
-    addAcNamesToJPNameDB()
+    # addAcNamesToJPNameDB()

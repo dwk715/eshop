@@ -28,19 +28,11 @@ GAME_LIST_LIMIT = 200
 PRICE_LIST_LIMIT = 50
 
 
-GAME_CHECK_CODE_US = 70010000000185
-GAME_CHECK_CODE_EU = 70010000000184
-GAME_CHECK_CODE_JP = 70010000000039
-FIRST_NSUID = 70010000000026
 
-REGION_ASIA = "CN HK AE AZ HK IN JP KR MY SA SG TR TW".split(' ')
-REGION_EUROPE = "AD AL AT AU BA BE BG BW CH CY CZ DE DJ DK EE ER ES FI FR GB GG GI GR HR HU IE IM IS IT JE LI LS LT LU LV MC ME MK ML MR MT MZ NA NE NL NO NZ PL PT RO RS RU SD SE SI SK SM SO SZ TD VA ZA ZM ZW".split(
-    ' ')
-REGION_AMERICA = "AG AI AR AW BB BM BO BR BS BZ CA CL CO CR DM DO EC GD GF GP GT GY HN HT JM KN KY LC MQ MS MX NI PA PE PY SR SV TC TT US UY VC VE VG VI".split(
-    ' ')
 
-COUNTRIES = "AT AU BE BG CA CH CY CZ DE DK EE ES FI FR GB GR HR HU IE IT JP LT LU LV MT MX NL NO NZ PL PT RO RU SE SI SK US ZA".split(
-    ' ')
+REGION_EUROPE = "AT NL FR CZ DK DE ES FI GR HU IT NO PL PT RU ZA SE UK AU NZ".split(' ')
+
+
 
 # 日志设置
 today = datetime.datetime.now().strftime("%Y-%m-%d")  # 记录日志用
@@ -85,7 +77,9 @@ game = {
 
     "language_availability": [],  # language_availability --> {} 支持的语言，美服无法获取数据，只取欧服和日服
 
-    "google_titles": {}  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
+    "google_titles": {},  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
+
+    "eu_discount": False # 欧服是否在打折
 
 }
 
@@ -181,6 +175,18 @@ def getGamesEU():
                 "$set": {"nsuid": nsuid, "date_from": date_from, "on_sale": on_sale}})
         else:
             game_eu_collection.insert(game_eu)
+
+def getPrice(nsuid):
+    for country in REGION_EUROPE:
+        params = {
+            'country': country,
+            'ids': nsuid,
+        }
+        response = requests.get(url=GET_PRICE_URL,params=params).json()
+        if response['prices'][0].__contains__('discount_price'):
+
+
+
 
 if __name__ == '__main__':
     getGamesEU()
