@@ -144,7 +144,7 @@ def getGamesJP():
 
             game_jp = game_data
 
-            game_jp.update( {
+            game_jp.update({
                 "title": title,
                 "nsuid": nsuid,
                 "img": img,
@@ -164,7 +164,6 @@ def getGamesJP():
                 }
             })
             game_jp_collection.find_one_and_update({'title': title}, {"$set": game_jp}, upsert=True)
-
 
 
 def getPrice(nsuid):

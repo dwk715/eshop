@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_am_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_am_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/init_jp_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_jp_db.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,44 +30,52 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/init_eu_db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="183" column="9" lean-forward="true" selection-start-line="180" selection-start-column="8" selection-end-line="183" selection-end-column="9" />
-              <folding>
-                <element signature="e#122#153#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/init_am_db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="80" column="4" lean-forward="true" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="34" />
-              <folding>
-                <element signature="e#122#153#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/init_jp_db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="186" column="26" lean-forward="true" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
-              <folding>
-                <element signature="e#124#155#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/init_eu_db.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret line="183" column="9" selection-start-line="180" selection-start-column="8" selection-end-line="183" selection-end-column="9" />
+                  <folding>
+                    <element signature="e#122#153#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/init_am_db.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="787">
+                  <caret line="237" column="4" selection-start-line="237" selection-start-column="4" selection-end-line="237" selection-end-column="4" />
+                  <folding>
+                    <element signature="e#122#153#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/init_jp_db.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="394">
+                  <caret line="70" column="11" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="11" />
+                  <folding>
+                    <element signature="e#124#155#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -91,10 +100,10 @@
       <find>print</find>
       <find>fuzz</find>
       <find>fuzz.ratio(</find>
-      <find>con</find>
       <find>partial=True</find>
       <find>game_info</find>
       <find>GET_GAMES_US_URL</find>
+      <find>con</find>
     </findStrings>
     <replaceStrings>
       <replace>game_collection</replace>
@@ -128,9 +137,9 @@
         <option value="$PROJECT_DIR$/init_db.py" />
         <option value="$PROJECT_DIR$/init_db.py" />
         <option value="$PROJECT_DIR$/test_price.py" />
-        <option value="$PROJECT_DIR$/init_am_db.py" />
         <option value="$PROJECT_DIR$/init_eu_db.py" />
         <option value="$PROJECT_DIR$/init_jp_db.py" />
+        <option value="$PROJECT_DIR$/init_am_db.py" />
       </list>
     </option>
   </component>
@@ -143,10 +152,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="43" />
     <option name="y" value="22" />
-    <option name="width" value="1877" />
+    <option name="width" value="939" />
     <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -155,7 +164,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,6 +175,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -372,20 +381,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00065" summary="单独添加日服数据库">
-      <created>1527209789279</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1527209789280</updated>
-    </task>
-    <task id="LOCAL-00066" summary="单独添加日服数据库">
-      <created>1527211250015</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1527211250015</updated>
     </task>
     <task id="LOCAL-00067" summary="fix bugs">
       <created>1527211366406</created>
@@ -716,7 +711,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528356715075</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="日服获取价格">
+      <created>1528360663871</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1528360663871</updated>
+    </task>
+    <task id="LOCAL-00115" summary="日服获取价格">
+      <created>1528365973203</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1528365973203</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TodoView">
@@ -729,30 +738,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="22" width="1877" height="1058" extended-state="0" />
+    <frame x="43" y="22" width="1877" height="1058" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005574" side_tool="true" weight="0.23027718" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32978722" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49944258" weight="0.32942432" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3292683" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32978722" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4959217" weight="0.23085107" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14550409" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.14492753" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32960597" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32978722" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -969,20 +978,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_am_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="80" column="4" lean-forward="true" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="34" />
-          <folding>
-            <element signature="e#122#153#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/init_eu_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="183" column="9" lean-forward="true" selection-start-line="180" selection-start-column="8" selection-end-line="183" selection-end-column="9" />
+        <state>
+          <caret line="183" column="9" selection-start-line="180" selection-start-column="8" selection-end-line="183" selection-end-column="9" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>
@@ -991,10 +990,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_jp_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="186" column="26" lean-forward="true" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
+        <state relative-caret-position="394">
+          <caret line="70" column="11" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="11" />
           <folding>
             <element signature="e#124#155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init_am_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="787">
+          <caret line="237" column="4" selection-start-line="237" selection-start-column="4" selection-end-line="237" selection-end-column="4" />
+          <folding>
+            <element signature="e#122#153#0" expanded="true" />
           </folding>
         </state>
       </provider>

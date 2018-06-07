@@ -18,7 +18,6 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import html
 
-
 # URL
 GET_GAMES_AM_URL = "http://www.nintendo.com/json/content/get/filter/game?system=switch"
 GET_GAMES_EU_URL = "http://search.nintendo-europe.com/en/select"
@@ -30,7 +29,6 @@ GET_AC_GAMER_URL = "https://acg.gamer.com.tw/index.php?&p=NS"
 # params 参数
 GAME_LIST_LIMIT = 200
 PRICE_LIST_LIMIT = 50
-
 
 REGION_AMERICA = "US CA MX".split(' ')
 
@@ -49,7 +47,6 @@ mg_client = MongoClient(host='172.105.216.212',
                         authSource='eshop_price')
 db = mg_client['eshop_price']
 game_am_collection = db['am_game']
-
 
 # 数据库格式
 game = {
@@ -78,9 +75,12 @@ game = {
 
     "google_titles": {},  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
 
-    "am_discount": False # 美服是否在打折
+    "am_discount": None,  # 美服折扣
+
+    "prices": {} # 美区价格
 
 }
+
 
 # 使用Google API获取游戏名称
 def getTitleByGoogle(query, region):
@@ -121,6 +121,7 @@ def getTitleByGoogle(query, region):
         return titles
     else:
         return {}
+
 
 # 美服DB录入
 def getAMGameOffeset(times):
@@ -172,8 +173,8 @@ def getGamesAM():
         nsuid = game_info['nsuid'] if game_info.__contains__('nsuid') else None
         date_from = datetime.datetime.strptime(game_info['release_date'], "%b %d, %Y").strftime("%Y-%m-%d")
         slug = game_info['slug'] if 'nintendo-switch' in game_info['slug'] else game_info['slug'].replace('-switch', '')
-        game_am = game.copy()
-        game_am = {
+        game_am = game
+        game_am.update({
             "title": title,
             "slug": slug,
             "nsuid": game_info['nsuid'] if game_info.__contains__('nsuid') else {},
@@ -187,17 +188,51 @@ def getGamesAM():
             "region": 'am',
             "publisher": None,
             "google_titles": getTitleByGoogle(title, 'en')
-        }
+        })
         # 判断有无记录
         if game_am_collection.find({'slug': slug}).count() != 0:
             game_am_collection.find_one_and_update({'slug': slug}, {
-                "$set": {"title": title,"nsuid": nsuid, "date_from": date_from, "on_sale": on_sale}})
+                "$set": {"title": title, "nsuid": nsuid, "date_from": date_from, "on_sale": on_sale}})
         else:
             game_am_collection.insert(game_am)
 
-def getPrice():
+    for country in REGION_AMERICA:
+        getPrice(country)
+
+
+def getPrice(country):
+    offset = 0
     nsuids = []
-    for game_info in game_am_collection.find({})
+    for game_info in game_am_collection.find({'nsuid': {"$type": 2}}):
+        nsuids.append(game_info['nsuid'])
+    while (offset < len(nsuids)):
+        params = {
+            'country': country,
+            'ids': nsuids[offset: offset + PRICE_LIST_LIMIT]
+        }
+        offset += PRICE_LIST_LIMIT
+        response = requests.get(url=GET_PRICE_URL, params=params).json()
+        for price in response['prices']:
+            if price.__contains__('discount_price'):
+                discount_price = float(price['discount_price']['raw_value'])
+                regular_price = float(price['regular_price']['raw_value'])
+                am_discount = '%.f%%' % (discount_price / regular_price * 100)
+                currency = price['discount_price']['currency']
+                game_am_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set":{
+                    "am_discount": am_discount,
+                    "prices": {currency: discount_price}
+                }})
+            elif price.__contains__('regular_price'):
+                regular_price = float(price['regular_price']['raw_value'])
+                currency = price['discount_price']['currency']
+                game_am_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
+                    "prices": {currency: regular_price}
+                }})
+            else:
+                continue
+
+
 
 if __name__ == '__main__':
     getGamesAM()
+    # getPrice('CA')
