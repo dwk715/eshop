@@ -156,7 +156,13 @@ def getGamesJP():
                 "language_availability": language_availability,
                 "google_titles": getTitleByGoogle(title, 'jp')
             })
-            game_jp.update(getPrice(nsuid))
+            currency, price, jp_discount = getPrice(nsuid)
+            game_jp.update({
+                "jp_discount": jp_discount,
+                "prices": {
+                    currency: price
+                }
+            })
             game_jp_collection.find_one_and_update({'title': title}, {"$set": game_jp}, upsert=True)
 
 
@@ -172,21 +178,14 @@ def getPrice(nsuid):
         regular_price = float(response['prices'][0]['regular_price']['raw_value'])
         jp_discount = '%.f%%' % (discount_price / regular_price * 100)
         currency = response['prices'][0]['discount_price']['currency']
-        prices = {currency: discount_price}
-        return {
-            "jp_discount": jp_discount,
-            "prices": prices
-        }
+
+        return currency, discount_price, jp_discount
 
     elif response['prices'][0].__contains__('regular_price'):
         regular_price = float(response['prices'][0]['regular_price']['raw_value'])
         currency = response['prices'][0]['regular_price']['currency']
-        prices = {currency: regular_price}
-        return {
-            {
-                "prices": prices
-            }
-        }
+        jp_discount = None
+        return currency, regular_price, jp_discount
     else:
         print(nsuid)
 
