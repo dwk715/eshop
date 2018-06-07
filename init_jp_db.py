@@ -172,17 +172,19 @@ def getPrice(nsuid):
         regular_price = float(response['prices'][0]['regular_price']['raw_value'])
         jp_discount = '%.f%%' % (discount_price / regular_price * 100)
         currency = response['prices'][0]['discount_price']['currency']
+        prices = {currency: discount_price}
         return {
             "jp_discount": jp_discount,
-            "prices": {currency: discount_price}
+            "prices": prices
         }
 
     elif response['prices'][0].__contains__('regular_price'):
         regular_price = float(response['prices'][0]['regular_price']['raw_value'])
         currency = response['prices'][0]['regular_price']['currency']
+        prices = {currency: regular_price}
         return {
             {
-                "prices": {currency: regular_price}
+                "prices": prices
             }
         }
     else:
