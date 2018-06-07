@@ -79,7 +79,9 @@ game = {
 
     "google_titles": {},  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
 
-    "eu_discount": False # 欧服是否在打折
+    "eu_discount": None, # 欧服折扣
+
+    "prices": {} # 欧区价格
 
 }
 
@@ -152,7 +154,7 @@ def getGamesEU():
         slug = ('-').join([x.lower() for x in game_info['url'].split('/')[-1].split('-')[:-1] if len(x) > 0])
         nsuid = game_info['nsuid_txt'][0] if game_info.__contains__('nsuid_txt') else None
         publisher = game_info['publisher'] if game_info.__contains__('publisher') else None
-        game_eu = game.copy()
+        game_eu = game
         game_eu.update(
             {
                 "title": title,
@@ -176,14 +178,8 @@ def getGamesEU():
         else:
             game_eu_collection.insert(game_eu)
 
-def getPrice(nsuid):
-    for country in REGION_EUROPE:
-        params = {
-            'country': country,
-            'ids': nsuid,
-        }
-        response = requests.get(url=GET_PRICE_URL,params=params).json()
-        if response['prices'][0].__contains__('discount_price'):
+
+
 
 
 

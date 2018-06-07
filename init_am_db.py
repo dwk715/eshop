@@ -190,11 +190,7 @@ def getGamesAM():
             "google_titles": getTitleByGoogle(title, 'en')
         })
         # 判断有无记录
-        if game_am_collection.find({'slug': slug}).count() != 0:
-            game_am_collection.find_one_and_update({'slug': slug}, {
-                "$set": {"title": title, "nsuid": nsuid, "date_from": date_from, "on_sale": on_sale}})
-        else:
-            game_am_collection.insert(game_am)
+        game_am_collection.find_one_and_update({'slug': slug}, {"$set": game_am}, upsert=True)
 
     for country in REGION_AMERICA:
         getPrice(country)
