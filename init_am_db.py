@@ -221,7 +221,7 @@ def getPrice(country):
                 }})
             elif price.__contains__('regular_price'):
                 regular_price = float(price['regular_price']['raw_value'])
-                currency = price['discount_price']['currency']
+                currency = price['regular_price']['currency']
                 game_am_collection.find_one_and_update({'nsuid': str(price['title_id'])}, {"$set": {
                     "prices": {currency: regular_price}
                 }})
