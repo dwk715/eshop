@@ -193,43 +193,44 @@ def getGamesAM():
         # 判断有无记录
         game_am_collection.find_one_and_update({'slug': slug}, {"$set": game_am}, upsert=True)
 
+
+
+
+
+def getPrice():
     for country in REGION_AMERICA:
-        getPrice(country)
-
-
-def getPrice(country):
-    offset = 0
-    nsuids = []
-    for game_info in game_am_collection.find({'nsuid': {"$type": 2}}):
-        nsuids.append(game_info['nsuid'])
-    while (offset < len(nsuids)):
-        params = {
-            'country': country,
-            'ids': nsuids[offset: offset + PRICE_LIST_LIMIT]
-        }
-        offset += PRICE_LIST_LIMIT
-        response = requests.get(url=GET_PRICE_URL, params=params).json()
-        for price in response['prices']:
-            if price.__contains__('discount_price'):
-                discount_price = float(price['discount_price']['raw_value'])
-                regular_price = float(price['regular_price']['raw_value'])
-                am_discount = '%.f%%' % (discount_price / regular_price * 100)
-                currency = price['discount_price']['currency']
-                game_am_collection.find_one_and_update({'nsuid': str(price['title_id'])}, {"$set":{
-                    "am_discount": am_discount,
-                    "prices": {currency: discount_price}
-                }})
-            elif price.__contains__('regular_price'):
-                regular_price = float(price['regular_price']['raw_value'])
-                currency = price['regular_price']['currency']
-                game_am_collection.find_one_and_update({'nsuid': str(price['title_id'])}, {"$set": {
-                    "prices": {currency: regular_price}
-                }})
-            else:
-                continue
+        offset = 0
+        nsuids = []
+        for game_info in game_am_collection.find({'nsuid': {"$type": 2}}):
+            nsuids.append(game_info['nsuid'])
+        while (offset < len(nsuids)):
+            params = {
+                'country': country,
+                'ids': nsuids[offset: offset + PRICE_LIST_LIMIT]
+            }
+            offset += PRICE_LIST_LIMIT
+            response = requests.get(url=GET_PRICE_URL, params=params).json()
+            for price in response['prices']:
+                if price.__contains__('discount_price'):
+                    discount_price = float(price['discount_price']['raw_value'])
+                    regular_price = float(price['regular_price']['raw_value'])
+                    am_discount = '%.f%%' % (discount_price / regular_price * 100)
+                    currency = price['discount_price']['currency']
+                    game_am_collection.find_one_and_update({'nsuid': str(price['title_id'])}, {"$set":{
+                        "am_discount": am_discount,
+                        "prices": {currency: discount_price}
+                    }})
+                elif price.__contains__('regular_price'):
+                    regular_price = float(price['regular_price']['raw_value'])
+                    currency = price['regular_price']['currency']
+                    game_am_collection.find_one_and_update({'nsuid': str(price['title_id'])}, {"$set": {
+                        "prices": {currency: regular_price}
+                    }})
+                else:
+                    continue
 
 
 
 if __name__ == '__main__':
     getGamesAM()
-    # getPrice('CA')
+    getPrice()
