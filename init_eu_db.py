@@ -211,5 +211,5 @@ def getPrice():
 
 
 if __name__ == '__main__':
-    # getGamesEU()
+    getGamesEU()
     getPrice()
