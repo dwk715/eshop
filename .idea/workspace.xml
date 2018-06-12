@@ -33,8 +33,8 @@
       <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_eu_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="34" column="40" lean-forward="true" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+            <state relative-caret-position="83">
+              <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -409,13 +409,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
     </task>
-    <task id="LOCAL-00075" summary="完善nameDB和gameDB的链接">
-      <created>1527470950466</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1527470950466</updated>
-    </task>
     <task id="LOCAL-00076" summary="完善nameDB和gameDB的链接">
       <created>1527475323568</created>
       <option name="number" value="00076" />
@@ -752,7 +745,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528762870039</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="欧服添加暂停，防止价格API请求过多被干掉">
+      <created>1528767740805</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1528767740806</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1023,8 +1023,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_eu_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="34" column="40" lean-forward="true" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+        <state relative-caret-position="83">
+          <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>

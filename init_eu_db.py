@@ -84,6 +84,7 @@ game = {
 
 # 使用Google API获取游戏名称
 def getTitleByGoogle(query, region):
+    time.sleep(5)
     api_key = "AIzaSyBW2n_2ZD7q-anVs2UL_WA8xESG7uqokdw"
     service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
     if 'ACA NEOGEO' in query:
