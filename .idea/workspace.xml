@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init_am_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_am_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/init_eu_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_eu_db.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +33,8 @@
       <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_eu_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="803">
-              <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
+            <state relative-caret-position="558">
+              <caret line="34" column="40" lean-forward="true" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -123,6 +122,7 @@
       <find>game_info</find>
       <find>GET_GAMES_US_URL</find>
       <find>con</find>
+      <find>GB</find>
     </findStrings>
     <replaceStrings>
       <replace>game_collection</replace>
@@ -408,27 +408,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00072" summary="fix bugs">
-      <created>1527237537183</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1527237537183</updated>
-    </task>
-    <task id="LOCAL-00073" summary="完善nameDB和gameDB的链接">
-      <created>1527470313785</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1527470313786</updated>
-    </task>
-    <task id="LOCAL-00074" summary="完善nameDB和gameDB的链接">
-      <created>1527470897080</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1527470897081</updated>
     </task>
     <task id="LOCAL-00075" summary="完善nameDB和gameDB的链接">
       <created>1527470950466</created>
@@ -752,7 +731,28 @@
       <option name="project" value="LOCAL" />
       <updated>1528440166486</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="修改getPrice单独运行">
+      <created>1528705174236</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1528705174236</updated>
+    </task>
+    <task id="LOCAL-00122" summary="欧服添加暂停，防止价格API请求过多被干掉">
+      <created>1528762686302</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1528762686303</updated>
+    </task>
+    <task id="LOCAL-00123" summary="欧服添加暂停，防止价格API请求过多被干掉">
+      <created>1528762870039</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1528762870039</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TodoView">
@@ -798,8 +798,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="添加 init_db 描述" />
-    <MESSAGE value="更新Pipfile" />
     <MESSAGE value="移除db" />
     <MESSAGE value="更新README" />
     <MESSAGE value="服务器采集name信息" />
@@ -823,7 +821,9 @@
     <MESSAGE value="美服获取价格" />
     <MESSAGE value="fix bugs" />
     <MESSAGE value="price 的 nsuid 为 int，修改为str" />
-    <option name="LAST_COMMIT_MESSAGE" value="price 的 nsuid 为 int，修改为str" />
+    <MESSAGE value="修改getPrice单独运行" />
+    <MESSAGE value="欧服添加暂停，防止价格API请求过多被干掉" />
+    <option name="LAST_COMMIT_MESSAGE" value="欧服添加暂停，防止价格API请求过多被干掉" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1023,8 +1023,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_eu_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="803">
-          <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
+        <state relative-caret-position="558">
+          <caret line="34" column="40" lean-forward="true" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>

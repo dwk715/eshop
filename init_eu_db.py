@@ -28,7 +28,7 @@ GET_PRICE_URL = "https://api.ec.nintendo.com/v1/price?lang=en"
 GAME_LIST_LIMIT = 200
 PRICE_LIST_LIMIT = 50
 
-REGION_EUROPE = "AT NL FR CZ DK DE ES FI GR HU IT NO PL PT RU ZA SE UK AU NZ".split(' ')
+REGION_EUROPE = "AT NL FR CZ DK DE ES FI GR HU IT NO PL PT RU ZA SE GB AU NZ".split(' ')
 
 # 日志设置
 today = datetime.datetime.now().strftime("%Y-%m-%d")  # 记录日志用
