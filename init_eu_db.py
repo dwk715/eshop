@@ -18,6 +18,7 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import html
 import copy
+import time
 
 # URL
 GET_GAMES_EU_URL = "http://search.nintendo-europe.com/en/select"
@@ -187,6 +188,7 @@ def getPrice():
             }
             offset += PRICE_LIST_LIMIT
             response = requests.get(url=GET_PRICE_URL, params=params).json()
+            print(requests.get(url=GET_PRICE_URL, params=params).url)
             for price in response['prices']:
                 if price.__contains__('discount_price'):
                     discount_price = float(price['discount_price']['raw_value'])
@@ -205,6 +207,7 @@ def getPrice():
                     }})
                 else:
                     continue
+        time.sleep(30)
 
 
 if __name__ == '__main__':
