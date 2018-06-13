@@ -227,5 +227,5 @@ def getPrice():
 
 
 if __name__ == '__main__':
-    # getGamesAM()
+    getGamesAM()
     getPrice()
