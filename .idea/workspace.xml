@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init_db/init_am_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_am_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/init_db/init_eu_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_eu_db.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="196" column="95" selection-start-line="196" selection-start-column="95" selection-end-line="196" selection-end-column="95" />
+            <state relative-caret-position="785">
+              <caret line="210" column="4" selection-start-line="210" selection-start-column="4" selection-end-line="210" selection-end-column="4" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -55,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init_db/init_am_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="202" column="37" lean-forward="true" selection-start-line="202" selection-start-column="37" selection-end-line="202" selection-end-column="37" />
+            <state relative-caret-position="407">
+              <caret line="211" column="16" selection-start-line="211" selection-start-column="16" selection-end-line="211" selection-end-column="41" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -537,20 +536,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
     </task>
-    <task id="LOCAL-00081" summary="完善JpDB">
-      <created>1527552806968</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1527552806968</updated>
-    </task>
-    <task id="LOCAL-00082" summary="完善JpDB">
-      <created>1527575196497</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1527575196497</updated>
-    </task>
     <task id="LOCAL-00083" summary="完善JpDB">
       <created>1527575350201</created>
       <option name="number" value="00083" />
@@ -880,7 +865,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528868853192</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="fix bugs">
+      <created>1528869118874</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1528869118875</updated>
+    </task>
+    <task id="LOCAL-00131" summary="fix bugs">
+      <created>1528870568186</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1528870568186</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TodoView">
@@ -943,7 +942,6 @@
     <MESSAGE value="优化 JP games DB" />
     <MESSAGE value="日服获取价格" />
     <MESSAGE value="美服获取价格" />
-    <MESSAGE value="fix bugs" />
     <MESSAGE value="price 的 nsuid 为 int，修改为str" />
     <MESSAGE value="修改getPrice单独运行" />
     <MESSAGE value="欧服添加暂停，防止价格API请求过多被干掉" />
@@ -951,7 +949,8 @@
     <MESSAGE value="美服，欧服：price fix bugs&#10;日服：修改 prices" />
     <MESSAGE value="日服：修改 prices" />
     <MESSAGE value="fix nsuid $type" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix nsuid $type" />
+    <MESSAGE value="fix bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1148,20 +1147,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_am_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="196" column="95" selection-start-line="196" selection-start-column="95" selection-end-line="196" selection-end-column="95" />
+        <state relative-caret-position="407">
+          <caret line="211" column="16" selection-start-line="211" selection-start-column="16" selection-end-line="211" selection-end-column="41" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_db/init_am_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="202" column="37" lean-forward="true" selection-start-line="202" selection-start-column="37" selection-end-line="202" selection-end-column="37" />
+        <state relative-caret-position="785">
+          <caret line="210" column="4" selection-start-line="210" selection-start-column="4" selection-end-line="210" selection-end-column="4" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>
