@@ -40,9 +40,9 @@ if __name__ == '__main__':
     }
 
     scheduler = BackgroundScheduler(job_stores=job_stores, executors=executors, job_defaults=job_defaults)
-    scheduler.add_job(getGamesJP, 'interval', days=1, start_date='2018-6-14 00:00:00')
-    scheduler.add_job(getGamesAM, 'interval', days=1, start_date='2018-6-14 01:00:00')
-    scheduler.add_job(getGamesEU, 'interval', days=1, start_date='2018-6-14 02:00:00')
+    scheduler.add_job(getGamesJP, 'interval', days=1, start_date='2018-6-13 16:20:00')
+    # scheduler.add_job(getGamesAM, 'interval', days=1, start_date='2018-6-13 01:00:00')
+    # scheduler.add_job(getGamesEU, 'interval', days=1, start_date='2018-6-13 02:00:00')
 
     try:
         scheduler.start()
