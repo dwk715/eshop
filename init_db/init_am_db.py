@@ -214,13 +214,13 @@ def getPrice():
                     regular_price = float(price['regular_price']['raw_value'])
                     am_discount = '%.f%%' % (discount_price / regular_price * 100)
                     currency = price['discount_price']['currency']
-                    game_am_collection.find_one_and_update({'nsuid': price['title_id']}, {"$addToSet": {
+                    game_am_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
                         "prices": {country: {currency: discount_price}, "discount": am_discount}
                     }})
                 elif price.__contains__('regular_price'):
                     regular_price = float(price['regular_price']['raw_value'])
                     currency = price['regular_price']['currency']
-                    game_am_collection.find_one_and_update({'nsuid': price['title_id']}, {"$addToSet": {
+                    game_am_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
                         "prices": {country: {currency: regular_price}}
                     }})
                 else:
