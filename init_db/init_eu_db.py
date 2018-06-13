@@ -169,6 +169,7 @@ def getGamesEU():
         )
         # 判断有无记录
         game_eu_collection.find_one_and_update({"slug": slug}, {"$set": game_eu}, upsert=True)
+    getPrice()
 
 
 def getPrice():
@@ -207,5 +208,5 @@ def getPrice():
 
 
 if __name__ == '__main__':
-    # getGamesEU()
-    getPrice()
+    getGamesEU()
+

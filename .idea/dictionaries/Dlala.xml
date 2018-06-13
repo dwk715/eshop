@@ -5,9 +5,11 @@
       <w>eshop</w>
       <w>lxml</w>
       <w>maintitle</w>
+      <w>mongo</w>
       <w>nintendoswitch</w>
       <w>nsuid</w>
       <w>nsuids</w>
+      <w>processpool</w>
     </words>
   </dictionary>
 </component>

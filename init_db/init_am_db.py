@@ -192,6 +192,7 @@ def getGamesAM():
         })
         # 判断有无记录
         game_am_collection.find_one_and_update({'slug': slug}, {"$set": game_am}, upsert=True)
+    getPrice()
 
 
 def getPrice():
@@ -229,5 +230,5 @@ def getPrice():
 
 
 if __name__ == '__main__':
-    # getGamesAM()
-    getPrice()
+    getGamesAM()
+
