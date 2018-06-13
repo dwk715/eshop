@@ -198,7 +198,7 @@ def getPrice():
     for country in REGION_AMERICA:
         offset = 0
         nsuids = []
-        for game_info in game_am_collection.find({'nsuid': {"$type": 2}}):
+        for game_info in game_am_collection.find({'nsuid': {"$type": 18}}):
             nsuids.append(game_info['nsuid'])
         while (offset < len(nsuids)):
             params = {
@@ -207,6 +207,7 @@ def getPrice():
             }
             offset += PRICE_LIST_LIMIT
             response = requests.get(url=GET_PRICE_URL, params=params).json()
+
             for price in response['prices']:
                 if price.__contains__('discount_price'):
                     discount_price = float(price['discount_price']['raw_value'])
@@ -227,5 +228,5 @@ def getPrice():
 
 
 if __name__ == '__main__':
-    getGamesAM()
+    # getGamesAM()
     getPrice()

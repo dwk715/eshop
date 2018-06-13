@@ -178,7 +178,7 @@ def getPrice():
     for country in REGION_EUROPE:
         offset = 0
         nsuids = []
-        for game_info in game_eu_collection.find({'nsuid': {"$type": 2}}):
+        for game_info in game_eu_collection.find({'nsuid': {"$type": 18}}):
             nsuids.append(game_info['nsuid'])
         while (offset < len(nsuids)):
             params = {
