@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init_db/init_eu_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_eu_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_db/init_am_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_am_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_db/init_jp_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_jp_db.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +34,8 @@
       <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="785">
-              <caret line="210" column="4" selection-start-line="210" selection-start-column="4" selection-end-line="210" selection-end-column="4" />
+            <state relative-caret-position="648">
+              <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -45,8 +46,8 @@
       <file leaf-file-name="cron_job.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cron_job.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="486">
+              <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
               <folding>
                 <element signature="e#122#187#0" expanded="true" />
               </folding>
@@ -57,8 +58,8 @@
       <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init_db/init_am_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="211" column="16" selection-start-line="211" selection-start-column="16" selection-end-line="211" selection-end-column="41" />
+            <state relative-caret-position="526">
+              <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -69,8 +70,8 @@
       <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init_db/init_jp_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="167" column="61" selection-start-line="167" selection-start-column="61" selection-end-line="167" selection-end-column="61" />
+            <state relative-caret-position="496">
+              <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
               <folding>
                 <element signature="e#124#155#0" expanded="true" />
               </folding>
@@ -173,8 +174,8 @@
         <option value="$PROJECT_DIR$/init_am_db.py" />
         <option value="$PROJECT_DIR$/init_eu_db.py" />
         <option value="$PROJECT_DIR$/cron_job.py" />
-        <option value="$PROJECT_DIR$/init_db/init_jp_db.py" />
         <option value="$PROJECT_DIR$/init_db/init_am_db.py" />
+        <option value="$PROJECT_DIR$/init_db/init_jp_db.py" />
         <option value="$PROJECT_DIR$/init_db/init_eu_db.py" />
       </list>
     </option>
@@ -188,10 +189,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="66" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="981" />
     <option name="y" value="22" />
-    <option name="width" value="1854" />
+    <option name="width" value="939" />
     <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -208,6 +209,11 @@
             <path>
               <item name="eshop_price" type="b2602c69:ProjectViewProjectNode" />
               <item name="eshop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="eshop_price" type="b2602c69:ProjectViewProjectNode" />
+              <item name="eshop" type="462c0819:PsiDirectoryNode" />
+              <item name="init_db" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -535,20 +541,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00083" summary="完善JpDB">
-      <created>1527575350201</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1527575350202</updated>
-    </task>
-    <task id="LOCAL-00084" summary="fix bugs">
-      <created>1527575361179</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1527575361179</updated>
     </task>
     <task id="LOCAL-00085" summary="fix bugs">
       <created>1527575431848</created>
@@ -879,7 +871,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528870568186</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="fix bugs">
+      <created>1528870628906</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1528870628907</updated>
+    </task>
+    <task id="LOCAL-00133" summary="add cron_job">
+      <created>1528877312037</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1528877312037</updated>
+    </task>
+    <option name="localTasksCounter" value="134" />
     <servers />
   </component>
   <component name="TodoView">
@@ -892,7 +898,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="22" width="1877" height="1058" extended-state="6" />
+    <frame x="981" y="22" width="939" height="1058" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
@@ -902,7 +908,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49944258" weight="0.32942432" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3292683" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4959217" weight="0.23085107" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14441417" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.21181718" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32960597" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32942432" />
@@ -925,7 +931,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="服务器添加name" />
     <MESSAGE value="完善JP game" />
     <MESSAGE value="更新 google Knowledge Graph Search API 统计 name&#10;优化game EU &amp; game AM" />
     <MESSAGE value="优化google games 英文下由于大小写造成的问题" />
@@ -950,7 +955,8 @@
     <MESSAGE value="日服：修改 prices" />
     <MESSAGE value="fix nsuid $type" />
     <MESSAGE value="fix bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bugs" />
+    <MESSAGE value="add cron_job" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cron_job" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1113,26 +1119,6 @@
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cron_job.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#122#187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init_db/init_jp_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="167" column="61" selection-start-line="167" selection-start-column="61" selection-end-line="167" selection-end-column="61" />
-          <folding>
-            <element signature="e#124#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/link_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1147,20 +1133,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cron_job.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
+          <folding>
+            <element signature="e#122#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/init_db/init_am_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="211" column="16" selection-start-line="211" selection-start-column="16" selection-end-line="211" selection-end-column="41" />
+        <state relative-caret-position="526">
+          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/init_db/init_jp_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding>
+            <element signature="e#124#155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="210" column="4" selection-start-line="210" selection-start-column="4" selection-end-line="210" selection-end-column="4" />
+        <state relative-caret-position="648">
+          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>
