@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init_db/init_am_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_am_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init_db/init_jp_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_jp_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cron_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/cron_job.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+            <state relative-caret-position="520">
+              <caret line="137" column="24" lean-forward="true" selection-start-line="137" selection-start-column="24" selection-end-line="137" selection-end-column="24" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -43,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cron_job.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cron_job.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cron_job.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
+            <state relative-caret-position="659">
+              <caret line="43" column="80" selection-start-line="43" selection-start-column="80" selection-end-line="43" selection-end-column="80" />
               <folding>
                 <element signature="e#122#187#0" expanded="true" />
               </folding>
@@ -173,10 +172,10 @@
         <option value="$PROJECT_DIR$/link_db.py" />
         <option value="$PROJECT_DIR$/init_am_db.py" />
         <option value="$PROJECT_DIR$/init_eu_db.py" />
-        <option value="$PROJECT_DIR$/cron_job.py" />
         <option value="$PROJECT_DIR$/init_db/init_am_db.py" />
         <option value="$PROJECT_DIR$/init_db/init_jp_db.py" />
         <option value="$PROJECT_DIR$/init_db/init_eu_db.py" />
+        <option value="$PROJECT_DIR$/cron_job.py" />
       </list>
     </option>
   </component>
@@ -189,10 +188,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="981" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="302" />
     <option name="y" value="22" />
-    <option name="width" value="939" />
+    <option name="width" value="1618" />
     <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -542,20 +541,6 @@
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
     </task>
-    <task id="LOCAL-00085" summary="fix bugs">
-      <created>1527575431848</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1527575431848</updated>
-    </task>
-    <task id="LOCAL-00086" summary="fix bugs">
-      <created>1527575522923</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1527575522923</updated>
-    </task>
     <task id="LOCAL-00087" summary="fix bugs">
       <created>1527575680488</created>
       <option name="number" value="00087" />
@@ -885,7 +870,21 @@
       <option name="project" value="LOCAL" />
       <updated>1528877312037</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="add cron_job">
+      <created>1528877541186</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1528877541186</updated>
+    </task>
+    <task id="LOCAL-00135" summary="add cron_job">
+      <created>1528877941618</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1528877941618</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TodoView">
@@ -898,7 +897,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="981" y="22" width="939" height="1058" extended-state="0" />
+    <frame x="43" y="22" width="1877" height="1058" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
@@ -1133,16 +1132,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cron_job.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
-          <folding>
-            <element signature="e#122#187#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/init_db/init_am_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
@@ -1165,10 +1154,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        <state relative-caret-position="520">
+          <caret line="137" column="24" lean-forward="true" selection-start-line="137" selection-start-column="24" selection-end-line="137" selection-end-column="24" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cron_job.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="43" column="80" selection-start-line="43" selection-start-column="80" selection-end-line="43" selection-end-column="80" />
+          <folding>
+            <element signature="e#122#187#0" expanded="true" />
           </folding>
         </state>
       </provider>

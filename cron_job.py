@@ -12,6 +12,7 @@ from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 from init_db.init_am_db import getGamesAM
 from init_db.init_eu_db import getGamesEU
 from init_db.init_jp_db import getGamesJP
+import time
 
 
 # mongodb 设置
@@ -40,11 +41,13 @@ if __name__ == '__main__':
     }
 
     scheduler = BackgroundScheduler(job_stores=job_stores, executors=executors, job_defaults=job_defaults)
-    scheduler.add_job(getGamesJP, 'interval', days=1, start_date='2018-6-13 16:20:00')
-    # scheduler.add_job(getGamesAM, 'interval', days=1, start_date='2018-6-13 01:00:00')
-    # scheduler.add_job(getGamesEU, 'interval', days=1, start_date='2018-6-13 02:00:00')
+    scheduler.add_job(getGamesJP, 'interval', days=1, start_date='2018-6-13 16:32:00')
+    scheduler.add_job(getGamesAM, 'interval', days=1, start_date='2018-6-13 01:00:00')
+    scheduler.add_job(getGamesEU, 'interval', days=1, start_date='2018-6-13 02:00:00')
 
     try:
         scheduler.start()
+        while True:
+            time.sleep(1)
     except (KeyboardInterrupt, SystemExit):
         scheduler.shutdown()
