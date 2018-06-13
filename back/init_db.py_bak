@@ -12,15 +12,9 @@ import logging
 import math
 from bs4 import BeautifulSoup
 from opencc import OpenCC
-import simplejson as json
-import re
-import iso639
 from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
-import html
 from init_am_db import getGamesAM
-from init_eu_db import getGamesEU
-from init_jp_db import getGamesJP, addAcNamesToJPNameDB
+from init_db.init_eu_db import getGamesEU
 
 # URL
 GET_GAMES_US_URL = "http://www.nintendo.com/json/content/get/filter/game?system=switch"

@@ -30,7 +30,7 @@ FIRST_NSUID = 70010000000026
 today = datetime.datetime.now().strftime("%Y-%m-%d")  # 记录日志用
 LOG_FORMAT = "%(asctime)s - %(message)s"
 DATE_FORMAT = "%Y-%m-%d"
-log_file = 'log/' + today + '.log'
+log_file = '../log/' + today + '.log'
 logging.basicConfig(filename=log_file, level=logging.ERROR, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # mongodb 设置
@@ -41,7 +41,7 @@ game_jp_collection = db['jp_game']
 name_collection = db['name']
 
 # 定义数据库格式
-game = {
+game_info = {
 
     "title": {},  # title --> string 游戏名称
 
@@ -66,8 +66,6 @@ game = {
     "language_availability": {},  # language_availability --> {} 支持的语言，美服无法获取数据，只取欧服和日服
 
     "google_titles": {},  # google_titles --> {} 使用google Knowledge Graph Search API 搜索 name 做合并用
-
-    "jp_discount": None,  # 日服折扣
 
     "prices": {}  # 日服价格
 
@@ -124,7 +122,7 @@ def getGamesJP():
 
             title = html.unescape(game['formal_name'])
 
-            nsuid = str(game['id'])
+            nsuid = int(game['id'])
             try:
                 img = game['applications'][0]['image_url']
             except:
@@ -143,7 +141,7 @@ def getGamesJP():
                 iso639.to_name(i['iso_code']).lower().split(';')[0] if ';' in iso639.to_name(
                     i['iso_code']).lower() else iso639.to_name(i['iso_code']).lower() for i in game['languages']]
 
-            game_jp = copy.deepcopy(game)
+            game_jp = copy.deepcopy(game_info)
 
             game_jp.update({
                 "title": title,
@@ -159,10 +157,10 @@ def getGamesJP():
             })
             currency, price, jp_discount = getPrice(nsuid)
             game_jp.update({
-                "jp_discount": jp_discount,
-                "prices": {
-                    currency: price
-                }
+                "prices": {"JP": {currency: price,
+                                  "discount": jp_discount
+                                  }}
+
             })
             game_jp_collection.find_one_and_update({'title': title}, {"$set": game_jp}, upsert=True)
 

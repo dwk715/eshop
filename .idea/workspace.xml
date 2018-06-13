@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10d60b57-0f39-4e7d-b283-6ae4264d6cd0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/cron_job.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/eshop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/eshop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init_eu_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_eu_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/init_db.py_bak" beforeDir="false" afterPath="$PROJECT_DIR$/back/init_db.py_bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_am_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_am_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_eu_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_eu_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_jp_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_jp_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init_name_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/init_db/init_name_db.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,10 +40,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="init_eu_db.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/init_eu_db.py">
+        <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
+            <state relative-caret-position="555">
+              <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -42,11 +51,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/init_am_db.py">
+      <file leaf-file-name="cron_job.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cron_job.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="199" column="13" selection-start-line="199" selection-start-column="13" selection-end-line="199" selection-end-column="13" />
+            <state relative-caret-position="342">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="e#122#187#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="init_am_db.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/init_db/init_am_db.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
               <folding>
                 <element signature="e#122#153#0" expanded="true" />
               </folding>
@@ -55,10 +76,10 @@
         </entry>
       </file>
       <file leaf-file-name="init_jp_db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/init_jp_db.py">
+        <entry file="file://$PROJECT_DIR$/init_db/init_jp_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2484">
-              <caret line="138" column="31" selection-start-line="138" selection-start-column="31" selection-end-line="138" selection-end-column="31" />
+            <state relative-caret-position="539">
+              <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
               <folding>
                 <element signature="e#124#155#0" expanded="true" />
               </folding>
@@ -79,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/back/init_db.py_bak">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="843">
-              <caret line="328" selection-start-line="328" selection-end-line="328" />
+              <caret line="322" selection-start-line="322" selection-end-line="322" />
             </state>
           </provider>
         </entry>
@@ -160,6 +181,10 @@
         <option value="$PROJECT_DIR$/link_db.py" />
         <option value="$PROJECT_DIR$/init_am_db.py" />
         <option value="$PROJECT_DIR$/init_eu_db.py" />
+        <option value="$PROJECT_DIR$/cron_job.py" />
+        <option value="$PROJECT_DIR$/init_db/init_am_db.py" />
+        <option value="$PROJECT_DIR$/init_db/init_jp_db.py" />
+        <option value="$PROJECT_DIR$/init_db/init_eu_db.py" />
       </list>
     </option>
   </component>
@@ -172,10 +197,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="43" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="66" />
     <option name="y" value="22" />
-    <option name="width" value="1877" />
+    <option name="width" value="1854" />
     <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -204,12 +229,123 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
-    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/init_db" />
       <recent name="$PROJECT_DIR$/back" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/requirement.txt</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -408,13 +544,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524533888745</updated>
-    </task>
-    <task id="LOCAL-00076" summary="完善nameDB和gameDB的链接">
-      <created>1527475323568</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1527475323569</updated>
     </task>
     <task id="LOCAL-00077" summary="完善nameDB和gameDB的链接">
       <created>1527484070021</created>
@@ -752,7 +881,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528767740806</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="欧服添加sleep，API请求过多被干掉">
+      <created>1528768119093</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1528768119093</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TodoView">
@@ -765,7 +901,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="22" width="1877" height="1058" extended-state="0" />
+    <frame x="43" y="22" width="1877" height="1058" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32978722" />
@@ -775,7 +911,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49944258" weight="0.32942432" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3292683" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4959217" weight="0.23085107" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14441417" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.14441417" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32960597" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32942432" />
@@ -798,7 +934,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="移除db" />
     <MESSAGE value="更新README" />
     <MESSAGE value="服务器采集name信息" />
     <MESSAGE value="服务器查看JP title" />
@@ -823,7 +958,8 @@
     <MESSAGE value="price 的 nsuid 为 int，修改为str" />
     <MESSAGE value="修改getPrice单独运行" />
     <MESSAGE value="欧服添加暂停，防止价格API请求过多被干掉" />
-    <option name="LAST_COMMIT_MESSAGE" value="欧服添加暂停，防止价格API请求过多被干掉" />
+    <MESSAGE value="欧服添加sleep，API请求过多被干掉" />
+    <option name="LAST_COMMIT_MESSAGE" value="欧服添加sleep，API请求过多被干掉" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -831,12 +967,11 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/log/2018-04-26.log" />
     <entry file="file://$PROJECT_DIR$/log/2018-04-27.log" />
     <entry file="file://$PROJECT_DIR$/back/init_db.py_bak">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_name_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
@@ -845,7 +980,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/log/2018-04-26.log" />
     <entry file="file://$PROJECT_DIR$/log/2018-04-27.log" />
-    <entry file="file://$PROJECT_DIR$/init_name_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
@@ -861,7 +996,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/log/2018-04-27.log" />
     <entry file="file://$PROJECT_DIR$/log/2018-04-26.log" />
-    <entry file="file://$PROJECT_DIR$/init_name_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
@@ -880,7 +1015,7 @@
     <entry file="file://$PROJECT_DIR$/back/init_db.py_bak">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_name_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
@@ -897,7 +1032,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/log/2018-04-26.log" />
-    <entry file="file://$PROJECT_DIR$/init_name_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
@@ -907,7 +1042,7 @@
     <entry file="file://$PROJECT_DIR$/back/init_db.py_bak">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_name_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
@@ -918,7 +1053,7 @@
     <entry file="file://$PROJECT_DIR$/back/init_db.py_bak">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_name_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
@@ -962,7 +1097,7 @@
       <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/log/2018-04-27.log" />
-    <entry file="file://$PROJECT_DIR$/init_name_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_name_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1598">
           <caret line="100" column="20" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
@@ -987,22 +1122,12 @@
     <entry file="file://$PROJECT_DIR$/back/init_db.py_bak">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="843">
-          <caret line="328" selection-start-line="328" selection-end-line="328" />
+          <caret line="322" selection-start-line="322" selection-end-line="322" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/init_db.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/init_jp_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2484">
-          <caret line="138" column="31" selection-start-line="138" selection-start-column="31" selection-end-line="138" selection-end-column="31" />
-          <folding>
-            <element signature="e#124#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/link_db.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1011,20 +1136,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_am_db.py">
+    <entry file="file://$PROJECT_DIR$/cron_job.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="199" column="13" selection-start-line="199" selection-start-column="13" selection-end-line="199" selection-end-column="13" />
+        <state relative-caret-position="342">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#122#187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init_db/init_am_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/init_eu_db.py">
+    <entry file="file://$PROJECT_DIR$/init_db/init_jp_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
+        <state relative-caret-position="539">
+          <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
+          <folding>
+            <element signature="e#124#155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/init_db/init_eu_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
           <folding>
             <element signature="e#122#153#0" expanded="true" />
           </folding>
