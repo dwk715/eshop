@@ -47,7 +47,7 @@ game_info = {
 
     'slug': None,  # slug --> str 名称代'-' 用于连接美服和欧服的游戏
 
-    "nsuid": {},  # nsuid --> list[] 游戏ID,不同服务器同一游戏不同nsuid,根据nsuid查询价格
+    "nsuid": None,  # nsuid --> list[] 游戏ID,不同服务器同一游戏不同nsuid,根据nsuid查询价格
 
     "img": None,  # img --> str(url) 图片，欧服为正方形图片，美服为商品图片，可能是正方形，可能是长方形
 
@@ -156,12 +156,19 @@ def getGamesJP():
                 "google_titles": getTitleByGoogle(title, 'jp')
             })
             currency, price, jp_discount = getPrice(nsuid)
-            game_jp.update({
-                "prices": {"JP": {currency: price,
-                                  "discount": jp_discount
-                                  }}
+            if jp_discount == None:
+                game_jp.update({
+                    "prices": {"JP": {currency: price,
+                                      }}
 
-            })
+                })
+            else:
+                game_jp.update({
+                    "prices": {"JP": {currency: price,
+                                      "discount": jp_discount
+                                      }}
+
+                })
             game_jp_collection.find_one_and_update({'title': title}, {"$set": game_jp}, upsert=True)
 
 
