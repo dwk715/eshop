@@ -171,9 +171,6 @@ def getGamesEU():
         game_eu_collection.find_one_and_update({"slug": slug}, {"$set": game_eu}, upsert=True)
 
 
-
-
-
 def getPrice():
     for country in REGION_EUROPE:
         offset = 0
@@ -189,19 +186,20 @@ def getPrice():
             response = requests.get(url=GET_PRICE_URL, params=params).json()
 
             for price in response['prices']:
+                key = "prices." + country
                 if price.__contains__('discount_price'):
                     discount_price = float(price['discount_price']['raw_value'])
                     regular_price = float(price['regular_price']['raw_value'])
                     discount = '%.f%%' % (discount_price / regular_price * 100)
                     currency = price['discount_price']['currency']
                     game_eu_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
-                        "prices": {country: {currency: discount_price}, "discount": discount}
+                        key: {currency: discount_price, "discount": discount}
                     }})
                 elif price.__contains__('regular_price'):
                     regular_price = float(price['regular_price']['raw_value'])
                     currency = price['regular_price']['currency']
                     game_eu_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
-                        "prices":{country: {currency: regular_price}}
+                        key: {currency: regular_price}
                     }})
                 else:
                     continue

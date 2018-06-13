@@ -209,19 +209,20 @@ def getPrice():
             response = requests.get(url=GET_PRICE_URL, params=params).json()
 
             for price in response['prices']:
+                key = "prices." + country
                 if price.__contains__('discount_price'):
                     discount_price = float(price['discount_price']['raw_value'])
                     regular_price = float(price['regular_price']['raw_value'])
                     am_discount = '%.f%%' % (discount_price / regular_price * 100)
                     currency = price['discount_price']['currency']
-                    game_am_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
-                        "prices": {country: {currency: discount_price}, "discount": am_discount}
+                    game_am_collection.find_one_and_update({'nsuid': int(price['title_id'])}, {"$set": {
+                        key: {currency: discount_price, "discount": am_discount}
                     }})
                 elif price.__contains__('regular_price'):
                     regular_price = float(price['regular_price']['raw_value'])
                     currency = price['regular_price']['currency']
-                    game_am_collection.find_one_and_update({'nsuid': price['title_id']}, {"$set": {
-                        "prices": {country: {currency: regular_price}}
+                    game_am_collection.find_one_and_update({'nsuid': int(price['title_id'])}, {"$set": {
+                        key: {currency: regular_price}
                     }})
                 else:
                     continue
