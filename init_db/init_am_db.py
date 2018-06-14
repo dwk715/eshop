@@ -37,7 +37,7 @@ REGION_AMERICA = "US CA MX".split(' ')
 today = datetime.datetime.now().strftime("%Y-%m-%d")  # 记录日志用
 LOG_FORMAT = "%(asctime)s - %(message)s"
 DATE_FORMAT = "%Y-%m-%d"
-log_file = 'log/' + today + '.log'
+log_file = '../log/' + today + '.log'
 logging.basicConfig(filename=log_file, level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # mongodb 设置
