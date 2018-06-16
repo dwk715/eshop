@@ -1,8 +1,0 @@
-2018-04-26 - America error <class 'Exception'>
-2018-04-26 - America error <class 'Exception'>
-2018-04-26 - America error: 'game'
-2018-04-26 - America error: 'game'
-2018-04-26 - Europe error: ('Connection broken: IncompleteRead(819 bytes read, 624 more expected)', IncompleteRead(819 bytes read, 624 more expected))
-2018-04-26 - Europe error: ('Connection broken: IncompleteRead(121 bytes read, 1321 more expected)', IncompleteRead(121 bytes read, 1321 more expected))
-2018-04-26 - Europe error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
-2018-04-26 - Europe error: ('Connection broken: IncompleteRead(1089 bytes read, 354 more expected)', IncompleteRead(1089 bytes read, 354 more expected))

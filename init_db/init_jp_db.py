@@ -30,7 +30,7 @@ FIRST_NSUID = 70010000000026
 today = datetime.datetime.now().strftime("%Y-%m-%d")  # 记录日志用
 LOG_FORMAT = "%(asctime)s - %(message)s"
 DATE_FORMAT = "%Y-%m-%d"
-log_file = 'eshop/log/' + today + '.log'
+log_file = './log/' + today + '.log'
 logging.basicConfig(filename=log_file, level=logging.ERROR, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # mongodb 设置
