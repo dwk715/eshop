@@ -34,7 +34,7 @@ REGION_EUROPE = "AT NL FR CZ DK DE ES FI GR HU IT NO PL PT RU ZA SE GB AU NZ".sp
 today = datetime.datetime.now().strftime("%Y-%m-%d")  # 记录日志用
 LOG_FORMAT = "%(asctime)s - %(message)s"
 DATE_FORMAT = "%Y-%m-%d"
-log_file = '~/eshop/log/' + today + '.log'
+log_file = 'eshop/log/' + today + '.log'
 logging.basicConfig(filename=log_file, level=logging.ERROR, format=LOG_FORMAT, datefmt=DATE_FORMAT)
 
 # mongodb 设置
